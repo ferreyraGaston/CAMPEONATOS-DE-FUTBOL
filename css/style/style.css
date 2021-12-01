@@ -2,7 +2,32 @@ body
     {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         margin: 0;
-        background: url(../imagenes/img/imagenes/assets/fondo.jpg);
+        /*background: url(../imagenes/img/imagenes/assets/fondo.jpg);*/
+        background-color: black;
         background-size: cover;
         background-attachment: fixed;/*dejo la imagen fija*/   
     }
+.borde1{
+    background-color: rgb(191, 9, 247);
+    height: 50px;
+}
+.borde2{
+    background-color:rgb(191, 9, 247);
+    height: 50px;
+}
+.borde3{
+    background-color: rgb(191, 9, 247);
+    height: 50px;
+}
+
+h1,h2,h3,h5,p{
+    color: rgb(255, 255, 255);
+}
+
+.cabecera{
+
+    height: 90px;
+}
+.footerPie{
+    height: 120px;    
+}
