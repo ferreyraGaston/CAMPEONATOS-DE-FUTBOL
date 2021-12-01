@@ -63,3 +63,76 @@ function validarRegUsuario() {
     }
     return edad;
   }
+//Movimiento de formulario  
+
+document.getElementById("btn_login").addEventListener("click",iniSesion);
+document.getElementById("btn_registro").addEventListener("click",iniRegistro);
+
+// se ejecuta cuando la pagina este haciendo resize
+window.addEventListener("resize",anchoPagina);
+
+// hacer resize automaticamente sin ejecutarla
+//anchoPagina();
+
+//Declaracion de Variables
+var contenedor_loginRegistro=document.querySelector(".caja_delantera_loginRegistro");
+var formulario_login=document.querySelector(".formulario_login");
+var formulario_registro=document.querySelector(".formulario_registro");
+
+var cajaTrasera_login=document.querySelector(".caja_trasera_login");
+var cajaTrasera_registro=document.querySelector(".caja_trasera_registro");
+
+  function iniRegistro(){
+    if(window.innerWidth>767)//si el ancho de la pantalla es mayor a767px
+    {
+      formulario_registro.style.display="block"; //registro
+      formulario_login.style.display="none";
+      contenedor_loginRegistro.style.left="410px";
+      //aparece y desaparece la caja del texto
+      cajaTrasera_registro.style.opacity="0";
+      cajaTrasera_login.style.opacity="1";
+    }else{
+      formulario_registro.style.display="block";
+      contenedor_loginRegistro.style.left="0px";
+      formulario_login.style.display="none"; 
+      //aparece y desaparece la caja del texto
+      cajaTrasera_registro.style.display="none";  //registro
+      cajaTrasera_login.style.display="block";
+    }
+  }
+  function iniSesion(){
+    if(window.innerWidth>767)
+    {
+    formulario_registro.style.display="none";   
+    formulario_login.style.display="block";
+    contenedor_loginRegistro.style.left="10px";
+    //aparece y desaparece la caja del texto
+    cajaTrasera_registro.style.opacity="1";
+    cajaTrasera_login.style.opacity="0";
+    }else{
+    formulario_registro.style.display="none";
+    contenedor_loginRegistro.style.left="0px";
+    formulario_login.style.display="block";
+    //aparece y desaparece la caja del texto
+    cajaTrasera_registro.style.display="block";
+    cajaTrasera_login.style.display="none";
+    }
+  }
+
+  function anchoPagina(){
+    if(window.innerWidth>767)
+    {
+    cajaTrasera_login.style.display="block";
+    cajaTrasera_registro.style.display="block";
+    }else{
+    cajaTrasera_registro.style.display="block"; 
+    cajaTrasera_registro.style.opacity="1"; 
+    cajaTrasera_login.style.display="none";
+    formulario_login.style.display="block";
+    formulario_registro.style.display="none";
+    contenedor_loginRegistro.style.left="0px";
+    }
+
+  }
+
+  anchoPagina() // ejecuto la funcion despues de crearla
