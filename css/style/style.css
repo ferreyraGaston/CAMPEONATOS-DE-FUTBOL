@@ -11,7 +11,8 @@ body
     {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         margin: 0;
-        background: url(/imagenes/img/imagenes/assets/fondo_login.jpg);
+        background: url(../imagenes/img/imagenes/assets/fondo_login.jpg);
+
         background-repeat: no-repeat;
         background-size: cover;
         background-attachment: fixed;/*dejo la imagen fija*/   
