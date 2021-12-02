@@ -93,10 +93,10 @@
 
     <div class="caja_delantera_loginRegistro">
 
-        <form action="" class="formulario_login">
+        <form action="" class="formulario_login" onsubmit="return validarRegLogin()">
             <h2>Iniciar Sesión</h2>
-            <input type="text" placeholder="Correo Electronico">
-            <input type="password" placeholder="Contraseña">
+            <input type="text" placeholder="Correo Electronico" id="emailLogin">
+            <input type="password" placeholder="Contraseña" id="pasLogin">
             
             <button>Entrar</button>
         </form>
@@ -110,8 +110,8 @@
             <input type="date" id="FechaNacim" class="form-control">
             <input type="email" placeholder="Correo Electronico" id="email" class="form-control">
             <input type="password" placeholder="Contraseña" id="passwordid" class="form-control">
-            <input type="text" placeholder="Provincia" class="form-control">
-            <input type="text" placeholder="Pais" class="form-control">
+            <input type="text" placeholder="Provincia" class="form-control" id="provincia">
+            <input type="text" placeholder="Pais" class="form-control" id="pais">
             <button id="btnResumen" type="submit">Registrarse</button>
         </form>
     

@@ -9,14 +9,37 @@ function validarRegUsuario() {
     email = document.getElementById('email').value;
     pass = document.getElementById('passwordid').value;
     fNacim = document.getElementById('FechaNacim').value;
+    prov = document.getElementById('provincia').value;
+    pais = document.getElementById('pais').value;
   
   
     //verifico que todos los campos contengan datos, si no muestro un alert:
-    if (nombre === '' || apellido === '' || email === '' || pass === '' || fNacim === '') {
-      alert('Todos los campos deben estar completos');
+    if (nombre === '') {
+      alert('El campo nombre deben estar completo');
       return false;
     }
-  
+    if (apellido === '' ) {
+      alert('El campo apellido deben estar completo');
+      return false;
+    }
+    if (fNacim === '') {
+      alert('El campo fecha deben estar completo');
+      return false;
+    }
+
+      //verifico si es mayor de 18 años
+      if (calcularEdad(fNacim) < 18) {
+        alert(
+          'Revise la fecha de nacimiento. El empleado debe ser mayor de 18 a\u00f1os'
+        );
+        return false;     
+      } 
+
+      if (email === '') {
+        alert('El campo email deben estar completo');
+        return false;
+      }
+
     //valido que el email sea valido:
     if (
       !/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
@@ -27,13 +50,22 @@ function validarRegUsuario() {
       return false;
     }
 
-    //verifico si es mayor de 18 años
-    if (calcularEdad(fNacim) < 18) {
-      alert(
-        'Revise la fecha de nacimiento. El empleado debe ser mayor de 18 a\u00f1os'
-      );
-      return false;     
-    } 
+    if (pass=== '') {
+      alert('El campo contraseña deben estar completo');
+      return false;
+    }
+
+    if (prov=== '') {
+      alert('El campo provincia deben estar completo');
+      return false;
+    }
+
+    if (pais=== '') {
+      alert('El campo pais deben estar completo');
+      return false;
+    }
+
+  
      alert('registro completado exitosamente');
     }
   
@@ -124,3 +156,33 @@ var cajaTrasera_registro=document.querySelector(".caja_trasera_registro");
   }
 
   anchoPagina() // ejecuto la funcion despues de crearla
+
+  function validarRegLogin() {
+    var nombre, apellido,email, pass, telef, direcc, fNacim;
+  
+    //traigo valores del formulario
+    EmailLogin = document.getElementById('emailLogin').value;
+    PassLogin = document.getElementById('pasLogin').value;
+
+     if (EmailLogin === '') {
+        alert('El campo email deben estar completo');
+        return false;
+      }
+      
+    //valido que el email sea valido:
+    if (
+      !/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
+        EmailLogin
+      )
+    ) {
+      alert('Debes ingresar un email válido.');
+      return false;
+    }
+
+    if (PassLogin=== '') {
+      alert('El campo contraseña deben estar completo');
+      return false;
+    }
+
+     alert('registro completado exitosamente');
+    }
