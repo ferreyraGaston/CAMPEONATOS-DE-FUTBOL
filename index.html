@@ -31,14 +31,14 @@
 <!--border-3: borde medio-->  
 <!--border-bottom: border medio solo en la parte de abajo-->  
 <!--border-primary: colo azul-->  
-<nav class="navbar navbar-expand-md navbar-light bg-light border-3 border-bottom border-primary">
+<nav class="navbar navbar-expand-md navbar-light bg-light bg-opacity-25 border-3 border-bottom border-secondary">
 <div class="container-fluid">
     <!--navbar-brand: identifica que es la marca o el logo de la empresa-->  
-    <a href="index.html" class="navbar-brand"> <img class="logo" src="./imagenes/img/imagenes/assets/logo.png" width="124" height="105" alt="logo sin imagen"> </a> 
+    <a href="index.html" class="navbar-brand"> <img class="logo" src="./imagenes/img/imagenes/assets/logo.png" width="130" height="80" alt="logo sin imagen"> </a> 
      <!--navbar-toggler: alterna el boton entre visible e invisible-->  
      <!--data-bs-toggle="collapse": le damos funcionalidad que abrir y que cerrar-->
       <!--data-bs-target="": le indicamos sobre que elemento debe mostrar solo hay que ingresar el identificador unico-->
-    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion"> 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion"> 
         <!--nnavbar-toggler-icon: boton tipo hamburguesa-->  
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -48,117 +48,149 @@
 
         <!--navbar-nav: indica que es un elemento de navegacion  -->
         <!--ms-3: aliniacion derecha  -->
-        <ul class="navbar-nav ms-3">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li> 
+            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
             <!--nav-item: toma un aspecto determinado-->  
             <!--nav-link: eliminamos el color azul del link-->  
             <li class="nav-item dropdown">
                 <!--dropdown-toggle: permite desplegar el resto de los elementos-->  
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Novedades</a>
-                <ul class="dropdown-menu">
+                <a class="nav-link dropdown-toggle" href="#" role="button" ddata-bs-toggle="dropdown" aria-expanded="false">Novedades</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#">Eventos</a></li> 
                     <li><a class="dropdown-item" href="#">Eventos</a></li> 
                     <li><a class="dropdown-item" href="#">Eventos</a></li> 
-        </ul>
+                </ul>
             </li>
-            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li> 
-            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
         </ul>
     </div>
-
 </div>
-
 </nav>
-
-
-
-
-
 </header>
 <!--********************* fin Header ************************-->
 <br><br><br><br><br><br>
 <main>
-    <div class="container"> <!--Sin fluid: para no ocupar todo el ancho -->
-        <div class="row">
-        <div class="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-4 borde1 border"> </div>   
-        <div class="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-4 borde2 border"> </div>   
-        <div class="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-4 borde3 border"> </div>   
+<section>
+    <div class="contenedor__todo "> 
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-    </div>  
-    <br>
-    <div class="container"> <!--Sin fluid: para no ocupar todo el ancho -->
-        <div class="row">
-        <div class="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-4 borde1 border"> </div>   
-        <div class="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-4 borde2 border"> </div>   
-        <div class="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-4 borde3 border"> </div>   
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./imagenes/img/imagenes/assets/img1.jpeg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <!--
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+              -->
+
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./imagenes/img/imagenes/assets/img2.jpeg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                 <!--
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+              -->
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./imagenes/img/imagenes/assets/img3.jpeg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                 <!--
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+              -->
+            </div>
+          </div>
         </div>
-    </div>
-    <br>  
-    <div class="container"> <!--Sin fluid: para no ocupar todo el ancho -->
-        <div class="row">
-        <div class="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-4 borde1 border"> </div>   
-        <div class="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-4 borde2 border"> </div>   
-        <div class="col-10 col-sm-10 col-md-4 col-lg-4 col-xl-4 borde3 border"> </div>   
-        </div>
-    </div>  
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>  
+    </div> 
+</section> 
 </main>
 
 <br>
-<footer class="footerPie">
-    <div class="container-fluid"> <!--fluid: Ocupa todo el ancho -->
-    <div class="row">
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 borde1">
-        <h3>Dirección</h3>
-        <p>5 de octubre 2100</p>
-        <br>
-        <p>Cordoba, Unquillo</p>
-        <br>
-        <p>Argentina, CP 5109</p>
-        </div> 
+<footer class="bg-light bg-opacity-25 text-dark pt-5 pb-4">
 
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 d-none d-md-block borde2"> 
+    <div class="container text-center text-md-left">
+        <div class="row text-center text-md-left">
 
-        <div class="logo">
-        <i id="fontawesome1-1" class="fab fa-facebook">
-            <a  href="https://www.facebook.com/LaMinerita">
-                <h5>Sigenos en Faceboock</h5>
-            </a>
-        </i>
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Información</h5>
+                <p class="mb-4">La Minerita es una antigua fábrica de cal, hoy funciona como 
+                    lugar de encuentro de amigos para compartir música, danza, comidas y todo 
+                    tipo de actividades relacionadas al arte y la cultura.</p>
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Let Us Help</h5>
+                <hr class="mb-4">
+                <p>
+                    <a href="#" class="text-light" style="text-decoration: none;"> accion</a>
+                </p>
+                <p>
+                    <a href="#" class="text-light" style="text-decoration: none;"> accion</a>
+                </p>
+                <p>
+                    <a href="#" class="text-light" style="text-decoration: none;"> accion</a>
+                </p>
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Let Us Help</h5>
+                <hr class="mb-4">
+                <p>
+                    <a href="#" class="text-light" style="text-decoration: none;"> accion</a>
+                </p>
+                <p>
+                    <a href="#" class="text-light" style="text-decoration: none;"> accion</a>
+                </p>
+                <p>
+                    <a href="#" class="text-light" style="text-decoration: none;"> accion</a>
+                </p>
+            </div>
+
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Contactos</h5>
+                <hr class="mb-4">
+                <p>
+                    <li class="fas fa-home mr-3 text-light"></li> <p class="text-light">5 de octubre 2100,Unquillo Cba.</p>  
+                </p>
+                <p>
+                    <li class="fas fa-facebook mr-3 text-light"></li><a href="https://www.facebook.com/LaMinerita/" class="text-dark" style="text-decoration: none;">  <p class="text-light"> La Minerita</p>  </a> 
+                </p>
+                <p>
+                    <li class="fas fa-phone mr-3 text-light"></li> <p class="text-light">+54 9 3515 31-6452</p>
+                </p>
+            </div>
+
+            <hr class="mb-4">
+            <div class="row d-flex justify-content-center">
+                <div>
+                    <p>
+                        <i class="fa fa-copyright" aria-hidden="true"></i> Copyroght 2021 todos los derechos reservados por :
+                        <a href="#" style="text-decoration: none;">
+                        <strong class="text-info">The Providers</strong>
+                        </a>
+                    </p>
+
+                </div>
+            </div>
         </div>
-
-        <div class="logo">
-            <i id="fontawesome1-2" class="fab fa-whatsapp-square">
-                <h5>Escribenos en whatsapp</h5>
-            </i>
-        </div>
-
-        <div class="logo">
-            <i id="fontawesome1-3" class="fab fa-twitter-square">
-                <h5>Sigenos en twitter</h5>
-            </i>
-        </div>
-
-        <div class="logo">
-            <i id="fontawesome1-4" class="fab fa-instagram-square">
-                <h5>Sigenos en instagram</h5>
-            </i>
-        </div>   
-        </div>
-
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 borde3"> 
-        <h1>Contacto</h1>
-        <p>Cel: (0351) 155316452</p>
-        <br>
-        <p>Oscar Alonso</p>
-        </div> 
-
     </div>
-    </div>
-
 </footer>
-
-
-
-
 
 
     <script src="js/scripts/bootstrap.bundle.min.js"> </script>
