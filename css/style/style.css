@@ -16,9 +16,16 @@ body
         background-size: cover;
         background-attachment: fixed;/*dejo la imagen fija*/   
     }
+.container{
+
+    padding: 0 15PX;
+}
+.logo{
+    height: 150px;
+}
 .borde1{
-    background-color: rgba(226, 162, 43, 0.5);;
-    height: 50px;
+    background-color: rgba(226, 162, 43, 0.5);
+    height: 100px;
 }
 .borde2{
     background-color:rgba(226, 162, 43, 0.5);

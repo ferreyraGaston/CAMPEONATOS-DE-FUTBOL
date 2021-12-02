@@ -8,13 +8,11 @@ function validarRegUsuario() {
     apellido = document.getElementById('fullname').value;
     email = document.getElementById('email').value;
     pass = document.getElementById('passwordid').value;
-    telef = document.getElementById('idtelefono').value;
-    cuil = document.getElementById('cuil').value;
     fNacim = document.getElementById('FechaNacim').value;
   
   
     //verifico que todos los campos contengan datos, si no muestro un alert:
-    if (nombre === '' || apellido === '' || email === '' || pass === '' || telef === '' || cuil === '' || fNacim === '') {
+    if (nombre === '' || apellido === '' || email === '' || pass === '' || fNacim === '') {
       alert('Todos los campos deben estar completos');
       return false;
     }
@@ -28,18 +26,7 @@ function validarRegUsuario() {
       alert('Debes ingresar un email válido.');
       return false;
     }
-  
-    //verifico que el telefono sea numerico primero y que contenga diez digitos en el else if
-    if (isNaN(telef)) {
-      alert('El campo télefono debe contener un número de contacto válido');
-      return false;
-    } else if (telef.length > 10 || telef.length < 10) {
-      alert(
-        'El número debe contener 10 dígitos (código de área sin cero y número sin quince)'
-      );
-      return false;
-    }
-  
+
     //verifico si es mayor de 18 años
     if (calcularEdad(fNacim) < 18) {
       alert(

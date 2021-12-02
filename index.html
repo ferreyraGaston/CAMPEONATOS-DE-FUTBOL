@@ -12,7 +12,9 @@
                                         la cultura">
     <meta name="keywords" content="peñas,festival,folklore,tango,unquillo,La minerita">
     <script src="https://kit.fontawesome.com/438f346520.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style/normalize.css">
     <link rel="stylesheet" href="./css/style/bootstrap.css">
+    <link rel="stylesheet" href="./css/style/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,43 +22,60 @@
     <link rel="shorcut icon" href="./imagenes/img/imagenes/assets/logo.png">
 </head>
 <body>
- 
-<header class="cabecera">
-    <div class="container-fluid"> <!--fluid: Ocupa todo el ancho -->
-        <!--col: 575 x 600 -->
-        <!--sm: 767 x 600 -->
-        <!--md: 991 x 600 -->
-        <!--lg: 1199 x 690 -->
-        <!--xl: 1280 x 690 -->
-        <div class="row">
+<!--********************* Inicio Header************************--> 
+<header>
+<!--navbar: indica que es un elemento de navegación-->     
+<!--navbar-expand-md: indica que a partir de que tamaño de pantalla se vea entera-->  
+<!--navbar-light: le damos un stilo luminoso-->  
+<!--bg-light: fondo claro -->  
+<!--border-3: borde medio-->  
+<!--border-bottom: border medio solo en la parte de abajo-->  
+<!--border-primary: colo azul-->  
+<nav class="navbar navbar-expand-md navbar-light bg-light border-3 border-bottom border-primary">
+<div class="container-fluid">
+    <!--navbar-brand: identifica que es la marca o el logo de la empresa-->  
+    <a href="index.html" class="navbar-brand"> <img class="logo" src="./imagenes/img/imagenes/assets/logo.png" width="124" height="105" alt="logo sin imagen"> </a> 
+     <!--navbar-toggler: alterna el boton entre visible e invisible-->  
+     <!--data-bs-toggle="collapse": le damos funcionalidad que abrir y que cerrar-->
+      <!--data-bs-target="": le indicamos sobre que elemento debe mostrar solo hay que ingresar el identificador unico-->
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion"> 
+        <!--nnavbar-toggler-icon: boton tipo hamburguesa-->  
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--collapse: para que no se vea el elemento cuando esta colapsado-->  
+    <!--navbar-collapse: ple indica a bootstrap que es un elemento de navegacion y que se puede mostrar y ocultar-->  
+    <div id="MenuNavegacion" class="collapse navbar-collapse">
 
-        <div class="col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2 borde1">
-        <a href="index.html">             
-        <img class="logo" src="./imagenes/img/imagenes/assets/logo.png" width="124" height="105" alt="logo sin imagen">    
-        </a>  
-        </div>   
-        <!--ocultar segun filosofia del mas pequeño al mas grande xs:d-none y sm:d-sm-none-->
-        <!--Mostrar segun filosofia del mas pequeño al mas grande md:d-md-block-->
-        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-4 d-none d-md-block borde2"> </div>   
-
-        <div class="col-12 col-sm-12 col-md-6 col-lg-7 col-xl-6 borde3"> 
-        <nav class="menu">   
-        <ul>
-        <li><a  href="index.html">Inicio</a></li>
-        <li><a  href="contacto.html">Contacto</a></li> 
-        <li><a  href="login.html">Login</a>
-            <ul>
-            <li><a  href="registro.html">Registrar</a>
-            </ul>
-        </li>
+        <!--navbar-nav: indica que es un elemento de navegacion  -->
+        <!--ms-3: aliniacion derecha  -->
+        <ul class="navbar-nav ms-3">
+            <!--nav-item: toma un aspecto determinado-->  
+            <!--nav-link: eliminamos el color azul del link-->  
+            <li class="nav-item dropdown">
+                <!--dropdown-toggle: permite desplegar el resto de los elementos-->  
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Novedades</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Eventos</a></li> 
+                    <li><a class="dropdown-item" href="#">Eventos</a></li> 
+                    <li><a class="dropdown-item" href="#">Eventos</a></li> 
+                </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li> 
+            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
         </ul>
-        </nav>   
-        </div>  
-
-        </div>
     </div>
+
+</div>
+
+</nav>
+
+
+
+
+
 </header>
-<br>
+<!--********************* fin Header ************************-->
+<br><br><br><br><br><br>
 <main>
     <div class="container"> <!--Sin fluid: para no ocupar todo el ancho -->
         <div class="row">

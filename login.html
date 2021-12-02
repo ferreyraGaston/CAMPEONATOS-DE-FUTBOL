@@ -82,19 +82,21 @@
             <h2>Iniciar Sesión</h2>
             <input type="text" placeholder="Correo Electronico">
             <input type="password" placeholder="Contraseña">
+            
             <button>Entrar</button>
         </form>
 
-        <form action="" class="formulario_registro">
+        <form action="proceso.php" method="post" class="formulario_registro" onsubmit="return validarRegUsuario()" id="registroDeUsuario">
             <h2>Registrarse</h2>
-            <input type="text" placeholder="Nombre">
-            <input type="text" placeholder="Apellido">
-            <input type="date">
-            <input type="text" placeholder="Correo Electronico">
-            <input type="password" placeholder="Contraseña">
-            <input type="text" placeholder="Provincia">
-            <input type="text" placeholder="Pais">
-            <button>Registrarse</button>
+
+            <input type="text" placeholder="Nombre" id="username" class="form-control">
+            <input type="text" placeholder="Apellido" id="fullname" class="form-control">
+            <input type="date" id="FechaNacim" class="form-control">
+            <input type="email" placeholder="Correo Electronico" id="email" class="form-control">
+            <input type="password" placeholder="Contraseña" id="passwordid" class="form-control">
+            <input type="text" placeholder="Provincia" class="form-control">
+            <input type="text" placeholder="Pais" class="form-control">
+            <button id="btnResumen" type="submit">Registrarse</button>
         </form>
     
     </div>
@@ -176,10 +178,7 @@
     </div>
 
 </footer>
-
-
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="js/scripts/funcionesGrupo99.js"> </script>
     <script src="js/scripts/bootstrap.bundle.min.js"> </script>
