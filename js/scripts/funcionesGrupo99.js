@@ -85,6 +85,7 @@ var cajaTrasera_registro=document.querySelector(".caja_trasera_registro");
       //aparece y desaparece la caja del texto
       cajaTrasera_registro.style.display="none";  //registro
       cajaTrasera_login.style.display="block";
+      cajaTrasera_login.style.opacity="1";
     }
   }
   function iniSesion(){
