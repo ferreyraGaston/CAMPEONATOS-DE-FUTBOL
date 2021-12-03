@@ -75,43 +75,39 @@
 <section >
     <div class="contenedor__todo "> 
 
-        <form class="g-3">
-            <div class="col-md-12">
-              <label for="validationServer01" class="form-label">Nombre</label>
-              <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
+
+        <form action="/action_page.php" class="was-validated" onsubmit="return validarContacto()">
+            <div class="mb-3 mt-3">
+              <label for="uname" class="form-label">Nombre:</label>
+              <input type="text" class="form-control" id="validationServer01" placeholder="Ingrese su Nombre" name="validationServer01" required>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Por favor rellene este campo.</div>
             </div>
-            <div class="col-md-12">
-              <label for="validationServer02" class="form-label">Apellido</label>
-              <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-            </div>
-            
-            <div class="col-md-12">
-                <label for="validationTextarea" class="text-danger">email</label>
-                <input name="email" type="email" class="form-control" id="email" placeholder="Email" aria-label="Email" required>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Por favor rellene este campo.</div>
+            <div class="mb-3">
+                <label for="validationServer02" class="form-label">Apellido:</label>
+              <input type="text" class="form-control" id="validationServer02" placeholder="Ingrese su Apellido" name="validationServer02" required>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">Por favor rellene este campo.</div>
             </div>
 
             <div class="mb-3">
-                <label for="validationTextarea" class="form-label">Textarea</label>
-                <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
-                <div class="invalid-feedback">
-                  Please enter a message in the textarea.
-                </div>
+                <label for="pwd" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="validationEmail" placeholder="Infrese su email" name="validationEmail" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Por favor rellene este campo.</div>
               </div>
-            
 
-
-            <div class="col-12">
-              <button class="btn btn-primary" type="submit">Submit form</button>
+            <div class="mb-3">
+            <label for="pwd" class="form-label">Mensaje:</label>
+            <textarea class="form-control" id="validationTextarea" placeholder="Deje aquí su mensaje" required></textarea>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Por favor rellene este campo.</div>
             </div>
-          </form>
+ 
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </form> 
+
+
     </div> 
 </section>
 

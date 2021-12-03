@@ -18,10 +18,21 @@ function validarRegUsuario() {
       alert('El campo nombre deben estar completo');
       return false;
     }
+
+    else if (nombre.length<= 2) {
+      alert('El campo nombre debe tener mas de dos caracteres');
+      return false;
+    }
+
     if (apellido === '' ) {
       alert('El campo apellido deben estar completo');
       return false;
     }
+    else if (apellido.length<= 2) {
+      alert('El campo apellido debe tener mas de dos caracteres');
+      return false;
+    }
+
     if (fNacim === '') {
       alert('El campo fecha deben estar completo');
       return false;
@@ -186,3 +197,40 @@ var cajaTrasera_registro=document.querySelector(".caja_trasera_registro");
 
      alert('registro completado exitosamente');
     }
+
+    function validarContacto() {
+      var nombre, apellido,email, pass, telef, direcc, fNacim;
+    
+      //traigo valores del formulario
+      ValNom = document.getElementById('validationServer01').value;
+      ValApe = document.getElementById('validationServer02').value;
+      ValEma = document.getElementById('validationEmail').value;
+      ValText = document.getElementById('validationTextarea').value;
+  
+     //verifico que todos los campos contengan datos, si no muestro un alert:
+    if (ValNom.length<= 2) {
+      alert('El campo nombre debe tener mas de dos caracteres');
+      return false;
+    }
+
+    if (ValApe.length<= 2) {
+      alert('El campo apellido debe tener mas de dos caracteres');
+      return false;
+    }
+
+    if (
+      !/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
+        ValEma
+      )
+    ) {
+      alert('Debes ingresar un email válido.');
+      return false;
+    }
+
+    if (ValText.length<= 10) {
+      alert('El campo Texto debe tener mas de diez caracteres');
+      return false;
+    }
+  
+       alert('registro completado exitosamente');
+      }
