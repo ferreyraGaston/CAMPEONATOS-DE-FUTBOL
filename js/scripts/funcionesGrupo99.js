@@ -172,7 +172,7 @@ var cajaTrasera_registro=document.querySelector(".caja_trasera_registro");
     var nombre, apellido,email, pass, telef, direcc, fNacim;
   
     //traigo valores del formulario
-    EmailLogin = document.getElementById('emailLogin').value;
+    EmailLogin = document.getElementById('usuarioLogin').value;
     PassLogin = document.getElementById('pasLogin').value;
 
      if (EmailLogin === '') {
@@ -181,14 +181,14 @@ var cajaTrasera_registro=document.querySelector(".caja_trasera_registro");
       }
       
     //valido que el email sea valido:
-    if (
+    /*if (
       !/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
         EmailLogin
       )
     ) {
       alert('Debes ingresar un email válido.');
       return false;
-    }
+    }*/
 
     if (PassLogin=== '') {
       alert('El campo contraseña deben estar completo');
