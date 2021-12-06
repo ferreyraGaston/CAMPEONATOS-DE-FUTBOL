@@ -4,49 +4,31 @@
         <div class="row text-center text-md-left">
   
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Información</h5>
+                <h5 class="text-uppercase mb-4 font-weight-bold text-dark">Información</h5>
                 <p class="mb-4 text-dark">La Minerita es una antigua fábrica de cal, hoy funciona como 
                     lugar de encuentro de amigos para compartir música, danza, comidas y todo 
                     tipo de actividades relacionadas al arte y la cultura.</p>
             </div>
+
   
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Let Us Help</h5>
+                <h5 class="text-uppercase mb-4 font-weight-bold text-dark">Redes Sociales</h5>
                 <hr class="mb-4">
+
                 <p>
-                    <a href="#" class="text-dark" style="text-decoration: none;"> accion</a>
+              
+                    <li class="fab fa-facebook-square mr-3 text-dark"></li><a href="https://www.facebook.com/LaMinerita/" target="_blank" class="text-dark" style="text-decoration: none;">  <p class="text-dark"> La Minerita</p>  </a> 
                 </p>
-                <p>
-                    <a href="#" class="text-dark" style="text-decoration: none;"> accion</a>
-                </p>
-                <p>
-                    <a href="#" class="text-dark" style="text-decoration: none;"> accion</a>
-                </p>
-            </div>
-  
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Let Us Help</h5>
-                <hr class="mb-4">
-                <p>
-                    <a href="#" class="text-dark" style="text-decoration: none;"> accion</a>
-                </p>
-                <p>
-                    <a href="#" class="text-dark" style="text-decoration: none;"> accion</a>
-                </p>
-                <p>
-                    <a href="#" class="text-dark" style="text-decoration: none;"> accion</a>
-                </p>
+
             </div>
   
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h5 class="text-uppercase mb-4 font-weight-bold text-info">Contactos</h5>
+                <h5 class="text-uppercase mb-4 font-weight-bold text-dark">Contactos</h5>
                 <hr class="mb-4">
                 <p>
                     <li class="fas fa-home mr-3 text-dark"></li> <p class="text-dark">5 de octubre 2100,Unquillo Cba.</p>  
                 </p>
-                <p>
-                    <li class="fas fa-facebook mr-3 text-dark"></li><a href="https://www.facebook.com/LaMinerita/" class="text-dark" style="text-decoration: none;">  <p class="text-dark"> La Minerita</p>  </a> 
-                </p>
+
                 <p>
                     <li class="fas fa-phone mr-3 text-dark"></li> <p class="text-dark">+54 9 3515 31-6452</p>
                 </p>

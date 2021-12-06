@@ -1,5 +1,9 @@
 <?php require_once "php/parte_superior.php"?>
  <!-- Formulario  -->
+ <br>
+
+ <div class="contenedor__todo caja_proceso">
+
  <?php 
 
 $nombre= $_POST["username"];
@@ -13,17 +17,29 @@ $cuil= $_POST["cuil"];
 $Estado= 3;
 
 
-print "<p>Su Nombre es: <strong>$nombre</strong>.</p>\n";
+print "<h4><strong>Verifique tus datos</strong>.</h4>\n";
 print "\n";
-print "<p>Su Apellido es: <strong>$apellido</strong>.</p>\n";
+print "<p>Nombre: <strong>$nombre</strong>.</p>\n";
 print "\n";
-print "<p>Su email es: <strong>$direccion</strong>.</p>\n";
+print "<p>pellido: <strong>$apellido</strong>.</p>\n";
 print "\n";
-print "<p>Su Password es: <strong>$passwordid</strong>.</p>\n";
+print "<p>Email: <strong>$direccion</strong>.</p>\n";
 print "\n";
+print "<p>Password: <strong>$passwordid</strong>.</p>\n";
 print "\n";
-print "<p>Fecha: <strong>$fecha_alta</strong>.</p>\n";
+print "<p>Fecha de Alta: <strong>$fecha_alta</strong>.</p>\n";
+
 print "\n";
+?>
+
+
+<button type="button" onclick="redireccion()" class="btn btn-secondary">Enviar</button>
+</div>
+<br><br>
+
+<?php require_once "php/parte_inferior.php"?>
+
+<?php 
 
 include("datosDB.php");
 $con=mysqli_connect($host,$usuario,$clave,$basededatos) or die ("<br><br><br><h1>no se puede conectar con el Servidor</h1>");
@@ -67,7 +83,6 @@ echo "<br>";
 }
 
 mysqli_cole($con);
+
 ?>
-
-
-<?php require_once "php/parte_inferior.php"?>
+<br>

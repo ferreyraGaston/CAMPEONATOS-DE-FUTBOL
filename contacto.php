@@ -3,7 +3,7 @@
 
 <main>
 <section >
-    <div class="contenedor__todo "> 
+    <div class="contenedor__todo caja_proceso"> 
 
 
         <form action="/action_page.php" class="was-validated" onsubmit="return validarContacto()">
@@ -34,7 +34,7 @@
             <div class="invalid-feedback">Por favor rellene este campo.</div>
             </div>
  
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-secondary">Enviar</button>
           </form> 
 
 

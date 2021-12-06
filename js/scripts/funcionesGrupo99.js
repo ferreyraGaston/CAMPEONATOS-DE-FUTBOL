@@ -1,9 +1,9 @@
 //funcion que valida los datos ingresados en el formulario
 
 function validarRegUsuario() {
-    var nombre, apellido,email, pass, telef, direcc, fNacim;
+    var nombre, apellido,email, pass, fNacim;
   
-    //traigo valores del formulario
+    //arrastro los valores del formulario
     nombre = document.getElementById('username').value;
     apellido = document.getElementById('fullname').value;
     email = document.getElementById('email').value;
@@ -76,14 +76,21 @@ function validarRegUsuario() {
       return false;
     }
 
-  
+   
      alert('registro completado exitosamente');
+   
+
+    
     }
   
   //permite calcular la edad para verificar si la persona es mayor de 18 años
   function calcularEdad(fechaNac) {
+
     let hoy = new Date();
     let fechaNacimiento = new Date(fechaNac);
+  //El getFullYear()método devuelve el año de una fecha como un número de cuatro dígitos:
+  //El getMonth()método devuelve el mes de una fecha como un número (0-11):
+  //El getDate()método devuelve el día de una fecha como un número (1-31):
     let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
     let diferenciaMeses = hoy.getMonth() - fechaNacimiento.getMonth();
     if (
@@ -91,9 +98,11 @@ function validarRegUsuario() {
     ) {
       edad--;
     }
+    alert("Edad "+edad+" años")
     return edad;
   }
-//Movimiento de formulario  
+
+ 
 
 document.getElementById("btn_login").addEventListener("click",iniSesion);
 document.getElementById("btn_registro").addEventListener("click",iniRegistro);
@@ -180,16 +189,6 @@ var cajaTrasera_registro=document.querySelector(".caja_trasera_registro");
         return false;
       }
       
-    //valido que el email sea valido:
-    /*if (
-      !/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
-        EmailLogin
-      )
-    ) {
-      alert('Debes ingresar un email válido.');
-      return false;
-    }*/
-
     if (PassLogin=== '') {
       alert('El campo contraseña deben estar completo');
       return false;
@@ -234,3 +233,13 @@ var cajaTrasera_registro=document.querySelector(".caja_trasera_registro");
   
        alert('registro completado exitosamente');
       }
+
+    function redireccion() {
+      var tiempo = 2000;
+    
+      setTimeout(function () {
+        window.location = 'index.php';
+      }, tiempo);
+    }
+
+

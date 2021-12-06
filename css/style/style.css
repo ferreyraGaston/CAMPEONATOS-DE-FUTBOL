@@ -57,6 +57,15 @@ main{
     margin: auto;
     position: relative;
 }
+.caja_proceso
+{
+  width: 100%;
+  padding: 10px 20px;  
+  display: block;
+  justify-content: center;
+  backdrop-filter: blur(10px); /*desenfoque*/
+  background-color: rgba(226, 162, 43, 0.5);
+}
 .caja_trasera
 {
   width: 100%;
