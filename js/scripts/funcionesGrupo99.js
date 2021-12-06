@@ -1,7 +1,7 @@
 //funcion que valida los datos ingresados en el formulario
 
 function validarRegUsuario() {
-    var nombre, apellido,email, pass, fNacim;
+    var nombre, apellido,email, pass, fNacim, cuil;
   
     //arrastro los valores del formulario
     nombre = document.getElementById('username').value;
@@ -9,6 +9,7 @@ function validarRegUsuario() {
     email = document.getElementById('email').value;
     pass = document.getElementById('passwordid').value;
     fNacim = document.getElementById('FechaNacim').value;
+    cuil = document.getElementById('cuil').value;
     prov = document.getElementById('provincia').value;
     pais = document.getElementById('pais').value;
   
@@ -65,6 +66,18 @@ function validarRegUsuario() {
       alert('El campo contraseña deben estar completo');
       return false;
     }
+
+    if (pass=== '') {
+      alert('El campo contraseña deben estar completo');
+      return false;
+    }
+
+    if (cuil=== '') {
+      alert('El campo cuil deben estar completo');
+      return false;
+    }
+   
+  
 
     if (prov=== '') {
       alert('El campo provincia deben estar completo');
@@ -242,4 +255,4 @@ var cajaTrasera_registro=document.querySelector(".caja_trasera_registro");
       }, tiempo);
     }
 
-
+   

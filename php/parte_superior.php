@@ -30,7 +30,7 @@
 <!--bg-light: fondo claro -->  
 <!--border-3: borde medio-->  
 <!--border-bottom: border medio solo en la parte de abajo-->  
-<!--border-primary: colo azul-->  
+<!--border-primary: colo azul-->    
 <nav class="navbar navbar-expand-md navbar-light bg-light bg-opacity-50 border-3 border-bottom border-secondary">
 <div class="container-fluid">
     <!--navbar-brand: identifica que es la marca o el logo de la empresa-->  
@@ -49,14 +49,14 @@
         <!--navbar-nav: indica que es un elemento de navegacion  -->
         <!--ms-3: aliniacion derecha  -->
         <ul class="navbar-nav me-auto">
-            <li class="nav-item"><a class="nav-link text-dark" href="contacto.php">Contacto</a></li> 
-            <li class="nav-item"><a class="nav-link text-dark" href="login.php">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacto.php"><h6 class="text-dark" id="evento1">Contacto</h6></a></li> 
+            <li class="nav-item"><a class="nav-link" href="login.php"><h6 class="text-dark" id="evento1">Login</h6></a></li>
             <!--nav-item: toma un aspecto determinado-->  
             <!--nav-link: eliminamos el color azul del link-->  
             <li class="nav-item dropdown">
                 <!--dropdown-toggle: permite desplegar el resto de los elementos-->  
-                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" ddata-bs-toggle="dropdown" aria-expanded="false">Novedades</a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><h6 class="text-dark" id="evento1">Novedades</h6></a>
+                <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Eventos</a></li> 
                     <li><a class="dropdown-item" href="#">Eventos</a></li> 
                     <li><a class="dropdown-item" href="#">Eventos</a></li> 
