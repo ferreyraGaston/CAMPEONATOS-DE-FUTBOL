@@ -39,14 +39,7 @@ function validarRegUsuario() {
       return false;
     }
 
-      //verifico si es mayor de 18 años
-      if (calcularEdad(fNacim) < 18) {
-        alert(
-          'Revise la fecha de nacimiento. El empleado debe ser mayor de 18 a\u00f1os'
-        );
-        return false;     
-      } 
-
+     
       if (email === '') {
         alert('El campo email deben estar completo');
         return false;
@@ -76,8 +69,6 @@ function validarRegUsuario() {
       alert('El campo cuil deben estar completo');
       return false;
     }
-   
-  
 
     if (prov=== '') {
       alert('El campo provincia deben estar completo');
@@ -88,6 +79,15 @@ function validarRegUsuario() {
       alert('El campo pais deben estar completo');
       return false;
     }
+
+     //verifico si es mayor de 18 años
+     if (calcularEdad(fNacim) < 18) {
+      alert(
+        'Revise la fecha de nacimiento. El empleado debe ser mayor de 18 a\u00f1os'
+      );
+      return false;     
+    } 
+
 
    
      alert('registro completado exitosamente');
@@ -191,7 +191,7 @@ var cajaTrasera_registro=document.querySelector(".caja_trasera_registro");
   anchoPagina() // ejecuto la funcion despues de crearla
 
   function validarRegLogin() {
-    var nombre, apellido,email, pass, telef, direcc, fNacim;
+    var EmailLogin, PassLogin;
   
     //traigo valores del formulario
     EmailLogin = document.getElementById('usuarioLogin').value;
@@ -207,11 +207,11 @@ var cajaTrasera_registro=document.querySelector(".caja_trasera_registro");
       return false;
     }
 
-     alert('registro completado exitosamente');
+
     }
 
     function validarContacto() {
-      var nombre, apellido,email, pass, telef, direcc, fNacim;
+      var ValNom, ValApe, ValEma, ValText;
     
       //traigo valores del formulario
       ValNom = document.getElementById('validationServer01').value;

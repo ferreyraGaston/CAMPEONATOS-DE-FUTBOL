@@ -12,8 +12,6 @@
                                         la cultura">
     <meta name="keywords" content="peñas,festival,folklore,tango,unquillo,La minerita">
     <script src="https://kit.fontawesome.com/438f346520.js" crossorigin="anonymous"></script>
-    <!--<link rel="stylesheet" href="./css/style/normalize.css">
-    <link rel="stylesheet" href="./css/style/bootstrap.css">--> 
     <link rel="stylesheet" href="./css/style/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
