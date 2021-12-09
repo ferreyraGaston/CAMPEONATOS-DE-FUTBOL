@@ -1,8 +1,13 @@
 <?php 
+//$host="localhost";
+//$usuario="root";
+//$clave="Ws0)e[dFCQls7imc";
+//$basededatos="proyecto_1_ispc";
+
 $host="localhost";
-$usuario="root";
-$clave="";
-$basededatos="proyecto_1_ispc";
+$usuario="id17867500_root";
+$clave="3rbU-gRz@!T7JMQI";
+$basededatos="id17867500_proyecto_1_ispc";
 
 
 $conn=new mysqli($host,$usuario,$clave,$basededatos);

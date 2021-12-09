@@ -55,9 +55,9 @@
                 <!--dropdown-toggle: permite desplegar el resto de los elementos-->  
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><h6 class="text-dark" id="evento1">Novedades</h6></a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Eventos</a></li> 
-                    <li><a class="dropdown-item" href="#">Eventos</a></li> 
-                    <li><a class="dropdown-item" href="#">Eventos</a></li> 
+                    <li><a class="dropdown-item" href="eventos.php">Eventos</a></li> 
+                    <li><a class="dropdown-item" href="entradas.php">Entradas</a></li> 
+                    <li><a class="dropdown-item" href="talleres.php">Talleres</a></li> 
                 </ul>
             </li>
         </ul>

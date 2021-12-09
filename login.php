@@ -9,7 +9,7 @@
 
         <div class="caja_trasera_login">
         <h3>¿Ya tienes una Cuenta?</h3>
-        <p>Inicio sesión para entrar a la pagina</p>
+        <p>Inicio sesión para entrar a la página</p>
         <p>Sino estas registrado haga clic en el botón registrarse</p>
         <button id="btn_login">Iniciar Sesión</button>
         </div>
@@ -39,7 +39,7 @@
             <input type="text" placeholder="Nombre" id="username" name="username" class="form-control">
             <input type="text" placeholder="Apellido" id="fullname" name="fullname" class="form-control">
             <input type="date" id="FechaNacim" name="FechaNacim" class="form-control">
-            <input type="email" placeholder="Correo Electronico" id="email" name="email" class="form-control">
+            <input type="email" placeholder="Correo Electrónico" id="email" name="email" class="form-control">
             <input type="password" placeholder="Contraseña" id="passwordid" name="passwordid" class="form-control">
             <input type="text" placeholder="cuil" class="form-control" name="cuil" id="cuil">
             <input type="text" placeholder="Provincia" class="form-control" name="provincia" id="provincia">

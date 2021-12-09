@@ -5,9 +5,9 @@
   
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-dark">Información</h5>
-                <p class="mb-4 text-dark">La Minerita es una antigua fábrica de cal, hoy funciona como 
-                    lugar de encuentro de amigos para compartir música, danza, comidas y todo 
-                    tipo de actividades relacionadas al arte y la cultura.</p>
+                <p class="mb-4 text-dark">La minerita antiguamente funcionaba como fábrica de cal. 
+                    Hoy es un lugar de encuentro de familias, amigos. Aquí pueden compartir música, 
+                    danzas, comidas típicas y toda clase de actividades relacionadas al Arte y la Cultura..</p>
             </div>
 
   
@@ -55,6 +55,7 @@
     <script src="js/scripts/bootstrap.bundle.min.js"> </script>
     <script src="js/scripts/popper.min.js"> </script>
     <script src="js/scripts/bootstrap.min.js"> </script>
+    <script src="js/scripts/bootstrap.bundle.min.js"> </script>
   
   </body>
   </html>
