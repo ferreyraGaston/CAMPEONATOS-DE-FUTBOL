@@ -22,7 +22,7 @@
 
             <div class="mb-3">
                 <label for="pwd" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="validationEmail" placeholder="Infrese su email" name="validationEmail" required>
+                <input type="email" class="form-control" id="validationEmail" placeholder="Ingrese su email" name="validationEmail" required>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Por favor rellene este campo.</div>
               </div>
