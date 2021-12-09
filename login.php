@@ -43,7 +43,7 @@
             <input type="password" placeholder="Contraseña" id="passwordid" name="passwordid" class="form-control">
             <input type="text" placeholder="cuil" class="form-control" name="cuil" id="cuil">
             <input type="text" placeholder="Provincia" class="form-control" name="provincia" id="provincia">
-            <input type="text" placeholder="Pais" class="form-control" name="pais" id="pais">
+            <input type="text" placeholder="País" class="form-control" name="pais" id="pais">
             <button id="btnResumen" type="submit">Registrarse</button>
         </form>
     
