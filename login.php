@@ -9,8 +9,8 @@
 
         <div class="caja_trasera_login">
         <h3>¿Ya tienes una Cuenta?</h3>
-        <p>Inicio sesión para entrar a la página</p>
-        <p>Sino estas registrado haga clic en el botón registrarse</p>
+        <p>Inicio sesión para ingresar a la página</p>
+        <p>sino está registrado haga clic en el botón registrarse</p>
         <button id="btn_login">Iniciar Sesión</button>
         </div>
 
