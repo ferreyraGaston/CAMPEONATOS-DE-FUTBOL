@@ -222,7 +222,7 @@ hr{
         background-color: var(--navbar-hanm);
         display: none;
     }
-    .menu .navbar ul li a{
+    .menu .navbar ul li{
         width: 100%;
     } 
 
