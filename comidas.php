@@ -2,7 +2,7 @@
 
 
 <br><br><br>
-<h1>entradas</h1>
+<h1>Comida</h1>
 
 <br><br><br>
 

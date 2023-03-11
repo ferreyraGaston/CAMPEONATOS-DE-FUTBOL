@@ -2,7 +2,7 @@
 
 
 <br><br><br>
-<h1>talleres</h1>
+<h1>contacto</h1>
 
 <br><br><br>
 

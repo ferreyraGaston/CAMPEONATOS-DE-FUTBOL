@@ -2,7 +2,7 @@
 
 
 <br><br><br>
-<h1>Eventos</h1>
+<h1>Play list</h1>
 
 <br><br><br>
 

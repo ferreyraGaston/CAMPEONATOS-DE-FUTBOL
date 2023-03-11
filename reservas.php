@@ -2,7 +2,7 @@
 
 
 <br><br><br>
-<h1>registro completado exitosamente</h1>
+<h1>Reservas</h1>
 
 <br><br><br>
 

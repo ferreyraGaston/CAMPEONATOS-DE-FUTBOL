@@ -51,11 +51,10 @@
     </div>
   </footer>
   
-    <script src="js/scripts/funcionesGrupo99.js"> </script>
-    <script src="js/scripts/bootstrap.bundle.min.js"> </script>
-    <script src="js/scripts/popper.min.js"> </script>
-    <script src="js/scripts/bootstrap.min.js"> </script>
-    <script src="js/scripts/bootstrap.bundle.min.js"> </script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script src="script.js"></script>
   
   </body>
   </html>
