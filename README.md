@@ -22,7 +22,7 @@
 ### Restaurante " Responsive "
 --- 
 
-![https://github.com/gastonloco/LaMinerita/blob/main/imagenes/photo2.png)
+![image](https://github.com/gastonloco/LaMinerita/blob/main/imagenes/photo2.png)
 
 --- 
 <br>
