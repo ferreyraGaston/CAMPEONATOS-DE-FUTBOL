@@ -11,7 +11,7 @@
 ### Restaurante " Escritoro "
 --- 
 
-![image](https://github.com/gastonloco/Tenda-Online---Dashboard/blob/main/images/imagen1.png)
+![image](https://github.com/gastonloco/LaMinerita/blob/main/imagenes/photo1.png)
 
 --- 
 <br>
@@ -22,7 +22,7 @@
 ### Restaurante " Responsive "
 --- 
 
-![image](https://github.com/gastonloco/Tenda-Online---Dashboard/blob/main/images/imagen2.png)
+![https://github.com/gastonloco/LaMinerita/blob/main/imagenes/photo2.png)
 
 --- 
 <br>
