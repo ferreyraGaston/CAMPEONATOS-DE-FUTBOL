@@ -11,6 +11,7 @@
     --body-color: rgba(170,177,255,0.3);  
     --navbar: rgba(170,177,255,0.3);  
     --text-color-H2: #165397;
+    --text-color-H3: #165397;
     --text-color-H4: #525254;
     --text-color-login: #e9e9eb;
 
@@ -125,6 +126,24 @@
 {
     filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.5));
 
+}
+/* contentTitulo */
+#contentTitulo
+{
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    z-index: 996;
+}
+#contentTitulo h3
+{
+    font-size: 70px;
+    color: var(--text-color-H2);
+}
+#contentTitulo:hover h3
+{
+    color: var(--text-color-H4);
+    transition: 0.5s;
 }
 /* content */
 #content
