@@ -14,13 +14,6 @@
     --text-color-H4: #525254;
     --text-color-login: #e9e9eb;
 
-    --booton-color: rgba(170,177,255,0.3);    
-    --border-color-hover: rgba(170,177,255,0.3);
-    --booton-color-hover: #443789;
-    --text-color: #AAB1FF;
-    --navbar-color-media: #5B50BC;
-    --boxshadow-color: rgba(135,141,214,0.3);
-    --boxshadow-footer-color: rgba(0, 0, 0, 0.3);
     /* ======Transicion======= */
     --Trans-02: all 0.2 s ease;
     --Trans-03: all 0.3 s ease;
