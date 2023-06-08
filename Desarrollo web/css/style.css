@@ -8,15 +8,15 @@
 :root{
     /* =========color========= */
     --body-color: rgba(170,177,255,0.3);  
-    --primary-color: #0EAEF3;
-    --navbar: #fdfefe;
+    --navbar: rgba(170,177,255,0.3);  
+    --text-color-H2: #0E0E0E;
+    --text-color-H4: #525254;
+
     --border-color: #AAB1FF;
     --booton-color: rgba(170,177,255,0.3);    
     --border-color-hover: rgba(170,177,255,0.3);
     --booton-color-hover: #443789;
     --text-color: #AAB1FF;
-    --text-color-H2: #0E0E0E;
-    --text-color-H4: #525254;
     --navbar-color-media: #5B50BC;
     --boxshadow-color: rgba(135,141,214,0.3);
     --boxshadow-footer-color: rgba(0, 0, 0, 0.3);
@@ -33,7 +33,7 @@
     position: relative;
     top: 0;
     left: 0;
-    background: var(--body-color);
+    background-image: url(../assets/fondo.avif);
 }
 /* logo */
 #container #logo
@@ -42,12 +42,12 @@
     width: 40px;
     height: auto;
     left: 4%;
-    top: 30px;
+    top: 20px;
     z-index: 997;
 }
 #logo img
 {
-    background: var(--navbar);
+   /* background: var(--navbar);*/
     border-radius: 50%;
     margin-right: 20px;
 }
@@ -82,7 +82,7 @@
 #navbar ul li
 {
     font-size: 20px;
-    margin: 0 45px;
+    margin: 0 25px;
 }
 #navbar ul li a
 {
