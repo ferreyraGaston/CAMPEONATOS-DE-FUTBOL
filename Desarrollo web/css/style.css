@@ -137,10 +137,10 @@
 }
 #contentTitulo h3
 {
-    font-size: 70px;
+    font-size: 50px;
     color: var(--text-color-H2);
 }
-#contentTitulo:hover h3
+#contentTitulo h3:hover
 {
     color: var(--text-color-H4);
     transition: 0.5s;
