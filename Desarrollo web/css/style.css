@@ -9,10 +9,10 @@
     /* =========color========= */
     --body-color: rgba(170,177,255,0.3);  
     --navbar: rgba(170,177,255,0.3);  
-    --text-color-H2: #0E0E0E;
+    --text-color-H2: #165397;
     --text-color-H4: #525254;
+    --text-color-login: #e9e9eb;
 
-    --border-color: #AAB1FF;
     --booton-color: rgba(170,177,255,0.3);    
     --border-color-hover: rgba(170,177,255,0.3);
     --booton-color-hover: #443789;
@@ -47,7 +47,6 @@
 }
 #logo img
 {
-   /* background: var(--navbar);*/
     border-radius: 50%;
     margin-right: 20px;
 }
@@ -87,11 +86,11 @@
 #navbar ul li a
 {
     text-decoration: none;
-    color: #000;
+    color: var(--text-color-H4);
 }
 #navbar ul li a:hover
 {
-    color: #165397;
+    color: var(--text-color-H2);
 }
 /* login button */
 #navbar ul #login
@@ -103,16 +102,16 @@
     right: 7%;
     display: grid;
     place-items: center;
-    background: #165397;
+    background: var(--text-color-H2);
     border-radius: 10px 20px;
 }
 #navbar ul #login a
 {
-    color: #e9e9eb;
+    color: var(--text-color-login);
 }
 #navbar ul #login:hover
 {
-    background: #000;
+    background: var(--text-color-H4);
 }
 /* image */
 #image
@@ -144,21 +143,21 @@
 #content h2
 {
     font-size: 150px;
-    color: #165397;
+    color: var(--text-color-H2);
 }
 #content:hover h2
 {
-    color: #000;
+    color: var(--text-color-H4);
     transition: 0.5s;
 }
 #content h4
 {
     font-size: 70px;
-    color: #000;
+    color: var(--text-color-H4);
 }
 #content:hover h4
 {
-    color: #165397;
+    color: var(--text-color-H2);
     transition: 0.5s;
 }
 /* icons */
@@ -169,7 +168,7 @@
     position: absolute;
     left: 0;
     top: calc(50% - 250px);
-    background: #1c5da4;
+    background: var(--text-color-H2);
     border-radius: 0 60px 60px 0;
     display: flex;
     justify-content: center;
@@ -179,7 +178,7 @@
 }
 #icons:hover
 {
-    background: #000;
+    background: var(--text-color-H4);
 }
 #icons a
 {
@@ -187,14 +186,14 @@
     height: 40px;
     width: 40px;
     font-size: 23px;
-    color: #e9e9eb;
+    color: var(--text-color-login);
     display: grid;
     place-items: center;
     margin: 30px 0
 }
 #icons a:hover
 {
-    color: #1b66bb;
+    color: var(--text-color-H2);
 }
 /* pagination */
 #pagination
@@ -207,21 +206,21 @@
 #pagination a
 {
     text-decoration: none;
-    color: #000;
+    color: var(--text-color-H4);
     font-size: 70px;
     margin: 0 30px;
     transition: 0.5s;
 }
 #pagination a:hover
 {
-    color: #165397;
+    color: var(--text-color-H2);
 }
 /* lines */
 #line1,#line2
 {
     height: 150px;
     width: 60px;
-    background: #000;
+    background: var(--text-color-H4);
     position: absolute;
     bottom: 0;
     left: 20%;
