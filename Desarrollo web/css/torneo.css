@@ -1,7 +1,7 @@
 :root{
     /* =========color========= */
     --card-color-alto: white;
-    --card-color-bajo: linear-gradient(-229deg, #0093E9, #80D0C7);
+    --card-color-bajo: linear-gradient(-229deg, #0093E9, #165397);
 
 }
 .containerTorneo{

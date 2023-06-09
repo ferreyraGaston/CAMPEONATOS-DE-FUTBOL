@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Torneo de Futbol</title>
     <!-- css link -->
-    <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/login.css">
     <!-- fontawesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -29,16 +29,32 @@
                 <li id="login"><a href="login.html">Login</a></li>
             </ul>
         </div>
-
-        <!-- image -->
-        <div id="image">
-            <img src="assets/Football_Player.png" alt="football player png">
+        <!-- content -->
+        <div id="contentTitulo">
+            <h3>Login</h3>
         </div>
 
-        <!-- content -->
-        <div id="content">
-            <h2>Liga </h2>
-            <h4>Deportiva S.A.</h4>
+        <div class="contentLogin">
+            <div class="caixa__login">
+                <h2>Registrarse</h2>
+                <form>
+                    <div class="caixa__login-input">
+                        <input type="text" required />
+                        <label>Email</label>
+                    </div>
+                    <div class="caixa__login-input">
+                        <input type="password" required />
+                        <label>Contraseña</label>
+                    </div>
+                    <a>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Acessar
+                    </a>
+                </form>
+            </div>
         </div>
     </div>
 </body>

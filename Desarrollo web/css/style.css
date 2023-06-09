@@ -14,12 +14,7 @@
     --text-color-H3: #165397;
     --text-color-H4: #525254;
     --text-color-login: #e9e9eb;
-
-    /* ======Transicion======= */
-    --Trans-02: all 0.2 s ease;
-    --Trans-03: all 0.3 s ease;
-    --Trans-04: all 0.4 s ease;
-    --Trans-05: all 0.5 s ease;
+    --efecto: #0093E9;
 }
 #container
 {
@@ -85,7 +80,7 @@
 }
 #navbar ul li a:hover
 {
-    color: var(--text-color-H2);
+    color: var(--text-color-H4);
 }
 /* login button */
 #navbar ul #login
@@ -106,7 +101,7 @@
 }
 #navbar ul #login:hover
 {
-    background: var(--text-color-H4);
+    background: var(--efecto);
 }
 /* image */
 #image
