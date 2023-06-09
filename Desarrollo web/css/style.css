@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-*
-{
-    padding: 0;
-    margin: 0;
-    font-family: 'Righteous', cursive;
-    box-sizing: border-box;
-}
+
 :root{
     /* =========color========= */
     --body-color: rgba(170,177,255,0.3);  
@@ -16,6 +10,17 @@
     --text-color-login: #e9e9eb;
     --efecto: #0093E9;
 }
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family: 'Righteous', cursive;
+    box-sizing: border-box;
+   
+}
+body{
+    background: var(--navbar);
+}
 #container
 {
     height: 100vh;
@@ -24,6 +29,8 @@
     top: 0;
     left: 0;
     background-image: url(../assets/fondo.avif);
+    background-repeat: repeat;
+    
 }
 /* logo */
 #container #logo
