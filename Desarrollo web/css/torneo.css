@@ -93,3 +93,9 @@
     filter: drop-shadow(2px 2px 5px black);
     opacity: .7;
 }
+
+/* Estilos para la clase card__giratorio */
+.card__giratorio table .table {
+font-family: Arial, sans-serif; /* Aquí puedes cambiar la fuente según tus necesidades */
+}
+
