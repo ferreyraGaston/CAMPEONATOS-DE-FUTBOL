@@ -3,7 +3,7 @@ Práctica Prof. II
 Ing. Maders - Desarrollo de Software
 Prof. Jorge Fiorio
  
-<img src="https://github.com/gastonloco/PP2-CAMPEONATOS-DE-FUTBOL/blob/main/Imagenes/logo.jpg" align="left" height="300" width="100%">
+<img src="https://github.com/ferreyraGaston/CAMPEONATOS-DE-FUTBOL/blob/main/Imagenes/logo.jpg" align="left" height="300" width="100%">
 
 
 ---
