@@ -19,7 +19,7 @@ namespace CapaDatos
         #region conexion
         public MySqlConnection conexion;
      
-        public string cadena = "Server=127.0.0.1;Database=bdcampeonato;Uid=root;Password=13231414";
+        public string cadena = "Server=localhost;Port=33065;Database=bdcampeonato;Uid=root;Password=;";
 
         #endregion
         #region constructor
