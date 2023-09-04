@@ -113,5 +113,20 @@
         
     </div>
 </div> 
+
+<?php
+
+include "./php/conexion.php";
+
+$sql = $con ->query("select * from bdcampeonato.posiciones");
+while($ROW=$sql->fetch_array() ){
+    echo $row['id_posicion']
+}
+
+
+
+
+?>
+
 </body>
 </html>
