@@ -1,6 +1,6 @@
 ﻿namespace Campeonato1
 {
-    partial class frm_jugadores
+    partial class Frm_jugadores
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_jugadores));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_jugadores));
             this.btn_agregar = new System.Windows.Forms.Button();
             this.btn_reemplazar = new System.Windows.Forms.Button();
             this.btn_sancionar = new System.Windows.Forms.Button();

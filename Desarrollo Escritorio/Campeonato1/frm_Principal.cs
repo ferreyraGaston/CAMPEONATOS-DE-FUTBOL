@@ -30,7 +30,7 @@ namespace Campeonato1
 
         private void agregarJugadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_jugadores form_jugadores = new frm_jugadores();
+            Frm_jugadores form_jugadores = new Frm_jugadores();
             form_jugadores.ShowDialog();
         }
 

@@ -12,13 +12,13 @@ using CapaDatos;
 
 namespace Campeonato1
 {
-    public partial class frm_jugadores : Form
+    public partial class Frm_jugadores : Form
     {
         public string dato = "";
         public ClaseEquipos objEquipos = new ClaseEquipos();
         public Equipos objEquipoConsulta = new Equipos(); 
         public DateTime Actual = DateTime.Now.ToLocalTime();
-        public frm_jugadores()
+        public Frm_jugadores()
         {
             InitializeComponent();
             var ta = new ToolTip();
@@ -94,23 +94,28 @@ namespace Campeonato1
 
         private void frm_jugadores_Activated(object sender, EventArgs e)
         {
-            if(cmb_equipos.SelectedIndex != -1)
+            int busqueda = 3;
+            if (cmb_equipos.SelectedValue != null)
             {
-                int busqueda = 3;
                 dato = cmb_equipos.SelectedValue.ToString();
-                dgv_equipo.Columns.Clear();
-                dgv_equipo.DataSource = null;
-                DataTable dt = new DataTable();
-                objEquipoConsulta = objEquipos.BsquedaEquipo(dato);
-                dt = objEquipos.listadoEquipos(dato, busqueda);
-                dgv_equipo.DataSource = dt;
-                dgv_equipo.Columns[0].Width = 125;
-                dgv_equipo.Columns[1].Width = 125;
-                dgv_equipo.Columns[2].Width = 80;
-                dgv_equipo.Columns[3].Width = 60;
-                lbl_jug_anota.Text = dgv_equipo.RowCount.ToString();
             }
-            
+            else
+            {
+                dato = "0";
+                // Manejar el caso en el que no se ha seleccionado ningún valor en el ComboBox
+                // Puedes mostrar un mensaje de error, asignar un valor predeterminado, etc.
+            }
+            dgv_equipo.Columns.Clear();
+            dgv_equipo.DataSource = null;
+            DataTable dt = new DataTable();
+            objEquipoConsulta = objEquipos.BsquedaEquipo(dato);
+            dt = objEquipos.listadoEquipos(dato, busqueda);
+            dgv_equipo.DataSource = dt;
+            dgv_equipo.Columns[0].Width = 125;
+            dgv_equipo.Columns[1].Width = 125;
+            dgv_equipo.Columns[2].Width = 80;
+            dgv_equipo.Columns[3].Width = 60;
+            lbl_jug_anota.Text = dgv_equipo.RowCount.ToString();
         }
     }   
 }

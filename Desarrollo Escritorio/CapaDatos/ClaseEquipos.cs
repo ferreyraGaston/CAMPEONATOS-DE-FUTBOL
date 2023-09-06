@@ -8,15 +8,22 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 using Entidades;
+using Org.BouncyCastle.Crypto;
+using MySqlX.XDevAPI.Common;
 
 namespace CapaDatos
 {
     public class ClaseEquipos : ClaseConexion
     {
+       
+
+        public object MessageBox { get; private set; }
+
         public int abmEquipos(string accion, Equipos objEquipo)
         {
             int resultados = -1;
             string orden = string.Empty;
+            
 
             if (accion == "Agregar")
             {
@@ -90,6 +97,7 @@ namespace CapaDatos
         {
             
             string orden = string.Empty;
+            string idSql = string.Empty;
             if (busqueda == 3)
             {
                 orden = "SELECT apellido, nombre, dni, edad FROM jugadores WHERE id_equipo=" + int.Parse(cual) + " ORDER BY apellido;";
@@ -98,7 +106,40 @@ namespace CapaDatos
             {
                 orden = "SELECT L.id_libro As COD, L.titulo AS TITULO, A.id_alumno AS SOC, A.nombre &' ' & A.apellido AS POSEEDOR FROM libros L, detalle D, prestamos P, alumnos A WHERE L.id_condicionLib=2 AND D.id_libro=L.id_libro AND P.id_prestamo=D.id_prestamo AND P.id_alumno=A.id_alumno AND devuelto=false ORDER BY L.id_libro;";
             }
-            
+            else if (busqueda == 5)
+            {
+
+
+                string nombreEquipo = "cual"; // Supongamos que tienes el valor que deseas buscar en la base de datos
+
+                // Consulta SQL para obtener el valor de id_equipo
+                idSql = $"SELECT id_equipo FROM equipos WHERE nombre = '{cual}'";
+
+                int cont = 0; // Valor predeterminado o manejo de error si no se encuentra ningún resultado
+
+                using (MySqlConnection connection = new MySqlConnection(cadena)) // Reemplaza "connectionString" con tu cadena de conexión MySQL
+                {
+                    connection.Open();
+
+                    using (MySqlCommand cmd2 = new MySqlCommand(idSql, connection))
+                    {
+                        object result = cmd2.ExecuteScalar();
+                        if (result != null)
+                        {
+                            cont = Convert.ToInt32(result);
+                        }
+                    }
+
+                    connection.Close();
+                }
+
+                // Ahora, 'cont' contiene el valor que obtuviste de la consulta SQL
+
+                // Utilizar 'cont' en la consulta 'orden'
+               orden = $"SELECT apellido, nombre, dni, edad FROM jugadores WHERE id_equipo = {cont} ORDER BY apellido;";
+
+            }
+
             MySqlCommand cmd = new MySqlCommand(orden, conexion);
             DataTable ds = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter();

@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using CapaDatos;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,46 +14,82 @@ namespace Campeonato1
 {
     public partial class frm_resultados : Form
     {
-        
+        public Fechas objFechas = new Fechas();
+        public ClaseFecha objClaseFecha = new ClaseFecha();
+        public Partidos objpartido = new Partidos();
+        public ClasePartidos objCargapartido = new ClasePartidos();
+        public int posicion = 0;
         public frm_resultados()
         {
             InitializeComponent();
+            CargarCmbE();
+            //CargarDatadrid();
+        }
+        private void CargarCmbE()
+        {
+            cmb_fechas.DataSource = objClaseFecha.listadoFechas();
+            cmb_fechas.DisplayMember = "pNum_fecha";
+            cmb_fechas.ValueMember = "pID_fecha";
+
+            cmb_fechas.SelectedIndex = -1;
+
+        }
+        private void CargarDatadrid()
+        {
+            int busqueda = 1;
+            string dato = cmb_fechas.SelectedValue.ToString();
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = null;
+            DataTable dt = new DataTable();
+            dt = objCargapartido.listadoPartidos(dato, busqueda);
+            dataGridView1.DataSource = dt;
+            dataGridView1.Columns[0].Width = 70;
+            dataGridView1.Columns[1].Width = 140;
+            dataGridView1.Columns[2].Width = 40;
+            dataGridView1.Columns[3].Width = 140;
+            dataGridView1.Columns[4].Width = 40;
+            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
-        /*
-        private void AbrirFormEnPanel(object formhija)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (this.panel2.Controls.Count > 0)  // pregunta si hay algun control en el interior del panel
-                this.panel2.Controls.RemoveAt(0); // si hay algun control lo elimina o remueve
-            Form fh = formhija as Form;
-            fh.TopLevel = false;
-            fh.Dock = DockStyle.Fill;  // hace que se acople el formulario al contenedor
-            this.panel2.Controls.Add(fh);  // agregamos el formulario al panel
-            this.panel2.Tag = fh;  // establecemo la instancia como contenedor de dato al panel
-            fh.Show();  // mostramos el formulario.
-            
         }
-    private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            resultados resultadoObj = new resultados();
 
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            resultados usuarioObj = new resultados();
             posicion = dataGridView1.CurrentRow.Index;
+            usuarioObj.Equipo1 = dataGridView1[1, posicion].Value.ToString();
+            usuarioObj.Equipo2 = dataGridView1[3, posicion].Value.ToString();
 
-            resultadoObj.Id_equipo1 = int.Parse(dataGridView1[0, posicion].Value.ToString());
-            resultadoObj.Id_equipo2 = int.Parse(dataGridView1[0, posicion].Value.ToString());
 
-            resultadoObj.Equipo1 = dataGridView1[2, posicion].Value.ToString();
-            resultadoObj.Equipo2 = dataGridView1[2, posicion].Value.ToString();
-          
-            dataGridView1.Visible = false;
-            //AbrirFormEnPanel(new frm_carga_resultados());
+            //MessageBox.Show("equipo1 "+ usuarioObj.Equipo1);
+
+            frm_carga_resultados form3 = new frm_carga_resultados();
+
+            // Mostrar el formulario
+            form3.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        
+
+        private void btn_ver_Click(object sender, EventArgs e)
         {
-
+            int busqueda = 1;
+            string dato = cmb_fechas.SelectedValue.ToString();
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = null;
+            DataTable dt = new DataTable();
+            dt = objCargapartido.listadoPartidos(dato, busqueda);
+            dataGridView1.DataSource = dt;
+            dataGridView1.Columns[0].Width = 70;
+            dataGridView1.Columns[1].Width = 140;
+            dataGridView1.Columns[2].Width = 40;
+            dataGridView1.Columns[3].Width = 140;
+            dataGridView1.Columns[4].Width = 40;
+            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
-        */
+
     }
 }

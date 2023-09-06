@@ -79,7 +79,7 @@ namespace Campeonato1
             }
 
             // Establish a connection to the Access database
-            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=1982;database=campeonato2v2";
+            string connectionString = "Server=localhost;Port=33065;Database=bdcampeonato;Uid=root;Password=;";
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();

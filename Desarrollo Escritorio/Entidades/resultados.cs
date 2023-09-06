@@ -9,32 +9,19 @@ namespace Entidades
     public class resultados
     {
         #region Atributos
-        private int id_equipo1;
-        private int id_equipo2;
-        private string escudo1;
-        private string escudo2;
-        private string equipo1;
-        private string equipo2;
-        private int goles_equipo1;
-        private int goles_equipo2;
+        static private int id_equipo1;
+        static private int id_equipo2;
+        static private string escudo1;
+        static private string escudo2;
+        static private string equipo1;
+        static private string equipo2;
+        static private int goles_equipo1;
+        static private int goles_equipo2;
+
         public resultados()
         {
             
         }
-
-
-        public resultados(int id_equipo1, int id_equipo2, string escudo1, string escudo2, string equipo1, string equipo2, int goles_equipo1, int goles_equipo2)
-        {
-            this.Id_equipo1 = id_equipo1;
-            this.Id_equipo2 = id_equipo2;
-            this.Escudo1 = escudo1;
-            this.Escudo2 = escudo2;
-            this.Equipo1 = equipo1;
-            this.Equipo2 = equipo2;
-            this.Goles_equipo1 = goles_equipo1;
-            this.Goles_equipo2 = goles_equipo2;
-        }
-
         
         public string Escudo1 { get => escudo1; set => escudo1 = value; }
         public string Escudo2 { get => escudo2; set => escudo2 = value; }

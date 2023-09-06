@@ -1,0 +1,4 @@
+SELECT apellido, nombre, dni, edad FROM jugadores WHERE id_equipo=30 ORDER BY apellido
+
+
+SELECT id_equipo FROM equipos WHERE nombre="BELGRIDO"
