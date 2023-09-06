@@ -37,15 +37,20 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.gbCarga_Resultado = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.dgv_equipo = new System.Windows.Forms.DataGridView();
+            this.dgv_jugador = new System.Windows.Forms.DataGridView();
             this.col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.NameJugador = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ApellJugador = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.DniJugador = new System.Windows.Forms.Label();
             this.gbCarga_Resultado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_equipo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_jugador)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,25 +139,26 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // dgv_equipo
+            // dgv_jugador
             // 
-            this.dgv_equipo.AllowUserToAddRows = false;
-            this.dgv_equipo.AllowUserToDeleteRows = false;
-            this.dgv_equipo.AllowUserToResizeRows = false;
-            this.dgv_equipo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_equipo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_jugador.AllowUserToAddRows = false;
+            this.dgv_jugador.AllowUserToDeleteRows = false;
+            this.dgv_jugador.AllowUserToResizeRows = false;
+            this.dgv_jugador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_jugador.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col1,
             this.col2,
             this.col3});
-            this.dgv_equipo.Location = new System.Drawing.Point(11, 12);
-            this.dgv_equipo.Margin = new System.Windows.Forms.Padding(2);
-            this.dgv_equipo.Name = "dgv_equipo";
-            this.dgv_equipo.ReadOnly = true;
-            this.dgv_equipo.RowHeadersVisible = false;
-            this.dgv_equipo.RowTemplate.Height = 24;
-            this.dgv_equipo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_equipo.Size = new System.Drawing.Size(413, 348);
-            this.dgv_equipo.TabIndex = 9;
+            this.dgv_jugador.Location = new System.Drawing.Point(11, 12);
+            this.dgv_jugador.Margin = new System.Windows.Forms.Padding(2);
+            this.dgv_jugador.Name = "dgv_jugador";
+            this.dgv_jugador.ReadOnly = true;
+            this.dgv_jugador.RowHeadersVisible = false;
+            this.dgv_jugador.RowTemplate.Height = 24;
+            this.dgv_jugador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_jugador.Size = new System.Drawing.Size(413, 348);
+            this.dgv_jugador.TabIndex = 9;
+            this.dgv_jugador.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgv_equipo_MouseDoubleClick);
             // 
             // col1
             // 
@@ -176,30 +182,80 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DniJugador);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.ApellJugador);
+            this.groupBox1.Controls.Add(this.NameJugador);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Location = new System.Drawing.Point(449, 168);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(321, 66);
+            this.groupBox1.Size = new System.Drawing.Size(321, 96);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Goleadores";
             // 
-            // label1
+            // NameJugador
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.NameJugador.AutoSize = true;
+            this.NameJugador.Location = new System.Drawing.Point(55, 24);
+            this.NameJugador.Name = "NameJugador";
+            this.NameJugador.Size = new System.Drawing.Size(43, 13);
+            this.NameJugador.TabIndex = 0;
+            this.NameJugador.Text = "............";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(198, 24);
+            this.textBox1.Location = new System.Drawing.Point(206, 63);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(48, 20);
             this.textBox1.TabIndex = 2;
+            // 
+            // ApellJugador
+            // 
+            this.ApellJugador.AutoSize = true;
+            this.ApellJugador.Location = new System.Drawing.Point(207, 24);
+            this.ApellJugador.Name = "ApellJugador";
+            this.ApellJugador.Size = new System.Drawing.Size(43, 13);
+            this.ApellJugador.TabIndex = 3;
+            this.ApellJugador.Text = "............";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Nombre: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(151, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Apellido: ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 70);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "D.N.I: ";
+            // 
+            // DniJugador
+            // 
+            this.DniJugador.AutoSize = true;
+            this.DniJugador.Location = new System.Drawing.Point(55, 70);
+            this.DniJugador.Name = "DniJugador";
+            this.DniJugador.Size = new System.Drawing.Size(43, 13);
+            this.DniJugador.TabIndex = 7;
+            this.DniJugador.Text = "............";
             // 
             // frm_carga_resultados
             // 
@@ -207,7 +263,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 376);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dgv_equipo);
+            this.Controls.Add(this.dgv_jugador);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.gbCarga_Resultado);
             this.Controls.Add(this.btnAceptar);
@@ -215,7 +271,7 @@
             this.Text = "frm_carga_resultados";
             this.gbCarga_Resultado.ResumeLayout(false);
             this.gbCarga_Resultado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_equipo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_jugador)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -233,12 +289,17 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.GroupBox gbCarga_Resultado;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.DataGridView dgv_equipo;
+        private System.Windows.Forms.DataGridView dgv_jugador;
         private System.Windows.Forms.DataGridViewTextBoxColumn col1;
         private System.Windows.Forms.DataGridViewTextBoxColumn col2;
         private System.Windows.Forms.DataGridViewTextBoxColumn col3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label NameJugador;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label ApellJugador;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label DniJugador;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

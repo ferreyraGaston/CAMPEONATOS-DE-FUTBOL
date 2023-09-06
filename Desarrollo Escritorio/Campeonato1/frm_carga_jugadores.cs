@@ -108,9 +108,6 @@ namespace Campeonato1
         }
 
 
-
-       
-
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
