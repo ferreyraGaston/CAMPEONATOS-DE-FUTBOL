@@ -123,6 +123,12 @@
     <Compile Include="frm_carga_jugadores.Designer.cs">
       <DependentUpon>frm_carga_jugadores.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_carga_resultados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_carga_resultados.Designer.cs">
+      <DependentUpon>frm_carga_resultados.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_equipos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_carga_jugadores.resx">
       <DependentUpon>frm_carga_jugadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_carga_resultados.resx">
+      <DependentUpon>frm_carga_resultados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_equipos.resx">
       <DependentUpon>frm_equipos.cs</DependentUpon>

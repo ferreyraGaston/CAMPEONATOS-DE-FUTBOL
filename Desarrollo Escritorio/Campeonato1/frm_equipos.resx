@@ -121,7 +121,7 @@
   <data name="pic_escudo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAMWFJREFUeF7tnQe0VNUVhknV2EBEDAoKohA7atDYACsGsWBFwWXHqCj2hiUaFLGi
+        cgAAEnIBXmVb4wAAMWFJREFUeF7tnQe0VNUVhknV2EBEDAoKohA7atDYACsGsWBFwWXHqCj2hiUaFLGi
         UdQoomIMYkEREbBGscQoKtgIFmwoghq7qTf5Du+/nLlvv8crM/Nm5u291rem3HvOrXufffZpLf7+978n
         5cyXX36ZxPKPf/wj2XXXXZMWLVokRx55ZNW/ufLf//43+de//pX8+9//Dr/5tPJ2mg+8A//85z8DfP/P
         f/4T3o2snHXWWckyyywT3q+f/OQn4fPJJ58M20jz/fffh/R8WscpNcrWAHCzeVix7LvvvuGBwA9/+MP0
@@ -338,7 +338,7 @@
   <data name="pic_escudo.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        cwAAEnMBjCK5BwAAMWFJREFUeF7tnQe0VNUVhknV2EBEDAoKohA7atDYACsGsWBFwWXHqCj2hiUaFLGi
+        cgAAEnIBXmVb4wAAMWFJREFUeF7tnQe0VNUVhknV2EBEDAoKohA7atDYACsGsWBFwWXHqCj2hiUaFLGi
         UdQoomIMYkEREbBGscQoKtgIFmwoghq7qTf5Du+/nLlvv8crM/Nm5u291rem3HvOrXufffZpLf7+978n
         5cyXX36ZxPKPf/wj2XXXXZMWLVokRx55ZNW/ufLf//43+de//pX8+9//Dr/5tPJ2mg+8A//85z8DfP/P
         f/4T3o2snHXWWckyyywT3q+f/OQn4fPJJ58M20jz/fffh/R8WscpNcrWAHCzeVix7LvvvuGBwA9/+MP0
@@ -554,6 +554,9 @@
   </data>
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>64</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

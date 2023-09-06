@@ -42,10 +42,24 @@ namespace Campeonato1
 
         private void tablaDePosicionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+           
             frm_posicion form_tabla = new frm_posicion();
             form_tabla.ShowDialog();
+         
+
         }
 
-        
+        private void cargaDeResultadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_resultados form2 = new frm_resultados();
+
+            // Mostrar el formulario
+            form2.Show();
+        }
+
+        private void cargaDeSancionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

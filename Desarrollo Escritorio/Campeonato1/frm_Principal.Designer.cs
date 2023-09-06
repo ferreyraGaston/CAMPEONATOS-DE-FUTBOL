@@ -40,8 +40,8 @@
             this.cargaDeResultadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargaDeSancionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_cerrar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -56,8 +56,8 @@
             this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(936, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(702, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -67,20 +67,20 @@
             this.agregarEquipoToolStripMenuItem1,
             this.agregarJugadorToolStripMenuItem});
             this.agregarEquipoToolStripMenuItem.Name = "agregarEquipoToolStripMenuItem";
-            this.agregarEquipoToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
+            this.agregarEquipoToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.agregarEquipoToolStripMenuItem.Text = "Comenzar";
             // 
             // agregarEquipoToolStripMenuItem1
             // 
             this.agregarEquipoToolStripMenuItem1.Name = "agregarEquipoToolStripMenuItem1";
-            this.agregarEquipoToolStripMenuItem1.Size = new System.Drawing.Size(225, 26);
+            this.agregarEquipoToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
             this.agregarEquipoToolStripMenuItem1.Text = "Agregar equipo";
             this.agregarEquipoToolStripMenuItem1.Click += new System.EventHandler(this.agregarEquipoToolStripMenuItem1_Click);
             // 
             // agregarJugadorToolStripMenuItem
             // 
             this.agregarJugadorToolStripMenuItem.Name = "agregarJugadorToolStripMenuItem";
-            this.agregarJugadorToolStripMenuItem.Size = new System.Drawing.Size(225, 26);
+            this.agregarJugadorToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.agregarJugadorToolStripMenuItem.Text = "Gestionar jugadores";
             this.agregarJugadorToolStripMenuItem.Click += new System.EventHandler(this.agregarJugadorToolStripMenuItem_Click);
             // 
@@ -89,13 +89,13 @@
             this.sorteoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sorteoToolStripMenuItem1});
             this.sorteoToolStripMenuItem.Name = "sorteoToolStripMenuItem";
-            this.sorteoToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.sorteoToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.sorteoToolStripMenuItem.Text = "Sorteo";
             // 
             // sorteoToolStripMenuItem1
             // 
             this.sorteoToolStripMenuItem1.Name = "sorteoToolStripMenuItem1";
-            this.sorteoToolStripMenuItem1.Size = new System.Drawing.Size(140, 26);
+            this.sorteoToolStripMenuItem1.Size = new System.Drawing.Size(111, 22);
             this.sorteoToolStripMenuItem1.Text = "Sorteo ";
             this.sorteoToolStripMenuItem1.Click += new System.EventHandler(this.sorteoToolStripMenuItem1_Click);
             // 
@@ -106,69 +106,71 @@
             this.cargaDeResultadosToolStripMenuItem,
             this.cargaDeSancionesToolStripMenuItem});
             this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
-            this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
+            this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.estadisticasToolStripMenuItem.Text = "Estadisticas";
             // 
             // tablaDePosicionesToolStripMenuItem
             // 
             this.tablaDePosicionesToolStripMenuItem.Name = "tablaDePosicionesToolStripMenuItem";
-            this.tablaDePosicionesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.tablaDePosicionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tablaDePosicionesToolStripMenuItem.Text = "Tabla de posiciones";
             this.tablaDePosicionesToolStripMenuItem.Click += new System.EventHandler(this.tablaDePosicionesToolStripMenuItem_Click);
             // 
             // cargaDeResultadosToolStripMenuItem
             // 
             this.cargaDeResultadosToolStripMenuItem.Name = "cargaDeResultadosToolStripMenuItem";
-            this.cargaDeResultadosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cargaDeResultadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cargaDeResultadosToolStripMenuItem.Text = "Carga de resultados";
+            this.cargaDeResultadosToolStripMenuItem.Click += new System.EventHandler(this.cargaDeResultadosToolStripMenuItem_Click);
             // 
             // cargaDeSancionesToolStripMenuItem
             // 
             this.cargaDeSancionesToolStripMenuItem.Name = "cargaDeSancionesToolStripMenuItem";
-            this.cargaDeSancionesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cargaDeSancionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cargaDeSancionesToolStripMenuItem.Text = "Carga de sanciones";
+            this.cargaDeSancionesToolStripMenuItem.Click += new System.EventHandler(this.cargaDeSancionesToolStripMenuItem_Click);
             // 
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.DarkGray;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 31);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(913, 501);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // btn_cerrar
             // 
-            this.btn_cerrar.Location = new System.Drawing.Point(832, 537);
-            this.btn_cerrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_cerrar.Location = new System.Drawing.Point(624, 436);
+            this.btn_cerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_cerrar.Name = "btn_cerrar";
-            this.btn_cerrar.Size = new System.Drawing.Size(93, 32);
+            this.btn_cerrar.Size = new System.Drawing.Size(70, 26);
             this.btn_cerrar.TabIndex = 2;
             this.btn_cerrar.Text = "Salir";
             this.btn_cerrar.UseVisualStyleBackColor = true;
             this.btn_cerrar.Click += new System.EventHandler(this.btn_cerrar_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.DarkGray;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(9, 25);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(685, 407);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // frm_Principal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(936, 574);
+            this.ClientSize = new System.Drawing.Size(702, 466);
             this.Controls.Add(this.btn_cerrar);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "frm_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

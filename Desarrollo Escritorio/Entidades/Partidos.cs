@@ -21,11 +21,7 @@ namespace Entidades
         #endregion
 
         #region Constructores
-        public Partidos()
-        {
-
-        }
-
+   
         public Partidos(int id, int fecha, int equipo1, int equipo2, int cancha, int estado, int goles1, int goles2)
         {
             pID_partido = id;
@@ -36,6 +32,11 @@ namespace Entidades
             pEstado = estado;
             pGoles1 = goles1;
             pGoles2 = goles2;
+
+        }
+        public Partidos()
+        {
+
 
         }
 
