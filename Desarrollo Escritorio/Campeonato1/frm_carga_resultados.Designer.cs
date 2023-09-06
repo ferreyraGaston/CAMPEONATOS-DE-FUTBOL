@@ -43,6 +43,7 @@
             this.col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.DniJugador = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,11 +51,10 @@
             this.ApellJugador = new System.Windows.Forms.Label();
             this.NameJugador = new System.Windows.Forms.Label();
             this.textBoxGol = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.BarraTitulo = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.PicMin = new System.Windows.Forms.PictureBox();
             this.PicSalir = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.gbCarga_Resultado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_jugador)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -83,16 +83,16 @@
             // 
             // txtEquipo1
             // 
-            this.txtEquipo1.Location = new System.Drawing.Point(25, 67);
+            this.txtEquipo1.Location = new System.Drawing.Point(31, 67);
             this.txtEquipo1.Name = "txtEquipo1";
-            this.txtEquipo1.Size = new System.Drawing.Size(100, 20);
+            this.txtEquipo1.Size = new System.Drawing.Size(94, 20);
             this.txtEquipo1.TabIndex = 2;
             // 
             // txtEquipo2
             // 
-            this.txtEquipo2.Location = new System.Drawing.Point(190, 67);
+            this.txtEquipo2.Location = new System.Drawing.Point(198, 67);
             this.txtEquipo2.Name = "txtEquipo2";
-            this.txtEquipo2.Size = new System.Drawing.Size(100, 20);
+            this.txtEquipo2.Size = new System.Drawing.Size(92, 20);
             this.txtEquipo2.TabIndex = 3;
             // 
             // btnBuenaFe1
@@ -117,9 +117,9 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(639, 356);
+            this.btnAceptar.Location = new System.Drawing.Point(103, 152);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(100, 37);
+            this.btnAceptar.Size = new System.Drawing.Size(127, 37);
             this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -130,21 +130,23 @@
             this.gbCarga_Resultado.Controls.Add(this.lbEquipo1);
             this.gbCarga_Resultado.Controls.Add(this.lbEquipo2);
             this.gbCarga_Resultado.Controls.Add(this.btnBuenaFe2);
+            this.gbCarga_Resultado.Controls.Add(this.btnCancelar);
+            this.gbCarga_Resultado.Controls.Add(this.btnAceptar);
             this.gbCarga_Resultado.Controls.Add(this.txtEquipo1);
             this.gbCarga_Resultado.Controls.Add(this.btnBuenaFe1);
             this.gbCarga_Resultado.Controls.Add(this.txtEquipo2);
             this.gbCarga_Resultado.Location = new System.Drawing.Point(449, 72);
             this.gbCarga_Resultado.Name = "gbCarga_Resultado";
-            this.gbCarga_Resultado.Size = new System.Drawing.Size(321, 150);
+            this.gbCarga_Resultado.Size = new System.Drawing.Size(321, 238);
             this.gbCarga_Resultado.TabIndex = 7;
             this.gbCarga_Resultado.TabStop = false;
             this.gbCarga_Resultado.Text = "Equipos Vs Equios";
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(474, 356);
+            this.btnCancelar.Location = new System.Drawing.Point(103, 195);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(100, 37);
+            this.btnCancelar.Size = new System.Drawing.Size(127, 37);
             this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -201,12 +203,22 @@
             this.groupBox1.Controls.Add(this.ApellJugador);
             this.groupBox1.Controls.Add(this.NameJugador);
             this.groupBox1.Controls.Add(this.textBoxGol);
-            this.groupBox1.Location = new System.Drawing.Point(449, 228);
+            this.groupBox1.Location = new System.Drawing.Point(449, 316);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(321, 96);
+            this.groupBox1.Size = new System.Drawing.Size(321, 104);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Goleadores";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(243, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(65, 59);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Goool";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // DniJugador
             // 
@@ -269,16 +281,6 @@
             this.textBoxGol.Size = new System.Drawing.Size(48, 20);
             this.textBoxGol.TabIndex = 2;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(243, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 59);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Goool";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // BarraTitulo
             // 
             this.BarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(46)))), ((int)(((byte)(148)))));
@@ -291,6 +293,17 @@
             this.BarraTitulo.Size = new System.Drawing.Size(792, 35);
             this.BarraTitulo.TabIndex = 10;
             this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(12, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 17);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Carga de Partidos";
             // 
             // PicMin
             // 
@@ -318,17 +331,6 @@
             this.PicSalir.TabStop = false;
             this.PicSalir.Click += new System.EventHandler(this.PicSalir_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(12, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 17);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Carga de Partidos";
-            // 
             // frm_carga_resultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,9 +340,7 @@
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgv_jugador);
-            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.gbCarga_Resultado);
-            this.Controls.Add(this.btnAceptar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_carga_resultados";
             this.Text = "frm_carga_resultados";

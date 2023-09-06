@@ -129,5 +129,10 @@ namespace Campeonato1
 
             this.Close();
         }
+
+        private void frm_resultados_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
