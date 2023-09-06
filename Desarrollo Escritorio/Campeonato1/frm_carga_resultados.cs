@@ -96,7 +96,9 @@ namespace Campeonato1
         {
             int equip1 = 0;
             int equip2 = 0;
-        
+            int golEq1 = 0;
+            int golEq2= 0;
+
             try
             {
                 equip1 = int.Parse(txtEquipo1.Text);
@@ -118,8 +120,36 @@ namespace Campeonato1
                 MySqlCommand command10 = connection.CreateCommand();
                 MySqlCommand command11 = connection.CreateCommand();
                 MySqlCommand command12 = connection.CreateCommand();
-                int golEq1 = 28;
-                int golEq2 = 30;
+
+                //////////////////////////////////////
+                string orden = string.Empty;
+                string orden2 = string.Empty;
+                string equipo21 = lbEquipo1.Text;
+                string equipo22 = lbEquipo2.Text;
+
+                orden = "SELECT id_equipo FROM equipos WHERE nombre = @equipo21";
+                orden2 = "SELECT id_equipo FROM equipos WHERE nombre = @equipo22";
+
+                using (MySqlConnection conexion = new MySqlConnection(connectionString))
+                {
+                    conexion.Open();
+
+                    MySqlCommand cmd = new MySqlCommand(orden, conexion);
+                    cmd.Parameters.AddWithValue("@equipo21", equipo21);
+                    golEq1 = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    MySqlCommand cmd2 = new MySqlCommand(orden2, conexion);
+                    cmd2.Parameters.AddWithValue("@equipo22", equipo22);
+                    golEq2 = Convert.ToInt32(cmd2.ExecuteScalar());
+
+                    conexion.Close();
+
+                    // Ahora puedes usar idEquipo1 y idEquipo2 para lo que necesites.
+                }
+                /////////////////////////////////////////////
+
+                //int golEq1 = 28;
+                //int golEq2 = 30;
 
                 int sumaEquipo = equip1 - equip2;
 
@@ -175,7 +205,10 @@ namespace Campeonato1
                 command7.ExecuteNonQuery();
                 command8.ExecuteNonQuery();
                 connection.Close();
-            }
+                    txtEquipo1.Text = "";
+                    txtEquipo2.Text = "";
+                    txtEquipo1.Focus();
+                }
             else if(equip1 < equip2){
                 MySqlCommand command2 = connection.CreateCommand();
                 command2.CommandText = "UPDATE posiciones SET P_gan = P_gan + 1 WHERE id_equipo = ('" + golEq2 + "')";// euipo 2
@@ -208,7 +241,10 @@ namespace Campeonato1
                 command7.ExecuteNonQuery();
                 command8.ExecuteNonQuery();
                 connection.Close();
-            }
+                    txtEquipo1.Text = "";
+                    txtEquipo2.Text = "";
+                    txtEquipo1.Focus();
+                }
             else if (equip1 == equip2)
             {
                 MySqlCommand command2 = connection.CreateCommand();
