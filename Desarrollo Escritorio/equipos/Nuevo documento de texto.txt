@@ -1,4 +1,18 @@
 SELECT apellido, nombre, dni, edad FROM jugadores WHERE id_equipo=30 ORDER BY apellido
 
-
 SELECT id_equipo FROM equipos WHERE nombre="BELGRIDO"
+
+
+SELECT P_jug FROM posiciones WHERE id_equipo =30
+
+
+Introducir en el boton aceptar en C# este comando para introducir en la base de datos mysql
+
+UPDATE posiciones
+SET P_jug = P_jug + 1
+WHERE id_equipo = 42; 
+
+
+UPDATE posiciones
+SET P_jug = P_Gan + 3
+WHERE id_equipo = 42; 

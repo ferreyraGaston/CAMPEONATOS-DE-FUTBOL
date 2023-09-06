@@ -42,13 +42,13 @@
             this.col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DniJugador = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ApellJugador = new System.Windows.Forms.Label();
             this.NameJugador = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.ApellJugador = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.DniJugador = new System.Windows.Forms.Label();
             this.gbCarga_Resultado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_jugador)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -114,6 +114,7 @@
             this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // gbCarga_Resultado
             // 
@@ -196,6 +197,51 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Goleadores";
             // 
+            // DniJugador
+            // 
+            this.DniJugador.AutoSize = true;
+            this.DniJugador.Location = new System.Drawing.Point(55, 70);
+            this.DniJugador.Name = "DniJugador";
+            this.DniJugador.Size = new System.Drawing.Size(43, 13);
+            this.DniJugador.TabIndex = 7;
+            this.DniJugador.Text = "............";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 70);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "D.N.I: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(151, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Apellido: ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Nombre: ";
+            // 
+            // ApellJugador
+            // 
+            this.ApellJugador.AutoSize = true;
+            this.ApellJugador.Location = new System.Drawing.Point(207, 24);
+            this.ApellJugador.Name = "ApellJugador";
+            this.ApellJugador.Size = new System.Drawing.Size(43, 13);
+            this.ApellJugador.TabIndex = 3;
+            this.ApellJugador.Text = "............";
+            // 
             // NameJugador
             // 
             this.NameJugador.AutoSize = true;
@@ -211,51 +257,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(48, 20);
             this.textBox1.TabIndex = 2;
-            // 
-            // ApellJugador
-            // 
-            this.ApellJugador.AutoSize = true;
-            this.ApellJugador.Location = new System.Drawing.Point(207, 24);
-            this.ApellJugador.Name = "ApellJugador";
-            this.ApellJugador.Size = new System.Drawing.Size(43, 13);
-            this.ApellJugador.TabIndex = 3;
-            this.ApellJugador.Text = "............";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Nombre: ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(151, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Apellido: ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "D.N.I: ";
-            // 
-            // DniJugador
-            // 
-            this.DniJugador.AutoSize = true;
-            this.DniJugador.Location = new System.Drawing.Point(55, 70);
-            this.DniJugador.Name = "DniJugador";
-            this.DniJugador.Size = new System.Drawing.Size(43, 13);
-            this.DniJugador.TabIndex = 7;
-            this.DniJugador.Text = "............";
             // 
             // frm_carga_resultados
             // 

@@ -24,6 +24,7 @@ namespace Campeonato1
             InitializeComponent();
             CargarCmbE();
             //CargarDatadrid();
+
         }
         private void CargarCmbE()
         {
@@ -88,5 +89,27 @@ namespace Campeonato1
             dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
+     
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            resultados usuarioObj = new resultados();
+            posicion = dataGridView1.CurrentRow.Index;
+            usuarioObj.Equipo1 = dataGridView1[1, posicion].Value.ToString();
+            usuarioObj.Equipo2 = dataGridView1[3, posicion].Value.ToString();
+
+
+            //MessageBox.Show("equipo1 "+ usuarioObj.Equipo1);
+
+            frm_carga_resultados form3 = new frm_carga_resultados();
+
+            // Mostrar el formulario
+            form3.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

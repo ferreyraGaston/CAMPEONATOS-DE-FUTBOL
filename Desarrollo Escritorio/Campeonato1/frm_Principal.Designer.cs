@@ -112,21 +112,21 @@
             // tablaDePosicionesToolStripMenuItem
             // 
             this.tablaDePosicionesToolStripMenuItem.Name = "tablaDePosicionesToolStripMenuItem";
-            this.tablaDePosicionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tablaDePosicionesToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.tablaDePosicionesToolStripMenuItem.Text = "Tabla de posiciones";
             this.tablaDePosicionesToolStripMenuItem.Click += new System.EventHandler(this.tablaDePosicionesToolStripMenuItem_Click);
             // 
             // cargaDeResultadosToolStripMenuItem
             // 
             this.cargaDeResultadosToolStripMenuItem.Name = "cargaDeResultadosToolStripMenuItem";
-            this.cargaDeResultadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cargaDeResultadosToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.cargaDeResultadosToolStripMenuItem.Text = "Carga de resultados";
             this.cargaDeResultadosToolStripMenuItem.Click += new System.EventHandler(this.cargaDeResultadosToolStripMenuItem_Click);
             // 
             // cargaDeSancionesToolStripMenuItem
             // 
             this.cargaDeSancionesToolStripMenuItem.Name = "cargaDeSancionesToolStripMenuItem";
-            this.cargaDeSancionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cargaDeSancionesToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.cargaDeSancionesToolStripMenuItem.Text = "Carga de sanciones";
             this.cargaDeSancionesToolStripMenuItem.Click += new System.EventHandler(this.cargaDeSancionesToolStripMenuItem_Click);
             // 
@@ -139,7 +139,7 @@
             // btn_cerrar
             // 
             this.btn_cerrar.Location = new System.Drawing.Point(624, 436);
-            this.btn_cerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_cerrar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_cerrar.Name = "btn_cerrar";
             this.btn_cerrar.Size = new System.Drawing.Size(70, 26);
             this.btn_cerrar.TabIndex = 2;
@@ -149,7 +149,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.DarkGray;
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(9, 25);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -170,7 +170,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frm_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
