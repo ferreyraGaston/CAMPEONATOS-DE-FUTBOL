@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using CapaDatos;
+using System.Runtime.InteropServices;
 
 namespace Campeonato1
 {
@@ -53,6 +54,27 @@ namespace Campeonato1
         private void dgv_posicion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void PicMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void PicSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

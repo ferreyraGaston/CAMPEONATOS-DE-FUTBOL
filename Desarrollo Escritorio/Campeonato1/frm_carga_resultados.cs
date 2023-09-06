@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -120,6 +121,7 @@ namespace Campeonato1
                 MySqlCommand command10 = connection.CreateCommand();
                 MySqlCommand command11 = connection.CreateCommand();
                 MySqlCommand command12 = connection.CreateCommand();
+               // MySqlCommand command13 = connection.CreateCommand(); 
 
                 //////////////////////////////////////
                 string orden = string.Empty;
@@ -162,11 +164,14 @@ namespace Campeonato1
 
                 command12.CommandText = "UPDATE posiciones SET Dif_G = Dif_G + ('" + sumaEquipo + "') WHERE id_equipo = ('" + golEq2 + "')";
 
+                //command13.CommandText = "UPDATE posiciones SET Dif_G = Dif_G + ('" + sumaEquipo + "') WHERE id_equipo = ('" + golEq2 + "')";
+
                 connection.Open();
                 command.ExecuteNonQuery();
                 command10.ExecuteNonQuery();
                 command11.ExecuteNonQuery();
                 command12.ExecuteNonQuery();
+                //command13.ExecuteNonQuery();
                 connection.Close();
 
            
@@ -291,6 +296,47 @@ namespace Campeonato1
                     txtEquipo1.Focus();
                 }
             }
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            /*
+             * int equip1 = 0;
+        
+            equip1 = int.Parse(textBoxGol.Text);
+
+            string connectionString = "Server=localhost;Port=33065;Database=bdcampeonato;Uid=root;Password=;";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "UPDATE posiciones SET Puntaje = Puntaje + ('" + equip1 + "') WHERE id_equipo = ('" + golEq2 + "')"; // Puntaje Equipo2
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+            textBoxGol.Text = "";
+            */
+        }
+
+        private void PicMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        private void PicSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

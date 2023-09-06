@@ -91,7 +91,7 @@ namespace CapaDatos
             string orden = string.Empty;
             if (busqueda == 1)
             {
-                orden = "SELECT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje from posiciones P, equipos E WHERE E.id_equipo=P.id_equipo ORDER BY puntaje";
+                orden = "SELECT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje from posiciones P, equipos E WHERE E.id_equipo=P.id_equipo ORDER BY puntaje DESC, P.Dif_G DESC;";
             }
             else if (busqueda == 4)
             {

@@ -70,7 +70,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
                         <?php
                         
                         
-                        $sql = "SELECT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje FROM posiciones P, equipos E WHERE E.id_equipo = P.id_equipo ORDER BY P.puntaje DESC";
+                        $sql = "SELECT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje FROM posiciones P, equipos E WHERE E.id_equipo = P.id_equipo ORDER BY P.puntaje DESC, P.Dif_G DESC";
 
 
                         $result= mysqli_query($conexion,$sql);

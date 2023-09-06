@@ -39,8 +39,15 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_anotados = new System.Windows.Forms.Label();
+            this.BarraTitulo = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.PicMin = new System.Windows.Forms.PictureBox();
+            this.PicSalir = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_escudo)).BeginInit();
+            this.BarraTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSalir)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -50,10 +57,10 @@
             this.groupBox1.Controls.Add(this.txt_equipo);
             this.groupBox1.Controls.Add(this.pic_escudo);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(9, 42);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Location = new System.Drawing.Point(11, 69);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(552, 336);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -63,7 +70,7 @@
             // 
             this.chk_escudo.AutoSize = true;
             this.chk_escudo.Location = new System.Drawing.Point(72, 197);
-            this.chk_escudo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chk_escudo.Margin = new System.Windows.Forms.Padding(2);
             this.chk_escudo.Name = "chk_escudo";
             this.chk_escudo.Size = new System.Drawing.Size(154, 22);
             this.chk_escudo.TabIndex = 6;
@@ -85,7 +92,7 @@
             // 
             this.txt_equipo.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_equipo.Location = new System.Drawing.Point(44, 145);
-            this.txt_equipo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_equipo.Margin = new System.Windows.Forms.Padding(2);
             this.txt_equipo.MaxLength = 49;
             this.txt_equipo.Name = "txt_equipo";
             this.txt_equipo.Size = new System.Drawing.Size(198, 27);
@@ -96,7 +103,7 @@
             this.pic_escudo.Image = ((System.Drawing.Image)(resources.GetObject("pic_escudo.Image")));
             this.pic_escudo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pic_escudo.InitialImage")));
             this.pic_escudo.Location = new System.Drawing.Point(331, 77);
-            this.pic_escudo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pic_escudo.Margin = new System.Windows.Forms.Padding(2);
             this.pic_escudo.Name = "pic_escudo";
             this.pic_escudo.Size = new System.Drawing.Size(187, 174);
             this.pic_escudo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -105,8 +112,8 @@
             // 
             // btn_salir
             // 
-            this.btn_salir.Location = new System.Drawing.Point(443, 396);
-            this.btn_salir.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_salir.Location = new System.Drawing.Point(445, 423);
+            this.btn_salir.Margin = new System.Windows.Forms.Padding(2);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(83, 35);
             this.btn_salir.TabIndex = 1;
@@ -116,8 +123,8 @@
             // 
             // btn_agregar
             // 
-            this.btn_agregar.Location = new System.Drawing.Point(342, 396);
-            this.btn_agregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_agregar.Location = new System.Drawing.Point(344, 423);
+            this.btn_agregar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_agregar.Name = "btn_agregar";
             this.btn_agregar.Size = new System.Drawing.Size(83, 35);
             this.btn_agregar.TabIndex = 2;
@@ -133,7 +140,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(72, 15);
+            this.label2.Location = new System.Drawing.Point(11, 49);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(133, 18);
@@ -143,26 +150,78 @@
             // lbl_anotados
             // 
             this.lbl_anotados.AutoSize = true;
-            this.lbl_anotados.Location = new System.Drawing.Point(230, 15);
+            this.lbl_anotados.Location = new System.Drawing.Point(169, 49);
             this.lbl_anotados.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_anotados.Name = "lbl_anotados";
             this.lbl_anotados.Size = new System.Drawing.Size(13, 13);
             this.lbl_anotados.TabIndex = 4;
             this.lbl_anotados.Text = "..";
             // 
+            // BarraTitulo
+            // 
+            this.BarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(46)))), ((int)(((byte)(148)))));
+            this.BarraTitulo.Controls.Add(this.label4);
+            this.BarraTitulo.Controls.Add(this.PicMin);
+            this.BarraTitulo.Controls.Add(this.PicSalir);
+            this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BarraTitulo.Location = new System.Drawing.Point(0, 0);
+            this.BarraTitulo.Name = "BarraTitulo";
+            this.BarraTitulo.Size = new System.Drawing.Size(659, 35);
+            this.BarraTitulo.TabIndex = 11;
+            this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(12, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 17);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Crear Equipos";
+            // 
+            // PicMin
+            // 
+            this.PicMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PicMin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PicMin.Image = ((System.Drawing.Image)(resources.GetObject("PicMin.Image")));
+            this.PicMin.Location = new System.Drawing.Point(591, 7);
+            this.PicMin.Name = "PicMin";
+            this.PicMin.Size = new System.Drawing.Size(25, 25);
+            this.PicMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicMin.TabIndex = 0;
+            this.PicMin.TabStop = false;
+            this.PicMin.Click += new System.EventHandler(this.PicMin_Click);
+            // 
+            // PicSalir
+            // 
+            this.PicSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PicSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PicSalir.Image = ((System.Drawing.Image)(resources.GetObject("PicSalir.Image")));
+            this.PicSalir.Location = new System.Drawing.Point(622, 7);
+            this.PicSalir.Name = "PicSalir";
+            this.PicSalir.Size = new System.Drawing.Size(25, 25);
+            this.PicSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicSalir.TabIndex = 0;
+            this.PicSalir.TabStop = false;
+            this.PicSalir.Click += new System.EventHandler(this.PicSalir_Click);
+            // 
             // frm_equipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 452);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(659, 479);
+            this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.lbl_anotados);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_agregar);
             this.Controls.Add(this.btn_salir);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frm_equipos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -170,6 +229,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_escudo)).EndInit();
+            this.BarraTitulo.ResumeLayout(false);
+            this.BarraTitulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicSalir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,5 +250,9 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_anotados;
+        private System.Windows.Forms.Panel BarraTitulo;
+        private System.Windows.Forms.PictureBox PicMin;
+        private System.Windows.Forms.PictureBox PicSalir;
+        private System.Windows.Forms.Label label4;
     }
 }
