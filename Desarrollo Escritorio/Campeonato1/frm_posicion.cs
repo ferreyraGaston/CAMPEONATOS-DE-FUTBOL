@@ -1,15 +1,9 @@
-﻿using System;
+﻿using CapaDatos;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Entidades;
-using CapaDatos;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Campeonato1
 {
@@ -21,60 +15,84 @@ namespace Campeonato1
             InitializeComponent();
             Mostrar();
         }
-
         private void Mostrar()
         {
-            int busqueda = 1;
+            int busqueda = 1;  // Cambia esto a tu valor de búsqueda
+            DataTable tablaPosiciones = objTabla.listadoPosiciones(busqueda); // Llama a listadoPosiciones desde el objeto objTabla
+            ConfigurarColumnas(); // Configura las columnas primero
+            MostrarTablaEnDGV(tablaPosiciones);
+        }
+
+        private void ConfigurarColumnas()
+        {
             dgv_posicion.Columns.Clear();
-            dgv_posicion.DataSource = null;
-            DataTable dt = new DataTable();
-            dt = objTabla.listadoPosiciones("", busqueda);
-            dgv_posicion.DataSource = dt;
-            dgv_posicion.Columns[0].Width = 140;
-            dgv_posicion.Columns[1].Width = 40;
-            dgv_posicion.Columns[2].Width = 40;
-            dgv_posicion.Columns[3].Width = 40;
-            dgv_posicion.Columns[4].Width = 40;
-            dgv_posicion.Columns[5].Width = 40;
-            dgv_posicion.Columns[6].Width = 40;
-            dgv_posicion.Columns[7].Width = 40;
-            dgv_posicion.Columns[8].Width = 60;
-            dgv_posicion.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Define la estructura de datos para las columnas y sus anchuras
+            var columnasYAnchos = new Dictionary<string, int>
+    {
+        { "nombre", 140 },
+        { "P_jug", 40 },
+        { "P_gan", 40 },
+        { "P_emp", 40 },
+        { "P_per", 40 },
+        { "G_fav", 40 },
+        { "G_con", 40 },
+        { "Dif_G", 40 },
+        { "puntaje", 60 }
+    };
+
+            // Agregar las columnas al DataGridView y configurar sus anchuras
+            foreach (var columna in columnasYAnchos)
+            {
+                dgv_posicion.Columns.Add(columna.Key, columna.Key); // Utiliza la cadena como nombre de columna
+                dgv_posicion.Columns[columna.Key].Width = columna.Value;
+                dgv_posicion.Columns[columna.Key].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
-        private void btn_salir_Click(object sender, EventArgs e)
+
+        private void MostrarTablaEnDGV(DataTable tabla)
         {
-            Close();
+            // Asegúrate de que el DataGridView está limpio antes de cargar nuevos datos
+            dgv_posicion.Rows.Clear();
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                dgv_posicion.Rows.Add(
+                    fila["nombre"],  // Cambia esto para que coincida con las columnas de tu tabla
+                    fila["P_jug"],
+                    fila["P_gan"],
+                    fila["P_emp"],
+                    fila["P_per"],
+                    fila["G_fav"],
+                    fila["G_con"],
+                    fila["Dif_G"],
+                    fila["puntaje"]
+                );
+            }
         }
 
-        private void frm_posicion_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void dgv_posicion_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
+        private void BarraTitulo_MouseDown_1(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void PicMin_Click(object sender, EventArgs e)
+        private void PicSalir_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void PicMin_Click_1(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void PicSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }

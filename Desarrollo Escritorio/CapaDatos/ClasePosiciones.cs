@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using MySql.Data;
+﻿using Entidades;
 using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
-using Entidades;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace CapaDatos
 {
@@ -85,40 +81,50 @@ namespace CapaDatos
             return ds;
         }
 
-        public DataTable listadoPosiciones(string cual, int busqueda)
+        public DataTable listadoPosiciones(int busqueda)
         {
-
             string orden = string.Empty;
             if (busqueda == 1)
             {
-                orden = "SELECT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje from posiciones P, equipos E WHERE E.id_equipo=P.id_equipo ORDER BY puntaje DESC, P.Dif_G DESC, P.G_fav DESC;";
+                orden = "SELECT DISTINCT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje " +
+                        "FROM posiciones P " +
+                        "INNER JOIN equipos E ON E.id_equipo = P.id_equipo " +
+                        "ORDER BY puntaje DESC, P.Dif_G DESC, P.G_fav DESC;";
             }
             else if (busqueda == 4)
             {
-                orden = "SELECT L.id_libro As COD, L.titulo AS TITULO, A.id_alumno AS SOC, A.nombre &' ' & A.apellido AS POSEEDOR FROM libros L, detalle D, prestamos P, alumnos A WHERE L.id_condicionLib=2 AND D.id_libro=L.id_libro AND P.id_prestamo=D.id_prestamo AND P.id_alumno=A.id_alumno AND devuelto=false ORDER BY L.id_libro;";
+                orden = "SELECT DISTINCT L.id_libro AS COD, L.titulo AS TITULO, A.id_alumno AS SOC, A.nombre & ' ' & A.apellido AS POSEEDOR " +
+                        "FROM libros L " +
+                        "INNER JOIN detalle D ON L.id_libro = D.id_libro " +
+                        "INNER JOIN prestamos P ON D.id_prestamo = P.id_prestamo " +
+                        "INNER JOIN alumnos A ON P.id_alumno = A.id_alumno " +
+                        "WHERE L.id_condicionLib = 2 AND P.devuelto = false " +
+                        "ORDER BY L.id_libro;";
             }
-            MySqlCommand cmd = new MySqlCommand(orden, conexion);
-            DataTable ds = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter();
-            try
-            {
-                AbrirConexion();
-                cmd.ExecuteNonQuery();
-                da.SelectCommand = cmd;
-                da.Fill(ds);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al listar jugadores", ex);
-            }
-            finally
-            {
-                CerrarConexion();
-                cmd.Dispose();
-            }
-            return ds;
 
+            using (MySqlCommand cmd = new MySqlCommand(orden, conexion))
+            {
+                DataTable ds = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+                try
+                {
+                    AbrirConexion();
+                    da.Fill(ds);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al listar jugadores", ex);
+                }
+                finally
+                {
+                    CerrarConexion();
+                }
+
+                return ds;
+            }
         }
+
 
         public Equipos BsquedaEquipo(string dato)
         {
@@ -136,14 +142,12 @@ namespace CapaDatos
                     {
                         pEquipos.pNombre = (dr.GetString(0)).ToUpper();
                         pEquipos.pRuta = (dr.GetString(1)).ToLower();
-
                     }
                 }
                 else
                 {
                     Console.WriteLine("No se encontro jugador.");
                 }
-
             }
             catch (Exception ex)
             {

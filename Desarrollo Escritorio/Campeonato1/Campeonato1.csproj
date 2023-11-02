@@ -52,8 +52,7 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=8.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector NET 8.1.0\MySql.Data.dll</HintPath>
+      <HintPath>..\packages\MySql.Data.8.1.0\lib\net462\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
       <HintPath>..\packages\MySqlConnector.2.2.0\lib\net471\MySqlConnector.dll</HintPath>
@@ -141,6 +140,18 @@
     <Compile Include="frm_jugadores.Designer.cs">
       <DependentUpon>frm_jugadores.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_oro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_oro.Designer.cs">
+      <DependentUpon>frm_oro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_plata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_plata.Designer.cs">
+      <DependentUpon>frm_plata.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_posicion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +198,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_jugadores.resx">
       <DependentUpon>frm_jugadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_oro.resx">
+      <DependentUpon>frm_oro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_plata.resx">
+      <DependentUpon>frm_plata.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_posicion.resx">
       <DependentUpon>frm_posicion.cs</DependentUpon>

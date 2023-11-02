@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using CapaDatos;
 using Entidades;
-using CapaDatos;
+using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Campeonato1
 {
@@ -23,7 +17,7 @@ namespace Campeonato1
         {
             InitializeComponent();
             Contar();
-            
+
         }
         private void Contar()
         {
@@ -52,7 +46,7 @@ namespace Campeonato1
                 openFileDialog1.InitialDirectory = @"C:\camp2.2";
 
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {                    
+                {
                     pic_escudo.Image = Image.FromFile(openFileDialog1.FileName);
                     ruta_pic = openFileDialog1.FileName;
 
@@ -66,12 +60,12 @@ namespace Campeonato1
             {
                 pic_escudo.Image = pic_escudo.InitialImage;
             }
-            
+
         }
 
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-            if (total < 8 && txt_equipo.Text.Length!=0)
+            if (total < 8 && txt_equipo.Text.Length != 0)
             {
                 int ngrabados = -1;
                 objEquipoNew.pNombre = txt_equipo.Text;
@@ -96,7 +90,7 @@ namespace Campeonato1
                     pic_escudo.Image = pic_escudo.InitialImage;
                     txt_equipo.Focus();
                 }
-                
+
                 else
                 {
                     if (txt_equipo.Text.Length == 0)
@@ -113,15 +107,13 @@ namespace Campeonato1
         }
 
 
-
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
+        private void PicSalir_Click(object sender, EventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            this.Close();
         }
 
         private void PicMin_Click(object sender, EventArgs e)
@@ -129,9 +121,15 @@ namespace Campeonato1
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void PicSalir_Click(object sender, EventArgs e)
+        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
-            this.Close();
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void frm_equipos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,16 +1,5 @@
 ﻿using CapaDatos;
-using Entidades;
-using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Asn1.X500;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Campeonato1
@@ -34,7 +23,7 @@ namespace Campeonato1
             txtApelldio.Enabled = false;
             txtDNI.Enabled = false;
             txtClave.Enabled = false;
-            txtNuevoUsuario.Enabled=false;
+            txtNuevoUsuario.Enabled = false;
             button1.Enabled = false;
 
 
@@ -51,7 +40,7 @@ namespace Campeonato1
 
             if (login.Login(usuario, password))
             {
-                frm_Principal principal = new frm_Principal();
+                frm_Principal2 principal = new frm_Principal2();
                 principal.Show();
                 this.Hide();
             }
@@ -72,7 +61,7 @@ namespace Campeonato1
             txtApelldio.Enabled = true;
             txtDNI.Enabled = true;
             txtClave.Enabled = true;
-            txtNuevoUsuario.Enabled=true;
+            txtNuevoUsuario.Enabled = true;
             button1.Enabled = true;
         }
 
@@ -130,7 +119,7 @@ namespace Campeonato1
             }
 
             // Validate other text boxes
-            if (NuevoUsuario.Length>20 || password.Length>20 || nombre.Length > 20 || apellido.Length > 20 || clave.Length > 20)
+            if (NuevoUsuario.Length > 20 || password.Length > 20 || nombre.Length > 20 || apellido.Length > 20 || clave.Length > 20)
             {
                 MessageBox.Show("Los campos Nombre, Apellido y Clave no pueden tener más de 20 caracteres.");
                 return;

@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entidades;
-using System.Data.SqlClient;
-using MySql.Data;
-using System.Security.Cryptography;
-using MySql.Data.MySqlClient;
-using System.IO;
-using System.Data;
+﻿using MySql.Data.MySqlClient;
+using System;
 
 
 
@@ -71,9 +61,9 @@ namespace CapaDatos
             }
         }
     }
-} 
-   
-    
+}
+
+
 
 
 

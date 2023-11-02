@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using MySql.Data;
+﻿using Entidades;
 using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
-using Entidades;
+using System;
 
 namespace CapaDatos
 {
@@ -15,36 +8,46 @@ namespace CapaDatos
     {
         public int abmJugadores(string accion, Jugadores objJugador)
         {
-        
+
             int resultados = -1;
             string orden = string.Empty;
-
             if (accion == "Agregar")
             {
                 orden = "INSERT INTO jugadores(nombre, apellido, fecha_nac, dni, edad, id_equipo) VALUES (@nombre, @apellido, @fechaNac, @dni, @edad, @equipos);";
-
-                MySqlCommand cmd = new MySqlCommand(orden, conexion);
-                cmd.Parameters.AddWithValue("@nombre", objJugador.pNombre.ToUpper());
-                cmd.Parameters.AddWithValue("@apellido", objJugador.pApellido.ToUpper());
-                cmd.Parameters.AddWithValue("@fechaNac", objJugador.pFechaNac);
-                cmd.Parameters.AddWithValue("@dni", objJugador.pDni);
-                cmd.Parameters.AddWithValue("@edad", objJugador.pEdad);
-                cmd.Parameters.AddWithValue("@equipos", objJugador.pEquipo);
-
-                try
+            }
+            if (accion == "Contar")
+            {
+                orden = "Select count (*) From jugadores;";
+            }
+            MySqlCommand cmd = new MySqlCommand(orden, conexion);
+            try
+            {
+                if (accion != "Contar")
                 {
+                    cmd.Parameters.AddWithValue("@nombre", objJugador.pNombre.ToUpper());
+                    cmd.Parameters.AddWithValue("@apellido", objJugador.pApellido.ToUpper());
+                    cmd.Parameters.AddWithValue("@fechaNac", objJugador.pFechaNac);
+                    cmd.Parameters.AddWithValue("@dni", objJugador.pDni);
+                    cmd.Parameters.AddWithValue("@edad", objJugador.pEdad);
+                    cmd.Parameters.AddWithValue("@equipos", objJugador.pEquipo);
                     AbrirConexion();
                     resultados = cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                else
                 {
-                    throw new Exception("Error al tratar de guardar, borrar o modificar la base de datos", ex);
+
+                    AbrirConexion();
+                    resultados = Convert.ToInt32(cmd.ExecuteScalar());
                 }
-                finally
-                {
-                    CerrarConexion();
-                    cmd.Dispose();
-                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al tratar de guardar, borrar o modificar la base de datos", ex);
+            }
+            finally
+            {
+                CerrarConexion();
+                cmd.Dispose();
             }
 
             return resultados;

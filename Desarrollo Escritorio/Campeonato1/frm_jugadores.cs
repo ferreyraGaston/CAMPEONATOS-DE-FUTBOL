@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using CapaDatos;
+using Entidades;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Entidades;
-using CapaDatos;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Campeonato1
 {
-    public partial class Frm_jugadores : Form
+    public partial class frm_jugadores : Form
     {
         public string dato = "";
         public ClaseEquipos objEquipos = new ClaseEquipos();
-        public Equipos objEquipoConsulta = new Equipos(); 
+        public Equipos objEquipoConsulta = new Equipos();
         public DateTime Actual = DateTime.Now.ToLocalTime();
-        public Frm_jugadores()
+        public frm_jugadores()
         {
             InitializeComponent();
             var ta = new ToolTip();
@@ -55,7 +50,7 @@ namespace Campeonato1
                 frm_carga_jugadores form_carga = new frm_carga_jugadores(id_equipo_sel, nombre_sel);
                 form_carga.ShowDialog();
             }
-            
+
         }
 
         private void btn_equipo_Click(object sender, EventArgs e)
@@ -89,34 +84,29 @@ namespace Campeonato1
                     pic_escudo2.Image = Image.FromFile(objEquipoConsulta.pRuta);
                 }
             }
-            
-            
+
+
         }
 
         private void frm_jugadores_Activated(object sender, EventArgs e)
         {
-            int busqueda = 3;
-            if (cmb_equipos.SelectedValue != null)
+            if (cmb_equipos.SelectedIndex != -1)
             {
+                int busqueda = 3;
                 dato = cmb_equipos.SelectedValue.ToString();
+                dgv_equipo.Columns.Clear();
+                dgv_equipo.DataSource = null;
+                DataTable dt = new DataTable();
+                objEquipoConsulta = objEquipos.BsquedaEquipo(dato);
+                dt = objEquipos.listadoEquipos(dato, busqueda);
+                dgv_equipo.DataSource = dt;
+                dgv_equipo.Columns[0].Width = 125;
+                dgv_equipo.Columns[1].Width = 125;
+                dgv_equipo.Columns[2].Width = 80;
+                dgv_equipo.Columns[3].Width = 60;
+                lbl_jug_anota.Text = dgv_equipo.RowCount.ToString();
             }
-            else
-            {
-                dato = "0";
-                // Manejar el caso en el que no se ha seleccionado ningún valor en el ComboBox
-                // Puedes mostrar un mensaje de error, asignar un valor predeterminado, etc.
-            }
-            dgv_equipo.Columns.Clear();
-            dgv_equipo.DataSource = null;
-            DataTable dt = new DataTable();
-            objEquipoConsulta = objEquipos.BsquedaEquipo(dato);
-            dt = objEquipos.listadoEquipos(dato, busqueda);
-            dgv_equipo.DataSource = dt;
-            dgv_equipo.Columns[0].Width = 125;
-            dgv_equipo.Columns[1].Width = 125;
-            dgv_equipo.Columns[2].Width = 80;
-            dgv_equipo.Columns[3].Width = 60;
-            lbl_jug_anota.Text = dgv_equipo.RowCount.ToString();
+
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -130,14 +120,14 @@ namespace Campeonato1
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void PicMin_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
         private void PicSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-    }   
+
+        private void PicMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+    }
 }

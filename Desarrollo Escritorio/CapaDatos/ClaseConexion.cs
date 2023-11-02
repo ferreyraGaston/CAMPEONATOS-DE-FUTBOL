@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using MySql.Data;
-using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
 
 namespace CapaDatos
 {
@@ -14,13 +8,11 @@ namespace CapaDatos
     {
 
 
-       
+
 
         #region conexion
         public MySqlConnection conexion;
-     
         public string cadena = "Server=localhost;Port=33065;Database=bdcampeonato;Uid=root;Password=;";
-
         #endregion
         #region constructor
         public ClaseConexion()

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using MySql.Data;
+﻿using Entidades;
 using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
-using Entidades;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace CapaDatos
 {
@@ -31,7 +27,7 @@ namespace CapaDatos
             cmd.Parameters.AddWithValue("@diafecha", objFecha.pDia_fecha);
 
 
-           //MySqlCommand cmd = new MySqlCommand(orden, conexion);
+            //MySqlCommand cmd = new MySqlCommand(orden, conexion);
             try
             {
                 if (accion != "Contar")
@@ -74,7 +70,7 @@ namespace CapaDatos
                     pFechas.pID_fecha = dr.GetInt32(0);
                     pFechas.pNum_fecha = (dr.GetString(1)).ToUpper();
                     pFechas.pDia_fecha = dr.GetDateTime(2);
-                   
+
                     ds.Add(pFechas);
                 }
                 ds = ds.OrderBy(x => x.pNum_fecha[0]).ToList();
