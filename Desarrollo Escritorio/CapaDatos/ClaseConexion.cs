@@ -7,9 +7,6 @@ namespace CapaDatos
     public class ClaseConexion
     {
 
-
-
-
         #region conexion
         public MySqlConnection conexion;
         public string cadena = "Server=localhost;Port=33065;Database=bdcampeonato;Uid=root;Password=;";

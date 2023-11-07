@@ -105,6 +105,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CopaOro.cs" />
+    <Compile Include="CopaPlata.cs" />
     <Compile Include="Equipos.cs" />
     <Compile Include="Fechas.cs" />
     <Compile Include="Jugadores.cs" />
