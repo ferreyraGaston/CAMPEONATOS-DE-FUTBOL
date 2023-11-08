@@ -10,7 +10,6 @@ namespace CapaDatos
     public class ClaseCopaOro
     {
         private CopaOro CopaOro = new CopaOro(); // Esto debería ser una instancia válida de CopaOro
-        private string cadena = "Server=localhost;Port=33065;Database=bdcampeonato;Uid=root;Password=;";
         ClaseConexion ClaseConexion=new ClaseConexion();
         public int abmEquipos(string accion)
         {
@@ -37,7 +36,7 @@ namespace CapaDatos
             }
             else if (accion == "AgregarSemiPerdido")
             {
-                orden = "UPDATE equipoOro SET idZona = @idZona, gol2 = @gol2 WHERE equipo = @equipo";
+                orden = "UPDATE equipoOro SET gol2 = @gol2 WHERE equipo = @equipo";
             }
             else if (accion == "AgregarFinal")
             {

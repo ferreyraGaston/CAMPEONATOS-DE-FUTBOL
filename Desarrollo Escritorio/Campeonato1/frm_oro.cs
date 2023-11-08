@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Data;
+using System.Drawing;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Campeonato1
 {
@@ -74,7 +77,7 @@ namespace Campeonato1
             ClaseEquipos claseEquipos = new ClaseEquipos();
             List<string> EquipoOro = claseEquipos.ListadoEquiposCopaOro();
 
-            if (EquipoOro.Count >= 14)
+            if (EquipoOro.Count >= 13)
             {
                 textBox12.Text = EquipoOro[12];
                 textBox13.Text = EquipoOro[13];
@@ -140,11 +143,11 @@ namespace Campeonato1
             else 
             {
 
-                if (NuDown9.Value == 0 && NuDown10.Value == 0 && NuDown11.Value == 0 && NuDown12.Value == 0 && EquipoOro.Count < 9)
+                if ((NuDown1.Value != 0 || NuDown2.Value != 0) && (NuDown3.Value != 0 || NuDown4.Value != 0) && (NuDown5.Value != 0 || NuDown6.Value != 0) && (NuDown7.Value != 0 || NuDown8.Value != 0) && EquipoOro.Count == 8 )
                 {
 
-
-                    if (NuDown1.Value > NuDown2.Value)
+                    /***************partido # 1 ***************************/
+                    if (NuDown1.Value > NuDown2.Value && EquipoOro.Count < 9)
                     {
                         CopaOro.IdZona = 5;
                         CopaOro.Equipo = EquipoOro[0];
@@ -168,7 +171,8 @@ namespace Campeonato1
                         CopaOro.Gol1 = (int)NuDown2.Value;
                         ClaseCopaOro.abmEquipos("AgregarCuartos");
                     }
-                    if (NuDown3.Value > NuDown4.Value)
+                    /***************partido # 2 ***************************/
+                    if (NuDown3.Value > NuDown4.Value && EquipoOro.Count < 9)
                     {
                         CopaOro.IdZona = 5;
                         CopaOro.Equipo = EquipoOro[2];
@@ -192,7 +196,8 @@ namespace Campeonato1
                         CopaOro.Gol1 = (int)NuDown4.Value;
                         ClaseCopaOro.abmEquipos("AgregarCuartos");
                     }
-                    if (NuDown5.Value > NuDown6.Value)
+                    /***************partido # 3 ***************************/
+                    if (NuDown5.Value > NuDown6.Value && EquipoOro.Count < 9)
                     {
                         CopaOro.IdZona = 6;
                         CopaOro.Equipo = EquipoOro[4];
@@ -216,7 +221,8 @@ namespace Campeonato1
                         CopaOro.Gol1 = (int)NuDown6.Value;
                         ClaseCopaOro.abmEquipos("AgregarCuartos");
                     }
-                    if (NuDown7.Value > NuDown8.Value)
+                    /***************partido # 4 ***************************/
+                    if (NuDown7.Value > NuDown8.Value && EquipoOro.Count < 9)
                     {
                         CopaOro.IdZona = 6;
                         CopaOro.Equipo = EquipoOro[6];
@@ -241,105 +247,113 @@ namespace Campeonato1
                         ClaseCopaOro.abmEquipos("AgregarCuartos");
                     }
                     LeerSemi();
-                }
-                else { 
-              
-                    if (NuDown9.Value > NuDown10.Value)
-                    {
-                        CopaOro.IdZona = 7;
-                        CopaOro.Equipo = textBox8.Text;
-                        CopaOro.Gol2 = (int)NuDown9.Value;
-                        ClaseCopaOro.abmEquipos("AgregarSemi");
 
-                        CopaOro.Equipo = textBox9.Text;
-                        CopaOro.Gol2 = (int)NuDown10.Value;
-                        ClaseCopaOro.abmEquipos("AgregarSemiPerdido");
+               
 
                     }
                     else
                     {
-                        CopaOro.Equipo = textBox8.Text;
-                        CopaOro.Gol2 = (int)NuDown9.Value;
-                        ClaseCopaOro.abmEquipos("AgregarSemiPerdido");
+                        if ((NuDown9.Value != 0 || NuDown10.Value != 0) && (NuDown11.Value != 0 || NuDown12.Value != 0) && (NuDown13.Value == 0 || NuDown14.Value == 0))
+                        {
+                            /***************partido Semifinal # 1 ***************************/
+                            if (NuDown9.Value > NuDown10.Value && EquipoOro.Count < 12)
+                            {
+                                CopaOro.Equipo = textBox9.Text;
+                                CopaOro.Gol2 = (int)NuDown10.Value;
+                                ClaseCopaOro.abmEquipos("AgregarSemiPerdido");
 
-                        CopaOro.IdZona = 7;
-                        CopaOro.Equipo = textBox9.Text;
-                        CopaOro.Gol2 = (int)NuDown10.Value;
-                        ClaseCopaOro.abmEquipos("AgregarSemi");
+                                CopaOro.IdZona = 7;
+                                CopaOro.Equipo = textBox8.Text;
+                                CopaOro.Gol2 = (int)NuDown9.Value;
+                                ClaseCopaOro.abmEquipos("AgregarSemi");
+
+                            }
+                            else
+                            {
+                                CopaOro.Equipo = textBox8.Text;
+                                CopaOro.Gol2 = (int)NuDown9.Value;
+                                ClaseCopaOro.abmEquipos("AgregarSemiPerdido");
+
+                                CopaOro.IdZona = 7;
+                                CopaOro.Equipo = textBox9.Text;
+                                CopaOro.Gol2 = (int)NuDown10.Value;
+                                ClaseCopaOro.abmEquipos("AgregarSemi");
+                            }
+                            /***************partido Semifinal # 2 ***************************/
+                            if (NuDown11.Value > NuDown12.Value && EquipoOro.Count < 12)
+                            {
+                                CopaOro.Equipo = textBox11.Text;
+                                CopaOro.Gol2 = (int)NuDown12.Value;
+                                ClaseCopaOro.abmEquipos("AgregarSemiPerdido");
+
+                                CopaOro.IdZona = 7;
+                                CopaOro.Equipo = textBox10.Text;
+                                CopaOro.Gol2 = (int)NuDown11.Value;
+                                ClaseCopaOro.abmEquipos("AgregarSemi");
+                            }
+                            else
+                            {
+                                CopaOro.IdZona = 7;
+                                CopaOro.Equipo = textBox11.Text;
+                                CopaOro.Gol2 = (int)NuDown12.Value;
+                                ClaseCopaOro.abmEquipos("AgregarSemi");
+
+                                CopaOro.Equipo = textBox10.Text;
+                                CopaOro.Gol2 = (int)NuDown11.Value;
+                                ClaseCopaOro.abmEquipos("AgregarSemiPerdido");
+                            }
+
+
+
+
+                            LeerFinal();
+
+                        }
+                            if ((NuDown13.Value != 0 || NuDown14.Value != 0) && EquipoOro.Count ==14)
+
+                            {
+                                if (NuDown13.Value > NuDown14.Value)
+                                {
+                                    MessageBox.Show("Equipo Ganador: " + textBox12.Text, "Alerta");
+                                    CopaOro.IdZona = 8;
+                                    CopaOro.Equipo = textBox12.Text;
+                                    CopaOro.Gol3 = (int)NuDown14.Value;
+                                    ClaseCopaOro.abmEquipos("AgregarFinal");
+
+                                    CopaOro.Equipo = textBox13.Text;
+                                    CopaOro.Gol3 = (int)NuDown13.Value;
+                                    ClaseCopaOro.abmEquipos("AgregarFinalPerdido");
+
+                                
+                                
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Equipo Ganador: " + textBox13.Text, "Alerta");
+
+                                    CopaOro.IdZona = 8;
+                                    CopaOro.Equipo = textBox13.Text;
+                                    CopaOro.Gol3 = (int)NuDown13.Value;
+                                    ClaseCopaOro.abmEquipos("AgregarFinal");
+
+                                    CopaOro.Equipo = textBox12.Text;
+                                    CopaOro.Gol3 = (int)NuDown14.Value;
+                                    ClaseCopaOro.abmEquipos("AgregarFinalPerdido");
+
+                                 }
+                       
+                            }
+
+
                     }
-                    if (NuDown11.Value > NuDown12.Value)
-                    {
-                        CopaOro.IdZona = 7;
-                        CopaOro.Equipo = textBox10.Text;
-                        CopaOro.Gol2 = (int)NuDown11.Value;
-                        ClaseCopaOro.abmEquipos("AgregarSemi");
-
-                        CopaOro.Equipo = textBox11.Text;
-                        CopaOro.Gol2 = (int)NuDown12.Value;
-                        ClaseCopaOro.abmEquipos("AgregarSemiPerdido");
-                    }
-                    else
-                    {
-
-                        CopaOro.Equipo = textBox10.Text;
-                        CopaOro.Gol2 = (int)NuDown11.Value;
-                        ClaseCopaOro.abmEquipos("AgregarSemiPerdido");
-
-                        CopaOro.IdZona = 7;
-                        CopaOro.Equipo = textBox11.Text;
-                        CopaOro.Gol2 = (int)NuDown12.Value;
-                        ClaseCopaOro.abmEquipos("AgregarSemi");
-                    }
-                }
 
 
-
-                if (NuDown13.Value == 0 && NuDown14.Value == 0 && EquipoOro.Count < 12)
-                {
-
-                }
-                else
-                {
-                    if (NuDown13.Value > NuDown14.Value)
-                    {
-                        MessageBox.Show("Equipo Ganador: " + textBox12.Text, "Alerta");
-
-                        CopaOro.IdZona = 7;
-                        CopaOro.Equipo = textBox12.Text;
-                        CopaOro.Gol3 = (int)NuDown13.Value;
-                        ClaseCopaOro.abmEquipos("AgregarFinal");
-
-                        CopaOro.Equipo = textBox13.Text;
-                        CopaOro.Gol3 = (int)NuDown14.Value;
-                        ClaseCopaOro.abmEquipos("AgregarFinalPerdido");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Equipo Ganador: " + textBox13.Text, "Alerta");
-                        CopaOro.IdZona = 7;
-                        CopaOro.Equipo = textBox13.Text;
-                        CopaOro.Gol3 = (int)NuDown14.Value;
-                        ClaseCopaOro.abmEquipos("AgregarFinal");
-
-                        CopaOro.Equipo = textBox12.Text;
-                        CopaOro.Gol3 = (int)NuDown13.Value;
-                        ClaseCopaOro.abmEquipos("AgregarFinalPerdido");
-                    }
-                    LeerFinal();
-                }
             }
         }
-
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
 
         private void PicSalir_Click(object sender, EventArgs e)
         {
@@ -350,5 +364,13 @@ namespace Campeonato1
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
     }
+
+  
 }
