@@ -29,7 +29,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
             <ul>
                 <li><a href="../index.html">Novedades</a></li>
                 <li><a href="../torneo.html">Torneo</a></li>
-                <!-- <li><a href="../inscripcion.html">inscripcion</a></li>-->
+                <li><a href="../infracciones.html">infracciones</a></li>
                 <li><a href="../reglamento.html">Reglamento</a></li>
                 <li><a href="../contacto.html">Contactos</a></li>
                 <!-- login Button
@@ -38,7 +38,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
         </div>
         <!-- content -->
         <div id="contentTitulo">
-            <h3>Categoría Libre</h3>
+            <h3>Tabla Goleadores</h3>
         </div>
 
     <div class="containerTorneo">
@@ -46,10 +46,10 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
         <div class="card__giratorio">
             <div class="card__giratorio-conteudo">
                 <div class="card__giratorio-conteudo--frente">
-                    <img src="../images/ic-logo1.png" alt="Logo Programador CS" class="logo">
+                    <img src="../images/ic-logo4.png" alt="Logo Programador CS" class="logo">
                 </div>
                 <div class="card__giratorio-conteudo--traseira">
-    <img src="../images/ic-logo1.png" alt="Logo Programador CS" class="logo">
+    <img src="../images/ic-logo4.png" alt="Logo Programador CS" class="logo">
     <table class="table table-primary table-striped">
         <thead>
             <tr>

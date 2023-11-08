@@ -31,7 +31,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
             <ul>
             <li><a href="../index.html">Novedades</a></li>
                 <li><a href="../torneo.html">Torneo</a></li>
-                <!-- <li><a href="../inscripcion.html">inscripcion</a></li>-->
+                <li><a href="../infracciones.html">infracciones</a></li>
                 <li><a href="../reglamento.html">Reglamento</a></li>
                 <li><a href="../contacto.html">Contactos</a></li>
                 <!-- login Button
@@ -55,15 +55,8 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
                     <table class="table table-primary table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Club</th>
-                                <th scope="col">PJ</th>
-                                <th scope="col">G</th>
-                                <th scope="col">E</th>
-                                <th scope="col">P</th>
-                                <th scope="col">GF</th>
-                                <th scope="col">GC</th>
-                                <th scope="col">DG</th>
-                                <th scope="col">Pts</th>
+                                <th scope="col">Equipo</th>
+                                <th scope="col">Goles</th>
 
                             </tr>
                         </thead>    
@@ -71,8 +64,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
                         
                         
                         //$sql = "SELECT DISTINCT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje FROM posiciones P, equipos E WHERE E.id_equipo = P.id_equipo ORDER BY P.puntaje DESC, P.Dif_G DESC, P.G_fav DESC";
-                        $sql = "SELECT DISTINCT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje FROM posiciones P, equipos E WHERE E.id_equipo = P.id_equipo ORDER BY P.puntaje DESC, P.Dif_G DESC, P.G_fav DESC LIMIT 8, 8";
-
+                        $sql = "SELECT equipo, gol1 FROM equipoplata ORDER BY idZona ASC;";
 
 
                         $result= mysqli_query($conexion,$sql);
@@ -81,16 +73,8 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
                             ?>
                         <tbody>
                             <tr>
-                                <td><?php echo $mostrar['nombre'] ?></td>
-                                <td><?php echo $mostrar['P_jug'] ?></td>
-                                <td><?php echo $mostrar['P_gan'] ?></td>
-                                <td><?php echo $mostrar['P_emp'] ?></td>
-                                <td><?php echo $mostrar['P_per'] ?></td>
-                                <td><?php echo $mostrar['G_fav'] ?></td>
-                                <td><?php echo $mostrar['G_con'] ?></td>
-                                <td><?php echo $mostrar['Dif_G'] ?></td>
-                                <td><?php echo $mostrar['puntaje'] ?></td>
-
+                                <td><?php echo $mostrar['equipo'] ?></td>
+                                <td><?php echo $mostrar['gol1'] ?></td>
                             </tr>
                         </tbody>
                         <?php
