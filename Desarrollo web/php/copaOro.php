@@ -64,8 +64,8 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
                         
                         
                         //$sql = "SELECT DISTINCT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje FROM posiciones P, equipos E WHERE E.id_equipo = P.id_equipo ORDER BY P.puntaje DESC, P.Dif_G DESC, P.G_fav DESC";
-                        $sql = "SELECT equipo, gol1 FROM equipooro ORDER BY idZona ASC;";
-
+                        $sql = "SELECT equipo, gol1 FROM equipooro ORDER BY idZona ASC LIMIT 8;";
+               
 
                         $result= mysqli_query($conexion,$sql);
 
@@ -86,6 +86,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
         </div>
 
     </div>
+    
 </div> 
 </body>
 </html>
