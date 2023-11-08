@@ -25,13 +25,25 @@ namespace CapaDatos
             }
             else if (accion == "AgregarCuartos")
             {
+                orden = "INSERT INTO equipoOro (idZona, equipo, gol1) VALUES (@idZona, @equipo,@gol1)";
+            }
+            else if (accion == "AgregarCuartosPerdido")
+            {
                 orden = "UPDATE equipoOro SET idZona = @idZona, gol1 = @gol1 WHERE equipo = @equipo";
             }
             else if (accion == "AgregarSemi")
             {
+                orden = "INSERT INTO equipoOro (idZona, equipo, gol2) VALUES (@idZona, @equipo,@gol2)";
+            }
+            else if (accion == "AgregarSemiPerdido")
+            {
                 orden = "UPDATE equipoOro SET idZona = @idZona, gol2 = @gol2 WHERE equipo = @equipo";
             }
             else if (accion == "AgregarFinal")
+            {
+                orden = "INSERT INTO equipoOro (idZona, equipo, gol3) VALUES (@idZona, @equipo,@gol3)";
+            }
+            else if (accion == "AgregarFinalPerdido")
             {
                 orden = "UPDATE equipoOro SET idZona = @idZona, gol3 = @gol3 WHERE equipo = @equipo";
             }

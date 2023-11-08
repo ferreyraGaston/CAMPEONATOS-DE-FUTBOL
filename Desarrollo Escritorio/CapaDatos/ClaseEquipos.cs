@@ -217,6 +217,30 @@ namespace CapaDatos
             }
             return nombresEquipos;
         }
+        public List<string> ListadoEquiposCopaOro()
+        {
+            List<string> nombresEquipos = new List<string>();
+            string query = "SELECT equipo FROM equipooro ORDER BY idZona ASC";
+
+            ClaseConexion ClaseConexion = new ClaseConexion();
+
+            using (MySqlConnection connection = new MySqlConnection(ClaseConexion.cadena)) // Reemplaza "cadena" con tu cadena de conexión MySQL
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string equipoNombre = reader["equipo"].ToString(); // Elimina "equipos."
+                            nombresEquipos.Add(equipoNombre);
+                        }
+                    }
+                }
+            }
+            return nombresEquipos;
+        }
         public List<string> listadoEquiposPlayoffplata()
         {
             List<string> equiposPlata = new List<string>();
