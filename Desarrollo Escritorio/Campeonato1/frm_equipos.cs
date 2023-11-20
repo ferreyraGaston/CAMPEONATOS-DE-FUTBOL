@@ -65,12 +65,14 @@ namespace Campeonato1
 
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-            if (total < 8 && txt_equipo.Text.Length != 0)
+            if (total < 8 && !string.IsNullOrWhiteSpace(txt_equipo.Text))
             {
                 int ngrabados = -1;
                 objEquipoNew.pNombre = txt_equipo.Text;
                 objEquipoNew.pRuta = ruta_pic;
+
                 ngrabados = objCargaEquipo.abmEquipos("Agregar", objEquipoNew);
+
                 if (ngrabados != -1)
                 {
                     txt_equipo.Text = "";
@@ -84,27 +86,21 @@ namespace Campeonato1
             {
                 if (total == 8)
                 {
-                    MessageBox.Show("No puede haber mas de 8 equipos anotados");
-                    txt_equipo.Text = "";
-                    chk_escudo.Checked = false;
-                    pic_escudo.Image = pic_escudo.InitialImage;
-                    txt_equipo.Focus();
+                    MessageBox.Show("No puede haber más de 8 equipos anotados");
                 }
-
-                else
+                else if (string.IsNullOrWhiteSpace(txt_equipo.Text))
                 {
-                    if (txt_equipo.Text.Length == 0)
-                    {
-                        MessageBox.Show("Debe ingresar un nombre de equipo correcto");
-                        chk_escudo.Checked = false;
-                        pic_escudo.Image = pic_escudo.InitialImage;
-                        txt_equipo.Focus();
-
-                    }
+                    MessageBox.Show("Debe ingresar un nombre de equipo válido");
                 }
-            }
 
+                // Limpieza común para ambas condiciones
+                txt_equipo.Text = "";
+                chk_escudo.Checked = false;
+                pic_escudo.Image = pic_escudo.InitialImage;
+                txt_equipo.Focus();
+            }
         }
+
 
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]

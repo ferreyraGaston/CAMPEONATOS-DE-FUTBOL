@@ -1,6 +1,7 @@
 ﻿using CapaDatos;
 using System;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Campeonato1
 {
@@ -37,16 +38,28 @@ namespace Campeonato1
 
             ClaseLogin login = new ClaseLogin();
 
-
-            if (login.Login(usuario, password))
+            try
             {
-                frm_Principal2 principal = new frm_Principal2();
-                principal.Show();
-                this.Hide();
+                if (login.Login(usuario, password))
+                {
+                    frm_Principal2 principal = new frm_Principal2();
+                    principal.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectosss", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (MySqlException ex)
             {
-                MessageBox.Show("Usuario o contraseña incorrectos", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Manejar la excepción específica de MySQL
+                MessageBox.Show("Error de conexión a la base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // Manejar otras excepciones generales
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
