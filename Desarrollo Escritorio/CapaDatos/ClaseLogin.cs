@@ -1,5 +1,15 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Entidades;
+using System.Data.SqlClient;
+using MySql.Data;
+using System.Security.Cryptography;
+using MySql.Data.MySqlClient;
+using System.IO;
+using System.Data;
 
 
 
@@ -8,44 +18,28 @@ namespace CapaDatos
 
     public class ClaseLogin : ClaseConexion
     {
-        ClaseConexion ClaseConexion= new ClaseConexion();
+
         public bool Login(string usuario, string password)
         {
-            using (MySqlConnection connection = new MySqlConnection(ClaseConexion.cadena))
+            using (MySqlConnection connection = new MySqlConnection(cadena))
             {
-                try
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM usuario WHERE usuario = @usuario AND password = @password";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@usuario", usuario);
+                command.Parameters.AddWithValue("@password", password);
+
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+
+                if (count > 0)
                 {
-                    connection.Open();
-
-                    string query = "SELECT COUNT(*) FROM usuario WHERE usuario = @usuario AND password = @password";
-                    MySqlCommand command = new MySqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@usuario", usuario);
-                    command.Parameters.AddWithValue("@password", password);
-
-                    int count = Convert.ToInt32(command.ExecuteScalar());
-
-                    return count > 0;
+                    return true;
                 }
-                catch (MySqlException ex)
+                else
                 {
-                    // Manejar la excepción específica de MySQL si es necesario
-                    Console.WriteLine("Error de MySQL: " + ex.Message);
                     return false;
-                }
-                catch (Exception ex)
-                {
-                    // Manejar otras excepciones generales
-                    Console.WriteLine("Error general: " + ex.Message);
-                    return false;
-                }
-                finally
-                {
-                    // Asegurarse de cerrar la conexión en cualquier caso
-                    if (connection.State != System.Data.ConnectionState.Closed)
-
-                    {
-                        connection.Close();
-                    }
                 }
             }
         }
@@ -77,9 +71,9 @@ namespace CapaDatos
             }
         }
     }
-}
-
-
+} 
+   
+    
 
 
 

@@ -114,6 +114,7 @@
     <Compile Include="ClasePartidos.cs" />
     <Compile Include="ClasePosiciones.cs" />
     <Compile Include="ClaseLogin.cs" />
+    <Compile Include="ClaseSancion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

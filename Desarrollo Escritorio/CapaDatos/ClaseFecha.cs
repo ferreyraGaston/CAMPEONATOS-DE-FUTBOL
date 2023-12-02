@@ -1,9 +1,13 @@
-﻿using Entidades;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
+using Entidades;
 
 namespace CapaDatos
 {
@@ -18,28 +22,17 @@ namespace CapaDatos
             {
                 orden = "INSERT INTO fechas(nro_fecha, dia) VALUES (@fecha, @diafecha);";
             }
-            if (accion == "Contar")
-            {
-                orden = "Select count (*) From equipos;";
-            }
+            
             MySqlCommand cmd = new MySqlCommand(orden, conexion);
             cmd.Parameters.AddWithValue("@fecha", objFecha.pNum_fecha.ToUpper());
             cmd.Parameters.AddWithValue("@diafecha", objFecha.pDia_fecha);
 
 
-            //MySqlCommand cmd = new MySqlCommand(orden, conexion);
             try
             {
-                if (accion != "Contar")
-                {
-                    AbrirConexion();
-                    resultados = cmd.ExecuteNonQuery();
-                }
-                else
-                {
-                    AbrirConexion();
-                    resultados = Convert.ToInt32(cmd.ExecuteScalar());
-                }
+                AbrirConexion();
+                resultados = Convert.ToInt32(cmd.ExecuteScalar());
+                
             }
             catch (Exception ex)
             {
@@ -70,10 +63,11 @@ namespace CapaDatos
                     pFechas.pID_fecha = dr.GetInt32(0);
                     pFechas.pNum_fecha = (dr.GetString(1)).ToUpper();
                     pFechas.pDia_fecha = dr.GetDateTime(2);
-
+                   
                     ds.Add(pFechas);
                 }
-                ds = ds.OrderBy(x => x.pNum_fecha[0]).ToList();
+                //ds = ds.OrderByDescending(x => x.pID_fecha).ToList();
+                ds = ds.OrderByDescending(x => x.pID_fecha.ToString()[0]).ToList();
             }
             catch (Exception ex)
             {
@@ -86,5 +80,38 @@ namespace CapaDatos
             }
             return ds;
         }
+
+        public DateTime ObtenerDiaPorID(int id_fecha)
+        {
+            string orden = "SELECT dia FROM fechas WHERE id_fecha = @idFecha;";
+            MySqlCommand cmd = new MySqlCommand(orden, conexion);
+            cmd.Parameters.AddWithValue("@idFecha", id_fecha);
+
+            DateTime diaFecha = DateTime.Now; // Valor predeterminado
+
+            try
+            {
+                AbrirConexion();
+                object result = cmd.ExecuteScalar();
+
+                // Verifica si se obtuvo un resultado no nulo
+                if (result != null && result != DBNull.Value)
+                {
+                    diaFecha = Convert.ToDateTime(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener la fecha deseada", ex);
+            }
+            finally
+            {
+                CerrarConexion();
+                cmd.Dispose();
+            }
+
+            return diaFecha;
+        }
+
     }
 }

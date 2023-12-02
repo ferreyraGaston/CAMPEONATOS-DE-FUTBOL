@@ -1,6 +1,7 @@
 ﻿using CapaDatos;
 using Entidades;
 using System;
+using System.Data;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -33,55 +34,66 @@ namespace Campeonato1
         {
             int busqueda = 1;
             string dato = cmb_fechas.SelectedValue.ToString();
-
-            // Asignar el resultado directamente al origen de datos del DataGridView
-            dataGridView1.DataSource = objCargapartido.listadoPartidos(dato, busqueda);
-
-            // Configurar las columnas y la alineación
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Width = 70;
-            dataGridView1.Columns[2].Width = 140;
-            dataGridView1.Columns[3].Width = 40;
-            dataGridView1.Columns[4].Width = 140;
-            dataGridView1.Columns[5].Width = 40;
-            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-        }
-
-        private void btn_ver_Click(object sender, EventArgs e)
-        {
-            int busqueda = 1;
-            string dato = cmb_fechas.SelectedValue.ToString();
-
-            // Configurar el origen de datos del DataGridView y las columnas
-            dataGridView1.DataSource = objCargapartido.listadoPartidos(dato, busqueda);
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Width = 70;
-            dataGridView1.Columns[2].Width = 140;
-            dataGridView1.Columns[3].Width = 40;
-            dataGridView1.Columns[4].Width = 140;
-            dataGridView1.Columns[5].Width = 40;
-            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv_datos1.Columns.Clear();
+            dgv_datos1.DataSource = null;
+            DataTable dt = new DataTable();
+            dt = objCargapartido.listadoPartidos(dato, busqueda);
+            dgv_datos1.DataSource = dt;
+            dgv_datos1.Columns[0].Width = 70;
+            dgv_datos1.Columns[1].Width = 140;
+            dgv_datos1.Columns[2].Width = 40;
+            dgv_datos1.Columns[3].Width = 140;
+            dgv_datos1.Columns[4].Width = 40;
+            dgv_datos1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
         }
 
 
  
+        private void btn_ver_Click(object sender, EventArgs e)
+        {
+            int busqueda = 1;
+            string dato = cmb_fechas.SelectedValue.ToString();
+            dgv_datos1.Columns.Clear();
+            dgv_datos1.DataSource = null;
+            DataTable dt = new DataTable();
+            dt = objCargapartido.listadoPartidos(dato, busqueda);
+            dgv_datos1.DataSource = dt;
+            dgv_datos1.Columns[0].Width = 70;
+            dgv_datos1.Columns[1].Width = 140;
+            dgv_datos1.Columns[2].Width = 40;
+            dgv_datos1.Columns[3].Width = 140;
+            dgv_datos1.Columns[4].Width = 40;
+            dgv_datos1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+
+        private void dgv_datos1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            posicion = dgv_datos1.CurrentRow.Index;
+            usuarioObj.Equipo1 = dgv_datos1[1, posicion].Value.ToString();
+            usuarioObj.Equipo2 = dgv_datos1[3, posicion].Value.ToString();
+
+            //MessageBox.Show("Equipo 1: " + usuarioObj.Equipo1, "Alerta");
+            //MessageBox.Show("Equipo 2: " + usuarioObj.Equipo2, "Alerta");
+
+            Partidos IdPartidos = new Partidos();
+            IdPartidos.pID_partido = int.Parse(dgv_datos1[0, posicion].Value.ToString());
+
+            frm_carga_resultados form3 = new frm_carga_resultados();
+
+            // Mostrar el formulario
+            form3.Show();
+        }
+
+        //**********************************************************************
+        //**********************************************************************
+        //**********************************************************************
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        private void PicSalir_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void PicMin_Click_1(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
 
         private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
@@ -89,22 +101,19 @@ namespace Campeonato1
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void PicMin_Click(object sender, EventArgs e)
         {
-            posicion = dataGridView1.CurrentRow.Index;
-            usuarioObj.Equipo1 = dataGridView1[2, posicion].Value.ToString();
-            usuarioObj.Equipo2 = dataGridView1[4, posicion].Value.ToString();
-
-            //MessageBox.Show("Equipo 1: " + usuarioObj.Equipo1, "Alerta");
-            //MessageBox.Show("Equipo 2: " + usuarioObj.Equipo2, "Alerta");
-
-            Partidos IdPartidos = new Partidos();
-            IdPartidos.pID_partido = int.Parse(dataGridView1[0, posicion].Value.ToString());
-
-            frm_carga_resultados form3 = new frm_carga_resultados();
-
-            // Mostrar el formulario
-            form3.Show();
+            this.WindowState = FormWindowState.Minimized;
         }
+
+        private void PicSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        //**********************************************************************
+        //**********************************************************************
+        //**********************************************************************
     }
 }
+
+

@@ -1,9 +1,13 @@
-﻿using Entidades;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
+using Entidades;
 
 namespace CapaDatos
 {
@@ -47,10 +51,10 @@ namespace CapaDatos
             }
             return resultados;
         }
-        public List<Equipos> listadoEquipos()
+        public List<Equipos> listadoPosiciones()
         {
             string orden = string.Empty;
-            orden = "SELECT id_equipo, nombre FROM equipos;";
+            orden = "SELECT P.id_equipo, E.nombre FROM posiciones P, equipos E WHERE P.id_equipo=E.id_equipo ORDER BY P.puntaje;";
             MySqlCommand cmd = new MySqlCommand(orden, conexion);
             List<Equipos> ds = new List<Equipos>();
 
@@ -67,7 +71,7 @@ namespace CapaDatos
 
                     ds.Add(pEquipos);
                 }
-                ds = ds.OrderBy(x => x.pNombre[0]).ToList();
+                //ds = ds.OrderBy(x => x.pNombre[0]).ToList();
             }
             catch (Exception ex)
             {
@@ -124,8 +128,6 @@ namespace CapaDatos
                 return ds;
             }
         }
-
-
         public Equipos BsquedaEquipo(string dato)
         {
             string orden = string.Empty;
@@ -142,12 +144,14 @@ namespace CapaDatos
                     {
                         pEquipos.pNombre = (dr.GetString(0)).ToUpper();
                         pEquipos.pRuta = (dr.GetString(1)).ToLower();
+
                     }
                 }
                 else
                 {
                     Console.WriteLine("No se encontro jugador.");
                 }
+
             }
             catch (Exception ex)
             {

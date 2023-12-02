@@ -8,15 +8,16 @@ namespace Entidades
 {
     public class CopaPlata
     {
-        static private int idEquipo;
-        static private int idZona;
-        static private string equipo;
-        static private int gol1;
-        static private int gol2;
-        static private int gol3;
+        private static int idEquipo;
+        private static int idZona;
+        private static string equipo;
+        private static int gol1;
+        private static int gol2;
+        private static int gol3;
 
         public CopaPlata()
         {
+            // Constructor vacío, si es necesario realizar alguna inicialización adicional, puedes agregarlo aquí.
         }
 
         public int pIdEquipoID { get => idEquipo; set => idEquipo = value; }

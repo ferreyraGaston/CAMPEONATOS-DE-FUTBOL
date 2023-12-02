@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+
 namespace CapaDatos
 {
     public class ClaseCopaOro
     {
         private CopaOro CopaOro = new CopaOro(); // Esto debería ser una instancia válida de CopaOro
-        ClaseConexion ClaseConexion=new ClaseConexion();
+        ClaseConexion ClaseConexion = new ClaseConexion();
         public int abmEquipos(string accion)
         {
             int resultado = -1;
@@ -88,6 +89,4 @@ namespace CapaDatos
             return resultado;
         }
     }
-
 }
-

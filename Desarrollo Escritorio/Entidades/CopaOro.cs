@@ -8,7 +8,6 @@ namespace Entidades
 {
     public class CopaOro
     {
-
         static private int idEquipo;
         static private int idZona;
         static private string equipo;
@@ -16,9 +15,9 @@ namespace Entidades
         static private int gol2;
         static private int gol3;
 
-            public CopaOro()
-            {
-            }
+        public CopaOro()
+        {
+        }
 
         public int pIdEquipoID { get => idEquipo; set => idEquipo = value; }
         public string Equipo { get => equipo; set => equipo = value; }
@@ -27,6 +26,5 @@ namespace Entidades
         public int Gol1 { get => gol1; set => gol1 = value; }
         public int Gol2 { get => gol2; set => gol2 = value; }
         public int Gol3 { get => gol3; set => gol3 = value; }
-
     }
 }

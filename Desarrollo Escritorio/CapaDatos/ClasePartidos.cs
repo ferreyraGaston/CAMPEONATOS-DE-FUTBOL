@@ -1,7 +1,13 @@
-﻿using Entidades;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Data;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
+using Entidades;
 
 namespace CapaDatos
 {
@@ -41,7 +47,7 @@ namespace CapaDatos
             }
             return resultados;
         }
-
+        
 
         public DataTable listadoPartidos(string cual, int busqueda)
         {
@@ -49,7 +55,7 @@ namespace CapaDatos
             string orden = string.Empty;
             if (busqueda == 1)
             {
-                orden = "SELECT P.id_partido AS ID, P.nro_cancha AS CANCHA, E.nombre AS EQUIPO1, P.goles_equipo1 AS GOL_L, R.nombre AS EQUIPO2, P.goles_equipo2 AS GOL_V FROM partidos P, fechas F, equipos E, equipos R WHERE P.id_fecha =" + int.Parse(cual) + " AND P.id_fecha = F.id_fecha AND P.id_equipo1 = E.id_equipo AND P.id_equipo2=R.id_equipo;";
+                orden = "SELECT P.nro_cancha AS CANCHA, E.nombre AS ANFITRION, P.goles_equipo1 AS GOL_A, R.nombre AS VISITANTE, P.goles_equipo2 AS GOL_V FROM partidos P, fechas F, equipos E, equipos R WHERE P.id_fecha =" + int.Parse(cual) + " AND P.id_fecha = F.id_fecha AND P.id_equipo1 = E.id_equipo AND P.id_equipo2=R.id_equipo;";
             }
             else if (busqueda == 2)
             {

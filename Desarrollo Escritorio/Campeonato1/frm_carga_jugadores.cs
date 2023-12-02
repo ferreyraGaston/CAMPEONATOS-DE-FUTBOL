@@ -1,10 +1,19 @@
-﻿using CapaDatos;
-using Entidades;
-using MySql.Data.MySqlClient;
-using System;
-using System.Runtime.InteropServices;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Drawing;
+using System.Globalization;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaDatos;
+using Entidades;
+
+using MySql.Data.MySqlClient;
 
 namespace Campeonato1
 {
@@ -12,6 +21,7 @@ namespace Campeonato1
     {
         public Jugadores objJugador = new Jugadores();
         public ClaseJugadores objCargaJugador = new ClaseJugadores();
+        public ClaseJugadores objControlJugador = new ClaseJugadores();
         private int nro_equipo = -1;
         private string nom_equipo = "";
 
@@ -21,6 +31,7 @@ namespace Campeonato1
             nro_equipo = id_equipo_p;
             nom_equipo = nombre_p;
             lbl_equipo.Text = nom_equipo;
+            txt_apellido.Focus();
         }
 
         private void Limpiar()
@@ -28,15 +39,14 @@ namespace Campeonato1
             txt_apellido.Clear();
             txt_nombres.Clear();
             txt_dni.Clear();
-            // mtb_nac.Clear();
+            mtb_nac.Clear();
             lbl_edad.Text = "..";
+            txt_apellido.Focus();
         }
 
-
+        
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-            CalcularEdad();
-
             string nombre = txt_nombres.Text;
             if (!Regex.IsMatch(nombre, @"^[a-zA-Z]+$"))
             {
@@ -55,81 +65,34 @@ namespace Campeonato1
                 MessageBox.Show("El campo DNI debe tener un máximo de 8 dígitos");
                 return;
             }
-
-            /* DateTime minDate = new DateTime(1973, 1, 1);
-             DateTime maxDate = new DateTime(2007, 9, 30);
-             DateTime dateOfBirth;
-
-             if (!DateTime.TryParse(mtb_nac.Text, out dateOfBirth))
-             {
-                 MessageBox.Show("Fecha de nacimiento inválida");
-                 return;
-             }*/
-            /*
-             if (dateOfBirth < minDate || dateOfBirth > maxDate)
-             {
-                 MessageBox.Show("La fecha de nacimiento no está en el rango aceptado");
-                 return;
-             }*/
-
-            // Establish a connection to the Access database
-            ClaseConexion connectionString = new ClaseConexion();
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString.cadena))
+            
+            string control = objControlJugador.ObtenerEquipoPorDni(int.Parse(txt_dni.Text));
+            if (control == "")
             {
-                connection.Open();
+                int ngrabados = -1;
+                objJugador.pApellido = txt_apellido.Text.Trim();
+                objJugador.pNombre = txt_nombres.Text.Trim();
+                objJugador.pDni = int.Parse(txt_dni.Text.Trim());
+                objJugador.pFechaNac = DateTime.ParseExact(mtb_nac.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                objJugador.pEdad = int.Parse(lbl_edad.Text);
+                objJugador.pEquipo = nro_equipo;
 
-                // Create a query to check if the new player already exists in the database
-                string query = "SELECT COUNT(*) FROM jugadores WHERE nombre = @nombre AND apellido = @apellido AND dni = @dni";
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                ngrabados = objCargaJugador.abmJugadores("Agregar", objJugador);
+                if (ngrabados != -1)
                 {
-                    command.Parameters.AddWithValue("@nombre", nombre);
-                    command.Parameters.AddWithValue("@apellido", apellido);
-                    command.Parameters.AddWithValue("@dni", dni);
-
-                    // Execute the query and retrieve the count of players with the same name, last name, and DNI
-                    int count = Convert.ToInt32(command.ExecuteScalar());
-
-                    // If the count is greater than 0, display an error message and return from the method
-                    if (count > 0)
-                    {
-                        MessageBox.Show("El jugador ya existe en la base de datos");
-                        return;
-                    }
-                    else if (count == 0)
-                    {
-                        int ngrabados = -1;
-                        objJugador.pApellido = txt_apellido.Text;
-                        objJugador.pNombre = txt_nombres.Text;
-
-                        // Configura el formato de fecha en el DateTimePicker
-                        dtFecha.Format = DateTimePickerFormat.Custom;
-                        dtFecha.CustomFormat = "dd/MM/yyyy";
-                        objJugador.pFechaNac = dtFecha.Value;
-
-                        objJugador.pDni = Convert.ToInt32(txt_dni.Text);
-                        objJugador.pEdad = Convert.ToInt32(lbl_edad.Text);
-                        objJugador.pEquipo = nro_equipo;
-                        ngrabados = objCargaJugador.abmJugadores("Agregar", objJugador);
-                        if (ngrabados != -1)
-                        {
-                            MessageBox.Show("Se grabo con exito el jugador nuevo");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo grabar el jugador nuevo");
-                        }
-                        Limpiar();
-                    }
+                    MessageBox.Show("Se grabo con exito el jugador");
+                    Limpiar();
                 }
+            }
+            else
+            {
+                MessageBox.Show(string.Format("El DNI {0} ya está anotado en el equipo {1}", txt_dni.Text, control));
+                txt_dni.Clear();
+                txt_dni.Focus();
             }
 
 
         }
-
-
-
-
 
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
@@ -138,8 +101,8 @@ namespace Campeonato1
 
         private void txt_apellido_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // ingresa solo letras
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            // Ingresa solo letras y espacios
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true;
             }
@@ -147,8 +110,8 @@ namespace Campeonato1
 
         private void txt_nombres_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // ingresa solo letras
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
+            // Ingresa solo letras y espacios
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
             {
                 e.Handled = true;
             }
@@ -163,44 +126,44 @@ namespace Campeonato1
             }
         }
 
-        private void CalcularEdad()
+        private void mtb_nac_Leave(object sender, EventArgs e)
         {
-            DateTime fechaNacimiento = dtFecha.Value;
-            DateTime ahora = DateTime.Now;
-            int edad = ahora.Year - fechaNacimiento.Year;
+            // Obtener la fecha de nacimiento ingresada en el MaskedTextBox
+            string fechaNacimientoTexto = mtb_nac.Text;
 
-            // Comprueba si aún no se ha celebrado el cumpleaños de este año
-            if (ahora < fechaNacimiento.AddYears(edad))
+            // Validar la fecha de nacimiento
+            DateTime cumple;
+            if (!DateTime.TryParseExact(fechaNacimientoTexto, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out cumple) || cumple > DateTime.Now)
             {
-                edad--;
+                MessageBox.Show("La fecha de nacimiento no es válida o está en el futuro. Utiliza el formato dd/MM/yyyy.");
+                mtb_nac.Focus();
+                mtb_nac.SelectAll();
+                return;
             }
 
-            lbl_edad.Text = edad.ToString();
+            // Calcular la edad
+            DateTime ahora = DateTime.Now;
+            TimeSpan edad = ahora - cumple;
+            int edadEnAnios = (int)(edad.TotalDays / 365.25);
+
+            // Validar que la edad no sea mayor de 70 años
+            if (edadEnAnios > 70)
+            {
+                MessageBox.Show("La edad no puede ser mayor de 70 años.");
+                mtb_nac.Focus();
+                mtb_nac.SelectAll();
+                return;
+            }
+
+            lbl_edad.Text = edadEnAnios.ToString();
+
         }
+
+
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-        private void PicMin_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void PicSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
     }
 }

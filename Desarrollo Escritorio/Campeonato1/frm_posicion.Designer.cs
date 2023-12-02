@@ -45,12 +45,13 @@
             this.dgv_posicion.AllowUserToAddRows = false;
             this.dgv_posicion.AllowUserToDeleteRows = false;
             this.dgv_posicion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_posicion.Location = new System.Drawing.Point(7, 48);
+            this.dgv_posicion.Location = new System.Drawing.Point(5, 40);
             this.dgv_posicion.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_posicion.Name = "dgv_posicion";
             this.dgv_posicion.ReadOnly = true;
+            this.dgv_posicion.RowHeadersVisible = false;
             this.dgv_posicion.RowTemplate.Height = 24;
-            this.dgv_posicion.Size = new System.Drawing.Size(588, 255);
+            this.dgv_posicion.Size = new System.Drawing.Size(526, 462);
             this.dgv_posicion.TabIndex = 0;
             // 
             // BarraTitulo
@@ -62,9 +63,8 @@
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BarraTitulo.Location = new System.Drawing.Point(0, 0);
             this.BarraTitulo.Name = "BarraTitulo";
-            this.BarraTitulo.Size = new System.Drawing.Size(606, 35);
-            this.BarraTitulo.TabIndex = 12;
-            this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown_1);
+            this.BarraTitulo.Size = new System.Drawing.Size(537, 35);
+            this.BarraTitulo.TabIndex = 30;
             // 
             // label4
             // 
@@ -73,41 +73,40 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(12, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 17);
+            this.label4.Size = new System.Drawing.Size(135, 17);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Tabla de Posiciones";
+            this.label4.Text = "Tabla de posiciones";
             // 
             // PicMin
             // 
             this.PicMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PicMin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PicMin.Image = ((System.Drawing.Image)(resources.GetObject("PicMin.Image")));
-            this.PicMin.Location = new System.Drawing.Point(538, 7);
+            this.PicMin.Location = new System.Drawing.Point(469, 7);
             this.PicMin.Name = "PicMin";
             this.PicMin.Size = new System.Drawing.Size(25, 25);
             this.PicMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PicMin.TabIndex = 0;
             this.PicMin.TabStop = false;
-            this.PicMin.Click += new System.EventHandler(this.PicMin_Click_1);
             // 
             // PicSalir
             // 
             this.PicSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PicSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PicSalir.Image = ((System.Drawing.Image)(resources.GetObject("PicSalir.Image")));
-            this.PicSalir.Location = new System.Drawing.Point(569, 7);
+            this.PicSalir.Location = new System.Drawing.Point(500, 7);
             this.PicSalir.Name = "PicSalir";
             this.PicSalir.Size = new System.Drawing.Size(25, 25);
             this.PicSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PicSalir.TabIndex = 0;
             this.PicSalir.TabStop = false;
-            this.PicSalir.Click += new System.EventHandler(this.PicSalir_Click_1);
+            this.PicSalir.Click += new System.EventHandler(this.PicSalir_Click);
             // 
             // frm_posicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 335);
+            this.ClientSize = new System.Drawing.Size(537, 522);
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.dgv_posicion);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -115,7 +114,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frm_posicion";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla de posiciones";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_posicion)).EndInit();
             this.BarraTitulo.ResumeLayout(false);

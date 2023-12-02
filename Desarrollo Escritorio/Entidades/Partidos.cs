@@ -1,17 +1,23 @@
-﻿namespace Entidades
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Entidades
 {
     public class Partidos
     {
         #region Atributos
-        static private int id_partido;
-        static private int id_fecha;
-        static private int id_equipo1;
-        static private int id_equipo2;
-        static private int nro_cancha;
-        static private int id_estado;
-        static private int goles_equipo1;
-        static private int goles_equipo2;
-
+        private int id_partido;
+        private int id_fecha;
+        private int id_equipo1;
+        private int id_equipo2;
+        private int nro_cancha;
+        private int id_estado;
+        private int goles_equipo1;
+        private int goles_equipo2;
+      
         #endregion
 
         #region Constructores

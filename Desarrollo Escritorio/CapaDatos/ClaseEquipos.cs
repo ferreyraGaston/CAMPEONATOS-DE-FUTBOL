@@ -1,22 +1,23 @@
-﻿using Entidades;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
+using Entidades;
+using Org.BouncyCastle.Crypto;
 
 namespace CapaDatos
 {
     public class ClaseEquipos : ClaseConexion
     {
-        public object MessageBox { get; private set; }
-
         public int abmEquipos(string accion, Equipos objEquipo)
         {
             int resultados = -1;
             string orden = string.Empty;
-
 
             if (accion == "Agregar")
             {
@@ -41,7 +42,7 @@ namespace CapaDatos
                     resultados = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 throw new Exception("Error al tratar de guardar, borrar o modificar la base de datos", ex);
             }
@@ -72,7 +73,7 @@ namespace CapaDatos
 
                     ds.Add(pEquipos);
                 }
-                ds = ds.OrderBy(x => x.pNombre[0]).ToList();
+                ds = ds.OrderBy(x => x.pID.ToString()[0]).ToList();
             }
             catch (Exception ex)
             {
@@ -86,18 +87,39 @@ namespace CapaDatos
             return ds;
         }
 
+        public bool Control(string dato)
+        {
+            string orden = "SELECT COUNT(*) FROM equipos WHERE nombre = @nombre;";
+
+            using (MySqlCommand cmd = new MySqlCommand(orden, conexion))
+            {
+                cmd.Parameters.AddWithValue("@nombre", dato.ToUpper());
+
+                try
+                {
+                    AbrirConexion();
+                    int resultados = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    return resultados == 1;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al listar equipos. Detalles: " + ex.Message, ex);
+                }
+                finally
+                {
+                    CerrarConexion();
+                }
+            }
+        }
+
         public DataTable listadoEquipos(string cual, int busqueda)
         {
-
             string orden = string.Empty;
             string idSql = string.Empty;
             if (busqueda == 3)
             {
-                orden = "SELECT apellido, nombre, dni, edad FROM jugadores WHERE id_equipo=" + int.Parse(cual) + " ORDER BY apellido;";
-            }
-            else if (busqueda == 4)
-            {
-                orden = "SELECT L.id_libro As COD, L.titulo AS TITULO, A.id_alumno AS SOC, A.nombre &' ' & A.apellido AS POSEEDOR FROM libros L, detalle D, prestamos P, alumnos A WHERE L.id_condicionLib=2 AND D.id_libro=L.id_libro AND P.id_prestamo=D.id_prestamo AND P.id_alumno=A.id_alumno AND devuelto=false ORDER BY L.id_libro;";
+                orden = "SELECT apellido as APELLIDO, nombre as NOMBRE, dni AS DNI, fecha_nac AS F_NAC, edad as EDAD FROM jugadores WHERE id_equipo=" + int.Parse(cual) + " ORDER BY apellido;";
             }
             else if (busqueda == 5)
             {
@@ -130,6 +152,7 @@ namespace CapaDatos
 
             }
 
+
             MySqlCommand cmd = new MySqlCommand(orden, conexion);
             DataTable ds = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter();
@@ -150,9 +173,9 @@ namespace CapaDatos
                 cmd.Dispose();
             }
             return ds;
-
+            
         }
-
+        
         public Equipos BsquedaEquipo(string dato)
         {
             string orden = string.Empty;
@@ -169,7 +192,7 @@ namespace CapaDatos
                     {
                         pEquipos.pNombre = (dr.GetString(0)).ToUpper();
                         pEquipos.pRuta = (dr.GetString(1)).ToLower();
-
+                        
                     }
                 }
                 else
@@ -189,7 +212,103 @@ namespace CapaDatos
             }
             return pEquipos;
         }
+        public List<string> ListadoEquiposCopaPlata()
+        {
+            List<string> nombresEquipos = new List<string>();
+            string query = "SELECT equipo FROM equipoplata ORDER BY idZona ASC";
 
+            ClaseConexion ClaseConexion = new ClaseConexion();
+
+            using (MySqlConnection connection = new MySqlConnection(ClaseConexion.cadena)) // Reemplaza "cadena" con tu cadena de conexión MySQL
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string equipoNombre = reader["equipo"].ToString(); // Elimina "equipos."
+                            nombresEquipos.Add(equipoNombre);
+                        }
+                    }
+                }
+            }
+            return nombresEquipos;
+        }
+
+        public List<string> ListadoEquiposCopaPlataGoles()
+        {
+            List<string> nombresEquipos = new List<string>();
+            string query = "SELECT gol1 FROM equipoplata ORDER BY idZona ASC";
+
+            ClaseConexion ClaseConexion = new ClaseConexion();
+
+            using (MySqlConnection connection = new MySqlConnection(ClaseConexion.cadena)) // Reemplaza "cadena" con tu cadena de conexión MySQL
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string equipoNombre = reader["gol1"].ToString(); // Elimina "equipos."
+                            nombresEquipos.Add(equipoNombre);
+                        }
+                    }
+                }
+            }
+            return nombresEquipos;
+        }
+        public List<string> ListadoEquiposCopaPlataGolesSemis()
+        {
+            List<string> nombresEquipos = new List<string>();
+            string query = "SELECT gol2 FROM equipoplata ORDER BY idZona ASC";
+
+            ClaseConexion ClaseConexion = new ClaseConexion();
+
+            using (MySqlConnection connection = new MySqlConnection(ClaseConexion.cadena)) // Reemplaza "cadena" con tu cadena de conexión MySQL
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string equipoNombre = reader["gol2"].ToString(); // Elimina "equipos."
+                            nombresEquipos.Add(equipoNombre);
+                        }
+                    }
+                }
+            }
+            return nombresEquipos;
+        }
+        public List<string> ListadoEquiposCopaPlataGolesfinal()
+        {
+            List<string> nombresEquipos = new List<string>();
+            string query = "SELECT gol3 FROM equipoplata ORDER BY idZona ASC";
+
+            ClaseConexion ClaseConexion = new ClaseConexion();
+
+            using (MySqlConnection connection = new MySqlConnection(ClaseConexion.cadena)) // Reemplaza "cadena" con tu cadena de conexión MySQL
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string equipoNombre = reader["gol3"].ToString(); // Elimina "equipos."
+                            nombresEquipos.Add(equipoNombre);
+                        }
+                    }
+                }
+            }
+            return nombresEquipos;
+        }
         public List<string> ListadoEquiposPlayoff()
         {
             List<string> nombresEquipos = new List<string>();
@@ -241,6 +360,79 @@ namespace CapaDatos
             }
             return nombresEquipos;
         }
+        public List<string> ListadoEquiposCopaOroGoles()
+        {
+            List<string> nombresEquipos = new List<string>();
+            string query = "SELECT gol1 FROM equipooro ORDER BY idZona ASC";
+
+            ClaseConexion ClaseConexion = new ClaseConexion();
+
+            using (MySqlConnection connection = new MySqlConnection(ClaseConexion.cadena)) // Reemplaza "cadena" con tu cadena de conexión MySQL
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                
+                            string equipoNombre = reader["gol1"].ToString(); // Elimina "equipos."
+                            nombresEquipos.Add(equipoNombre);
+                        }
+                    }
+                }
+            }
+            return nombresEquipos;
+        }
+        public List<string> ListadoEquiposCopaOroGolesSemis()
+        {
+            List<string> nombresEquipos = new List<string>();
+            string query = "SELECT gol2 FROM equipooro ORDER BY idZona ASC";
+
+            ClaseConexion ClaseConexion = new ClaseConexion();
+
+            using (MySqlConnection connection = new MySqlConnection(ClaseConexion.cadena)) // Reemplaza "cadena" con tu cadena de conexión MySQL
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string equipoNombre = reader["gol2"].ToString(); // Elimina "equipos."
+                            nombresEquipos.Add(equipoNombre);
+                        }
+                    }
+                }
+            }
+            return nombresEquipos;
+        }
+        public List<string> ListadoEquiposCopaOroGolesFinal()
+        {
+            List<string> nombresEquipos = new List<string>();
+            string query = "SELECT gol3 FROM equipooro ORDER BY idZona ASC";
+
+            ClaseConexion ClaseConexion = new ClaseConexion();
+
+            using (MySqlConnection connection = new MySqlConnection(ClaseConexion.cadena)) // Reemplaza "cadena" con tu cadena de conexión MySQL
+            {
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string equipoNombre = reader["gol3"].ToString(); // Elimina "equipos."
+                            nombresEquipos.Add(equipoNombre);
+                        }
+                    }
+                }
+            }
+            return nombresEquipos;
+        }
         public List<string> listadoEquiposPlayoffplata()
         {
             List<string> equiposPlata = new List<string>();
@@ -268,6 +460,5 @@ namespace CapaDatos
             }
             return equiposPlata;
         }
+    }
 }
-}
-

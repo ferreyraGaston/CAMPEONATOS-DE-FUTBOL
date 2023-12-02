@@ -1,51 +1,45 @@
 ﻿using System;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Campeonato1
 {
-    public partial class frm_Principal2 : Form
+    public partial class frm_Principal : Form
     {
 
-        public frm_Principal2()
+        public frm_Principal()
         {
             InitializeComponent();
         }
 
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
+        private void btn_cerrar_Click(object sender, EventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            // Cierra toda la aplicación
+            Application.Exit();
         }
 
-        private void PicMin_Click(object sender, EventArgs e)
+        private void agregarEquipoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            frm_equipos form_equipos = new frm_equipos();
+            form_equipos.ShowDialog();
         }
 
-        private void PicSalir_Click(object sender, EventArgs e)
+        private void agregarJugadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            frm_jugadores form_jugadores = new frm_jugadores();
+            form_jugadores.ShowDialog();
         }
 
-        private void cargaDeSancionesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void sorteoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frm_sanciones form3 = new frm_sanciones();
-
-            // Mostrar el formulario
-            form3.Show();
-        }
-
-        private void cargaDeResultadosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm_resultados form2 = new frm_resultados();
-
-            // Mostrar el formulario
-            form2.Show();
+            frm_sorteo form_sorteo = new frm_sorteo();
+            form_sorteo.ShowDialog();
         }
 
         private void tablaDePosicionesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,22 +60,21 @@ namespace Campeonato1
             form_plata.ShowDialog();
         }
 
-        private void agregarEquipoToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void cargaDeResultadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_equipos form_equipos = new frm_equipos();
-            form_equipos.ShowDialog();
+            frm_resultados form_result = new frm_resultados();
+            form_result.ShowDialog();
         }
 
-        private void agregarJugadorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void frm_Principal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            frm_jugadores form_jugadores = new frm_jugadores();
-            form_jugadores.ShowDialog();
-        }
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Realiza cualquier tarea necesaria antes de cerrar el formulario
 
-        private void sorteoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            frm_sorteo form_sorteo = new frm_sorteo();
-            form_sorteo.ShowDialog();
+                // Cierra toda la aplicación
+                Application.Exit();
+            }
         }
     }
 }

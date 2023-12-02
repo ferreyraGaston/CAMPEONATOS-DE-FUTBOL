@@ -1,7 +1,17 @@
 ﻿using CapaDatos;
-using System;
-using System.Windows.Forms;
+using Entidades;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.X500;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Campeonato1
 {
@@ -10,7 +20,7 @@ namespace Campeonato1
         public FrmLogin()
         {
             InitializeComponent();
-
+            
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
@@ -24,10 +34,8 @@ namespace Campeonato1
             txtApelldio.Enabled = false;
             txtDNI.Enabled = false;
             txtClave.Enabled = false;
-            txtNuevoUsuario.Enabled = false;
+            txtNuevoUsuario.Enabled=false;
             button1.Enabled = false;
-
-
         }
 
 
@@ -38,28 +46,19 @@ namespace Campeonato1
 
             ClaseLogin login = new ClaseLogin();
 
-            try
+
+            if (login.Login(usuario, password))
             {
-                if (login.Login(usuario, password))
-                {
-                    frm_Principal2 principal = new frm_Principal2();
-                    principal.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Usuario o contraseña incorrectosss", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                frm_Principal principal = new frm_Principal();
+                principal.Show();
+                this.Hide();
             }
-            catch (MySqlException ex)
+            else
             {
-                // Manejar la excepción específica de MySQL
-                MessageBox.Show("Error de conexión a la base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                // Manejar otras excepciones generales
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario o contraseña incorrectos", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUsuario.Text = "";
+                txtPassword.Text = "";
+                txtUsuario.Focus();
             }
         }
 
@@ -74,8 +73,9 @@ namespace Campeonato1
             txtApelldio.Enabled = true;
             txtDNI.Enabled = true;
             txtClave.Enabled = true;
-            txtNuevoUsuario.Enabled = true;
+            txtNuevoUsuario.Enabled=true;
             button1.Enabled = true;
+            txtNuevoUsuario.Focus();
         }
 
 
@@ -132,7 +132,7 @@ namespace Campeonato1
             }
 
             // Validate other text boxes
-            if (NuevoUsuario.Length > 20 || password.Length > 20 || nombre.Length > 20 || apellido.Length > 20 || clave.Length > 20)
+            if (NuevoUsuario.Length>20 || password.Length>20 || nombre.Length > 20 || apellido.Length > 20 || clave.Length > 20)
             {
                 MessageBox.Show("Los campos Nombre, Apellido y Clave no pueden tener más de 20 caracteres.");
                 return;
@@ -146,6 +146,11 @@ namespace Campeonato1
             if (result)
             {
                 MessageBox.Show("Se Registro Correctamente el Usuario Nuevo");
+                txtNuevoUsuario.Clear();
+                txtClave.Clear();
+                txtDNI.Clear();
+                txtApelldio.Clear();
+                txtNombre.Clear();
             }
             else
             {
@@ -164,6 +169,7 @@ namespace Campeonato1
                 errorProvider1.SetError(txtDNI, "");
             }
         }
+
     }
 }
 

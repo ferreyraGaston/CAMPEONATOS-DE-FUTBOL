@@ -9,6 +9,13 @@ using System.IO.Pipelines;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace Campeonato1
 {
@@ -37,15 +44,12 @@ namespace Campeonato1
             //MessageBox.Show("Equipo 2: " + usuarioObj.Equipo2, "Alerta");
         }
 
-        private void dgv_equipo_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            posicion = dgv_jugador.CurrentRow.Index;
-            NameJugador.Text = dgv_jugador[1, posicion].Value.ToString();
-            ApellJugador.Text = dgv_jugador[0, posicion].Value.ToString();
-            DniJugador.Text = dgv_jugador[2, posicion].Value.ToString();
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        }
-        private void btnAceptar_Click_1(object sender, EventArgs e)
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
             string orden = string.Empty;
             string orden2 = string.Empty;
@@ -53,11 +57,11 @@ namespace Campeonato1
             string ordenGoles = string.Empty;
             string equipo21 = lbEquipo1.Text;
             string equipo22 = lbEquipo2.Text;
-            
+
             orden = "SELECT id_equipo FROM equipos WHERE nombre= @equipo21";
             orden2 = "SELECT id_equipo FROM equipos WHERE nombre= @equipo22";
 
-            
+
             ClaseConexion connectionString = new ClaseConexion();
 
             using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
@@ -101,7 +105,7 @@ namespace Campeonato1
                 cmdUpdateGoles.Parameters.AddWithValue("@idPartido", idPartido);
                 cmdUpdateGoles.ExecuteNonQuery();
 
-                if (equip1> equip2)
+                if (equip1 > equip2)
                 {
                     // Actualizar los campos goles_equipo1 y goles_equipo2 en la tabla partidos
                     string updatePosicionesQuery = "UPDATE posiciones SET P_jug = P_jug + 1, P_gan=P_gan + 1, G_fav=G_fav+@gol1, G_con=G_con+@gol2, Dif_G=G_fav-G_con, Puntaje=Puntaje+3 WHERE id_equipo = @idEquipo1";
@@ -164,20 +168,9 @@ namespace Campeonato1
                 MessageBox.Show("Actualización exitosa");
                 conexion.Close();
             }
-
-        }
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-        private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void btnBuenaFe1_Click_1(object sender, EventArgs e)
+        private void btnBuenaFe1_Click(object sender, EventArgs e)
         {
             int busqueda = 5;
             // Configurar el origen de datos del DataGridView
@@ -191,10 +184,10 @@ namespace Campeonato1
             dgv_jugador.Columns[3].Width = 60;
         }
 
-        private void btnBuenaFe2_Click_1(object sender, EventArgs e)
+        private void btnBuenaFe2_Click(object sender, EventArgs e)
         {
             int busqueda = 5;
-            
+
             // Configurar el origen de datos del DataGridView
             dgv_jugador.Columns.Clear();
             dgv_jugador.DataSource = objEquipos.listadoEquipos(usuarioObj.Equipo2, busqueda);
@@ -206,14 +199,128 @@ namespace Campeonato1
             dgv_jugador.Columns[3].Width = 60;
         }
 
-        private void PicMin_Click_1(object sender, EventArgs e)
+
+        private void dgv_jugador_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            Jugadores Jugadores = new Jugadores();
+            posicion = dgv_jugador.CurrentRow.Index;
+
+            // variable entero
+            Jugadores.pDni = int.Parse(dgv_jugador[2, posicion].Value.ToString());
+
+            // variable String
+            NameJugador.Text = dgv_jugador[0, posicion].Value.ToString();
+            ApellJugador.Text = dgv_jugador[1, posicion].Value.ToString();
+            DniJugador.Text = dgv_jugador[2, posicion].Value.ToString();
+
         }
 
-        private void PicSalir_Click_1(object sender, EventArgs e)
+        private void btnAmarilla_Click(object sender, EventArgs e)
         {
-            this.Close();
+            ClaseConexion connectionString = new ClaseConexion();
+
+            int dni = int.Parse(DniJugador.Text);
+
+            string orden = "SELECT id_jugador FROM jugadores WHERE dni = @dni";
+            string ordenPartido = "SELECT id_fecha FROM partidos WHERE id_partido = @id_partido";
+
+            // Obtener el id del jugador
+            int idJugador = 0;
+            using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
+            {
+                conexion.Open();
+                MySqlCommand cmd = new MySqlCommand(orden, conexion);
+                cmd.Parameters.AddWithValue("@dni", dni);
+                idJugador = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+
+            // Obtener el id de la fecha del partido (suponiendo que tengas el id del partido en 'idPartido2')
+            int idPartido2 = Partidos.pID_partido;
+            int idFecha = 0;
+            using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
+            {
+                conexion.Open();
+                MySqlCommand cmd2 = new MySqlCommand(ordenPartido, conexion);
+                cmd2.Parameters.AddWithValue("@id_partido", idPartido2);
+                idFecha = Convert.ToInt32(cmd2.ExecuteScalar());
+            }
+
+            if (idJugador > 0 && idFecha > 0)
+            {
+                // Insertar el gol en la tabla 'goles'
+                string insertQuery = "INSERT INTO amarillas (id_jugador, id_fecha) VALUES (@id_jugador, @id_fecha)";
+                using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
+                {
+                    conexion.Open();
+                    MySqlCommand cmdInsert = new MySqlCommand(insertQuery, conexion);
+                    cmdInsert.Parameters.AddWithValue("@id_jugador", idJugador);
+                    cmdInsert.Parameters.AddWithValue("@id_fecha", idFecha);
+
+                    cmdInsert.ExecuteNonQuery();
+                }
+
+                // Limpiar los TextBox y mostrar un mensaje de éxito
+                textBoxGol.Clear();
+                MessageBox.Show("Actualización exitosa");
+            }
+            else
+            {
+                MessageBox.Show("Error: No se pudo obtener el id del jugador o de la fecha del partido.");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ClaseConexion connectionString = new ClaseConexion();
+
+            int dni = int.Parse(DniJugador.Text);
+
+            string orden = "SELECT id_jugador FROM jugadores WHERE dni = @dni";
+            string ordenPartido = "SELECT id_fecha FROM partidos WHERE id_partido = @id_partido";
+
+            // Obtener el id del jugador
+            int idJugador = 0;
+            using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
+            {
+                conexion.Open();
+                MySqlCommand cmd = new MySqlCommand(orden, conexion);
+                cmd.Parameters.AddWithValue("@dni", dni);
+                idJugador = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+
+            // Obtener el id de la fecha del partido (suponiendo que tengas el id del partido en 'idPartido2')
+            int idPartido2 = Partidos.pID_partido;
+            int idFecha = 0;
+            using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
+            {
+                conexion.Open();
+                MySqlCommand cmd2 = new MySqlCommand(ordenPartido, conexion);
+                cmd2.Parameters.AddWithValue("@id_partido", idPartido2);
+                idFecha = Convert.ToInt32(cmd2.ExecuteScalar());
+            }
+
+            if (idJugador > 0 && idFecha > 0)
+            {
+                // Insertar el gol en la tabla 'goles'
+                string insertQuery = "INSERT INTO rojas (id_jugador, id_fecha) VALUES (@id_jugador, @id_fecha)";
+                using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
+                {
+                    conexion.Open();
+                    MySqlCommand cmdInsert = new MySqlCommand(insertQuery, conexion);
+                    cmdInsert.Parameters.AddWithValue("@id_jugador", idJugador);
+                    cmdInsert.Parameters.AddWithValue("@id_fecha", idFecha);
+                    //cmdInsert.Parameters.AddWithValue("@id_motivo", id_motivo);
+                    cmdInsert.ExecuteNonQuery();
+                }
+
+                // Limpiar los TextBox y mostrar un mensaje de éxito
+                textBoxGol.Clear();
+                MessageBox.Show("Actualización exitosa");
+            }
+            else
+            {
+                MessageBox.Show("Error: No se pudo obtener el id del jugador o de la fecha del partido.");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -278,131 +385,6 @@ namespace Campeonato1
             }
         }
 
-        private void dgv_jugador_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Jugadores Jugadores=new Jugadores();
-            posicion = dgv_jugador.CurrentRow.Index;
-
-            // variable entero
-            Jugadores.pDni = int.Parse(dgv_jugador[2, posicion].Value.ToString());
-
-            // variable String
-            NameJugador.Text= dgv_jugador[0, posicion].Value.ToString();
-            ApellJugador.Text= dgv_jugador[1, posicion].Value.ToString();
-            DniJugador.Text= dgv_jugador[2, posicion].Value.ToString();
-
-           
-
-        }
-
-        private void btnAmarilla_Click(object sender, EventArgs e)
-        {
-           
-            ClaseConexion connectionString = new ClaseConexion();
-           
-                int dni = int.Parse(DniJugador.Text);
-
-                string orden = "SELECT id_jugador FROM jugadores WHERE dni = @dni";
-                string ordenPartido = "SELECT id_fecha FROM partidos WHERE id_partido = @id_partido";
-
-                // Obtener el id del jugador
-                int idJugador = 0;
-                using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
-                {
-                    conexion.Open();
-                    MySqlCommand cmd = new MySqlCommand(orden, conexion);
-                    cmd.Parameters.AddWithValue("@dni", dni);
-                    idJugador = Convert.ToInt32(cmd.ExecuteScalar());
-                }
-
-                // Obtener el id de la fecha del partido (suponiendo que tengas el id del partido en 'idPartido2')
-                int idPartido2 = Partidos.pID_partido;
-                int idFecha = 0;
-                using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
-                {
-                    conexion.Open();
-                    MySqlCommand cmd2 = new MySqlCommand(ordenPartido, conexion);
-                    cmd2.Parameters.AddWithValue("@id_partido", idPartido2);
-                    idFecha = Convert.ToInt32(cmd2.ExecuteScalar());
-                }
-
-                if (idJugador > 0 && idFecha > 0)
-                {
-                    // Insertar el gol en la tabla 'goles'
-                    string insertQuery = "INSERT INTO amarillas (id_jugador, id_fecha) VALUES (@id_jugador, @id_fecha)";
-                    using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
-                    {
-                        conexion.Open();
-                        MySqlCommand cmdInsert = new MySqlCommand(insertQuery, conexion);
-                        cmdInsert.Parameters.AddWithValue("@id_jugador", idJugador);
-                        cmdInsert.Parameters.AddWithValue("@id_fecha", idFecha);
-               
-                        cmdInsert.ExecuteNonQuery();
-                    }
-
-                    // Limpiar los TextBox y mostrar un mensaje de éxito
-                    textBoxGol.Clear();
-                    MessageBox.Show("Actualización exitosa");
-                }
-                else
-                {
-                    MessageBox.Show("Error: No se pudo obtener el id del jugador o de la fecha del partido.");
-                }
-            
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            ClaseConexion connectionString = new ClaseConexion();
-
-            int dni = int.Parse(DniJugador.Text);
-
-            string orden = "SELECT id_jugador FROM jugadores WHERE dni = @dni";
-            string ordenPartido = "SELECT id_fecha FROM partidos WHERE id_partido = @id_partido";
-
-            // Obtener el id del jugador
-            int idJugador = 0;
-            using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
-            {
-                conexion.Open();
-                MySqlCommand cmd = new MySqlCommand(orden, conexion);
-                cmd.Parameters.AddWithValue("@dni", dni);
-                idJugador = Convert.ToInt32(cmd.ExecuteScalar());
-            }
-
-            // Obtener el id de la fecha del partido (suponiendo que tengas el id del partido en 'idPartido2')
-            int idPartido2 = Partidos.pID_partido;
-            int idFecha = 0;
-            using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
-            {
-                conexion.Open();
-                MySqlCommand cmd2 = new MySqlCommand(ordenPartido, conexion);
-                cmd2.Parameters.AddWithValue("@id_partido", idPartido2);
-                idFecha = Convert.ToInt32(cmd2.ExecuteScalar());
-            }
-
-            if (idJugador > 0 && idFecha > 0)
-            {
-                // Insertar el gol en la tabla 'goles'
-                string insertQuery = "INSERT INTO rojas (id_jugador, id_fecha) VALUES (@id_jugador, @id_fecha)";
-                using (MySqlConnection conexion = new MySqlConnection(connectionString.cadena))
-                {
-                    conexion.Open();
-                    MySqlCommand cmdInsert = new MySqlCommand(insertQuery, conexion);
-                    cmdInsert.Parameters.AddWithValue("@id_jugador", idJugador);
-                    cmdInsert.Parameters.AddWithValue("@id_fecha", idFecha);
-                    //cmdInsert.Parameters.AddWithValue("@id_motivo", id_motivo);
-                    cmdInsert.ExecuteNonQuery();
-                }
-
-                // Limpiar los TextBox y mostrar un mensaje de éxito
-                textBoxGol.Clear();
-                MessageBox.Show("Actualización exitosa");
-            }
-            else
-            {
-                MessageBox.Show("Error: No se pudo obtener el id del jugador o de la fecha del partido.");
-            }
-        }
     }
 }
+
