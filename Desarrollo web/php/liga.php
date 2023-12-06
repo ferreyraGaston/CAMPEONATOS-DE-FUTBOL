@@ -29,7 +29,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
         <!-- navbar -->
         <div id="navbar">
             <ul>
-            <li><a href="../index.html">Novedades</a></li>
+            <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../torneo.html">Torneo</a></li>
                 <li><a href="../infracciones.html">infracciones</a></li>
                 <li><a href="../reglamento.html">Reglamento</a></li>
@@ -43,9 +43,9 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
             <h3>Liga 2023</h3>
         </div>
 
-    <div class="containerTorneo">
+    <div class="containerTorneo ">
 
-        <div class="card__giratorio">
+        <div class="card__giratorio elemento">
             <div class="card__giratorio-conteudo">
                 <div class="card__giratorio-conteudo--frente">
                     <img src="../images/ic-logo1.png" alt="Logo Programador CS" class="logo">
@@ -69,11 +69,12 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
                         </thead>    
                         <?php
                         
-                        
-                        
-                        //$sql = "SELECT DISTINCT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje FROM posiciones P, equipos E WHERE E.id_equipo = P.id_equipo ORDER BY P.puntaje DESC, P.Dif_G DESC, P.G_fav DESC LIMIT 8, 8";
-                        $sql = "SELECT DISTINCT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje FROM posiciones P, equipos E WHERE E.id_equipo = P.id_equipo ORDER BY P.puntaje DESC, P.Dif_G DESC, P.G_fav DESC LIMIT 10, 10";
-
+                        /* $sql = "SELECT DISTINCT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje FROM posiciones P, equipos E WHERE E.id_equipo = P.id_equipo ORDER BY P.puntaje DESC, P.Dif_G DESC, P.G_fav DESC LIMIT 10, 10"; */
+                        $sql = "SELECT DISTINCT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje  " .
+                        "FROM posiciones P " .
+                        "INNER JOIN equipos E ON E.id_equipo = P.id_equipo " .
+                        "ORDER BY P.puntaje DESC, P.Dif_G DESC, P.G_fav DESC " .
+                        "LIMIT 20";
 
                         $result= mysqli_query($conexion,$sql);
 

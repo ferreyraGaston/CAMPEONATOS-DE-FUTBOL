@@ -29,7 +29,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
         <!-- navbar -->
         <div id="navbar">
             <ul>
-            <li><a href="../index.html">Novedades</a></li>
+            <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../torneo.html">Torneo</a></li>
                 <li><a href="../infracciones.html">infracciones</a></li>
                 <li><a href="../reglamento.html">Reglamento</a></li>
@@ -40,7 +40,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
         </div>
         <!-- content -->
         <div id="contentTitulo">
-            <h3>Liga 2023</h3>
+            <h3>Infracciones</h3>
         </div>
 
     <div class="containerTorneo">
@@ -62,18 +62,19 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
             <th scope="col">Tarjeta</th>
         </tr>
     </thead>
+
     <tbody>
         <?php
-        //$sql = "SELECT DISTINCT E.nombre, P.P_jug, P.P_gan, P.P_emp, P.P_per, P.G_fav, P.G_con, P.Dif_G, P.puntaje FROM posiciones P, equipos E WHERE E.id_equipo = P.id_equipo ORDER BY P.puntaje DESC, P.Dif_G DESC, P.G_fav DESC LIMIT 8, 8";
+
         $sql = "SELECT r.id_roja AS Tarjeta, j.nombre AS Nombre, j.apellido AS Apellido, DATE_FORMAT(dia, '%d/%m/%Y') AS Fecha, 'roja' AS Color " .
             "FROM rojas r " .
-            "INNER JOIN jugadores j ON r.id_jugador = j.id_jugador " .
+            "INNER JOIN jugadores j ON r.dni_jugador = j.dni " .
             "INNER JOIN fechas f ON r.id_fecha = f.id_fecha " .
             "UNION " .
             "SELECT a.id_amarilla AS Tarjeta, j.nombre AS Nombre, j.apellido AS Apellido, DATE_FORMAT(dia, '%d/%m/%Y') AS Fecha, 'amarilla' AS Color " .
             "FROM amarillas a " .
             "INNER JOIN fechas f ON a.id_fecha = f.id_fecha " .
-            "INNER JOIN jugadores j ON a.id_jugador = j.id_jugador;";
+            "INNER JOIN jugadores j ON a.dni_jugador = j.dni;";
         $result = mysqli_query($conexion, $sql);
         while ($mostrar = mysqli_fetch_array($result)) {
             ?>

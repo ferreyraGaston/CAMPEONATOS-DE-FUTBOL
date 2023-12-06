@@ -29,7 +29,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
         <!-- navbar -->
         <div id="navbar">
             <ul>
-            <li><a href="../index.html">Novedades</a></li>
+            <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../torneo.html">Torneo</a></li>
                 <li><a href="../infracciones.html">infracciones</a></li>
                 <li><a href="../reglamento.html">Reglamento</a></li>
@@ -40,7 +40,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
         </div>
         <!-- content -->
         <div id="contentTitulo">
-            <h3>Liga 2023</h3>
+            <h3>Infracciones Amarillas</h3>
         </div>
 
     <div class="containerTorneo">
@@ -68,7 +68,7 @@ $conexion=mysqli_connect('localhost:33065','root','','bdcampeonato');
         $sql = "SELECT a.id_amarilla AS Tarjeta, j.nombre AS Nombre, j.apellido AS Apellido, DATE_FORMAT(dia, '%d/%m/%Y') AS Fecha, 'amarilla' AS Color " .
             "FROM amarillas a " .
             "INNER JOIN fechas f ON a.id_fecha = f.id_fecha " .
-            "INNER JOIN jugadores j ON a.id_jugador = j.id_jugador;";
+            "INNER JOIN jugadores j ON a.dni_jugador = j.dni;";
         $result = mysqli_query($conexion, $sql);
         while ($mostrar = mysqli_fetch_array($result)) {
             ?>

@@ -18,8 +18,14 @@
     box-sizing: border-box;
    
 }
+html {
+    height: 100%;
+}
+
 body{
     background: var(--navbar);
+    height: 100%;
+    margin: 0;
 }
 #container
 {
@@ -28,8 +34,12 @@ body{
     position: relative;
     top: 0;
     left: 0;
+    background: var(--efecto);
     background-image: url(../assets/fondo.avif);
-    background-repeat: repeat;
+    /* background-repeat: repeat; */
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
+    background-attachment: fixed; /* Mantiene la imagen fija mientras el contenido se desplaza */
+    background-size: cover;
     
 }
 /* logo */
